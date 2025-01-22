@@ -7,6 +7,13 @@ class_name Player extends CharacterBody3D
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
 @export_range(0.1, 3.0, 0.1, "or_greater") var camera_sens: float = 1
 
+@export_range(1, 50, 1) var dash_speed: float = 25 # m/s
+@export_range(0.1, 1.0, 0.1) var dash_duration: float = 0.2 # seconds
+
+var dash_vel: Vector3
+var is_dashing: bool = false
+var dash_timer: float = 0.0
+
 var jumping: bool = false
 var mouse_captured: bool = false
 
@@ -33,7 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
-	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
+	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _dash(delta)
 	move_and_slide()
 
 func capture_mouse() -> void:
@@ -73,3 +80,19 @@ func _jump(delta: float) -> Vector3:
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
+
+func _dash(delta: float) -> Vector3:
+	if Input.is_action_just_pressed("dash") and not is_dashing:
+		is_dashing = true
+		dash_timer = dash_duration
+		dash_vel = velocity.normalized() * dash_speed  # Dash in the current velocity direction
+		if dash_vel == Vector3.ZERO:  # If not moving, dash forward relative to the camera
+			dash_vel = camera.global_transform.basis.z * -1 * dash_speed
+	
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+			dash_vel = Vector3.ZERO
+	
+	return dash_vel if is_dashing else Vector3.ZERO
