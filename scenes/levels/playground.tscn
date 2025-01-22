@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4fakllxprifu"]
+
+[ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/sample_scene.glb" id="1_d4uy2"]
+[ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
+[ext_resource type="Material" uid="uid://dxpt3h0t7ug6" path="res://addons/kenney_prototype_tools/materials/light/material_11.tres" id="3_gmk15"]
+[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://scripts/player.tscn" id="4_1mbyg"]
+
+[sub_resource type="Environment" id="Environment_rsrlo"]
+
+[node name="Playground" type="Node3D"]
+
+[node name="sample_scene" parent="." instance=ExtResource("1_d4uy2")]
+
+[node name="Plane" parent="sample_scene" index="0"]
+material_override = ExtResource("2_hf0te")
+
+[node name="Cube" parent="sample_scene" index="1"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Cube_001" parent="sample_scene" index="2"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Plane_001" parent="sample_scene" index="3"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Plane_002" parent="sample_scene" index="4"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Player" parent="." instance=ExtResource("4_1mbyg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rsrlo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.776354, -0.0646694, 0.62697, -0.630297, -0.0796552, 0.772257, 0, -0.994723, -0.102602, 0, 0, 0)
+shadow_enabled = true
+
+[editable path="sample_scene"]
