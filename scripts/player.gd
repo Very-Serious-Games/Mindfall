@@ -40,6 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
+	camera.update_tilt(move_dir)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _dash(delta)
 	move_and_slide()
 
