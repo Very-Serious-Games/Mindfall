@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="4_1mbyg"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]
+glow_enabled = true
+glow_bloom = 1.0
 
 [node name="Playground" type="Node3D"]
 
