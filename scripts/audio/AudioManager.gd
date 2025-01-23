@@ -9,6 +9,8 @@ var sfx_bus: int
 var music_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer3D] = []
 
+var active_sounds: Dictionary = {}
+
 # Preloaded sounds
 var sounds = {
 	"footstep": preload("res://assets/audio/sfx/footstep.wav"),
@@ -73,10 +75,35 @@ func play_music(stream: AudioStream, crossfade_duration: float = 1.0):
 func play_sound_3d(sound_name: String, position: Vector3):
 	if not sounds.has(sound_name):
 		return
-		
+	
+	# Check if sound is already playing
+	if active_sounds.has(sound_name):
+		for player_info in active_sounds[sound_name]:
+			if player_info.playing:
+				return
+		active_sounds.erase(sound_name)
+	
+	# Find free player and play sound
 	for player in sfx_players:
 		if not player.playing:
 			player.stream = sounds[sound_name]
 			player.position = position
 			player.play()
+			
+			# Track the active sound
+			if not active_sounds.has(sound_name):
+				active_sounds[sound_name] = []
+			active_sounds[sound_name].append(player)
+			
+			# Connect finished signal to cleanup
+			player.finished.connect(
+				func(): _on_sound_finished(sound_name, player),
+				CONNECT_ONE_SHOT
+			)
 			return
+
+func _on_sound_finished(sound_name: String, player: AudioStreamPlayer3D) -> void:
+	if active_sounds.has(sound_name):
+		active_sounds[sound_name].erase(player)
+		if active_sounds[sound_name].is_empty():
+			active_sounds.erase(sound_name)
