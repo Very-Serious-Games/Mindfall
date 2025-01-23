@@ -21,7 +21,7 @@ shader_parameter/effect_amount = 1.0
 shader = ExtResource("3_brtcp")
 shader_parameter/effect_amount = 1.5
 
-[node name="Player2" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2f8j2")
 speed = 15.0
 acceleration = null
@@ -74,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="GUI/Fisheye"]
+[node name="CenterContainer" type="CenterContainer" parent="GUI/Fisheye" node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,6 +84,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_rvq42")
+RETICLE_LINES = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
+PLAYER_CONTROLLER = NodePath("../../..")
+RETICLE_DISTANCE = 1.0
 
 [node name="Top" type="Line2D" parent="GUI/Fisheye/CenterContainer"]
 points = PackedVector2Array(0, -5, 0, -15)
