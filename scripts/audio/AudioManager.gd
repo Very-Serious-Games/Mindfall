@@ -14,6 +14,7 @@ var active_sounds: Dictionary = {}
 # Preloaded sounds
 var sounds = {
 	"footstep": preload("res://assets/audio/sfx/footstep.wav"),
+	"shoot": preload("res://assets/audio/sfx/shoot.wav")
 }
 
 func _ready():
