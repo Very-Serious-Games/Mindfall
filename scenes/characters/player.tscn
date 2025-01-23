@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f8j2"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_gljcx"]
 [ext_resource type="Shader" path="res://assets/shaders/eyefish.gdshader" id="3_brtcp"]
-[ext_resource type="Shader" path="res://assets/shaders/grain.gdshader" id="4_dmsbu"]
 [ext_resource type="Script" path="res://scripts/player/reticle.gd" id="4_rvq42"]
+[ext_resource type="Shader" path="res://assets/shaders/pixel-sorting.gdshader" id="5_xh4br"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
@@ -23,9 +23,10 @@ shader = ExtResource("3_brtcp")
 shader_parameter/effect_amount = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
-shader = ExtResource("4_dmsbu")
-shader_parameter/grain_amount = 0.02
-shader_parameter/grain_size = 1.0
+shader = ExtResource("5_xh4br")
+shader_parameter/mask_softness = 1.4
+shader_parameter/mask_threshold = 0.6
+shader_parameter/sort = 0.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2f8j2")
@@ -103,6 +104,16 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Grain" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_xkcin")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
 material = SubResource("ShaderMaterial_xkcin")
 layout_mode = 1
 anchors_preset = 15
