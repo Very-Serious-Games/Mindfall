@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_gljcx"]
 [ext_resource type="Shader" path="res://assets/shaders/eyefish.gdshader" id="3_brtcp"]
 [ext_resource type="Script" path="res://scripts/player/reticle.gd" id="4_rvq42"]
-[ext_resource type="Shader" path="res://assets/shaders/pixel-sorting.gdshader" id="5_xh4br"]
+[ext_resource type="Shader" path="res://assets/shaders/pixel_sorting.gdshader" id="5_xh4br"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
