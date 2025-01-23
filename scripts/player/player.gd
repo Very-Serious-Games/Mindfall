@@ -10,6 +10,11 @@ class_name Player extends CharacterBody3D
 @export_range(1, 50, 1) var dash_speed: float = 25 # m/s
 @export_range(0.1, 1.0, 0.1) var dash_duration: float = 0.2 # seconds
 
+@export_category("Health")
+@export_range(1, 1000, 10) var max_health: float = 100
+@export_range(0.1, 10.0, 0.1) var health_regen: float = 0.0
+@export var invulnerable: bool = false
+
 @export_category("Shooting")
 @export_range(10, 100, 1) var fire_rate: float = 20 # Shots per second
 @export_range(50, 500, 10) var damage: float = 100 # Damage per shot
@@ -24,6 +29,8 @@ var current_ammo: int = max_ammo
 var can_shoot: bool = true
 var is_reloading: bool = false
 
+var current_health: float = max_health
+var is_dead: bool = false
 
 var dash_vel: Vector3
 var is_dashing: bool = false
@@ -45,12 +52,17 @@ var jump_vel: Vector3 # Jumping velocity
 func _ready() -> void:
 	capture_mouse()
 	
+	current_health = max_health
+
 	raycast.enabled = true
 	raycast.target_position = Vector3(0, 0, -shoot_range)
 	raycast.collision_mask = 1
 
 # Add this for debug visualization
 func _process(_delta: float) -> void:
+	if health_regen > 0 and current_health < max_health:
+		heal(health_regen * _delta)
+
 	if Input.is_action_pressed("shoot"):
 		var debug_length = -shoot_range
 		var start = raycast.global_position
@@ -66,6 +78,8 @@ func _process(_delta: float) -> void:
 		if is_reloading:
 			ammo_text += " [RELOADING]"
 		print_debug(ammo_text)
+
+		print_debug("Health: %.1f/%.1f" % [current_health, max_health])
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -181,3 +195,25 @@ func _dash(delta: float) -> Vector3:
 			dash_vel = Vector3.ZERO
 	
 	return dash_vel if is_dashing else Vector3.ZERO
+
+func take_damage(amount: float) -> void:
+	if invulnerable or is_dead:
+		return
+		
+	current_health = maxf(0, current_health - amount)
+	
+	if current_health <= 0:
+		die()
+	else:
+		AudioManager.play_sound_3d("hurt", position)
+
+func heal(amount: float) -> void:
+	if is_dead:
+		return
+	current_health = minf(max_health, current_health + amount)
+
+func die() -> void:
+	is_dead = true
+	AudioManager.play_sound_3d("death", position)
+	# Implement death behavior (e.g., respawn, game over, etc.)
+	release_mouse()
