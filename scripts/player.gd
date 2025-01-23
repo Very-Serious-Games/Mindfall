@@ -10,6 +10,17 @@ class_name Player extends CharacterBody3D
 @export_range(1, 50, 1) var dash_speed: float = 25 # m/s
 @export_range(0.1, 1.0, 0.1) var dash_duration: float = 0.2 # seconds
 
+@export_category("Shooting")
+@export_range(10, 100, 1) var fire_rate: float = 20 # Shots per second
+@export_range(50, 500, 10) var damage: float = 100 # Damage per shot
+@export_range(100, 1000, 50) var shoot_range: float = 500 # Max shooting distance
+
+@onready var raycast: RayCast3D = $Camera/ShootRayCast
+@onready var camera: Camera3D = $Camera
+
+var current_ammo: int = 10
+var can_shoot: bool = true
+
 var dash_vel: Vector3
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -26,10 +37,25 @@ var walk_vel: Vector3 # Walking velocity
 var grav_vel: Vector3 # Gravity velocity 
 var jump_vel: Vector3 # Jumping velocity
 
-@onready var camera: Camera3D = $Camera
 
 func _ready() -> void:
 	capture_mouse()
+	
+	raycast.enabled = true
+	raycast.target_position = Vector3(0, 0, -shoot_range)
+	raycast.collision_mask = 1
+
+# Add this for debug visualization
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("shoot"):
+		var debug_length = -shoot_range
+		var start = raycast.global_position
+		var end = start + raycast.global_transform.basis.z * debug_length
+		DebugDraw3D.draw_line(start, end, Color.RED)
+
+		if raycast.is_colliding():
+			var hit_point = raycast.get_collision_point()
+			DebugDraw3D.draw_sphere(hit_point, 0.1, Color.GREEN)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -43,6 +69,40 @@ func _physics_process(delta: float) -> void:
 	camera.update_tilt(move_dir)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _dash(delta)
 	move_and_slide()
+	_handle_shooting(delta)
+
+func _handle_shooting(delta: float) -> void:
+	if Input.is_action_pressed("shoot") and can_shoot and current_ammo > 0:
+		_shoot()
+		current_ammo -= 1
+		can_shoot = false
+		await get_tree().create_timer(1.0 / fire_rate).timeout
+		can_shoot = true
+		
+func _shoot() -> void:
+	if raycast.is_colliding():
+		var hit_point = raycast.get_collision_point()
+		var hit_object = raycast.get_collider()
+
+		# Debug visualization
+		print("Hit point: ", hit_point)
+		print("Hit object: ", hit_object)
+
+		if hit_object.has_method("take_damage"):
+			hit_object.take_damage(damage)
+			print("Damage dealt: ", damage)
+		else:
+			print("Object does not have take_damage method")
+		
+		# Optional: Visual/audio feedback
+		_spawn_hit_effect(raycast.get_collision_point())
+
+	else:
+		print("Raycast did not hit anything")
+		
+func _spawn_hit_effect(hit_point: Vector3) -> void:
+	# Placeholder for hit particle or decal
+	pass
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
