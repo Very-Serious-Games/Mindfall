@@ -24,6 +24,9 @@ class_name Player extends CharacterBody3D
 
 @onready var raycast: RayCast3D = $Camera/ShootRayCast
 @onready var camera: Camera3D = $Camera
+@onready var health_bar: ProgressBar = $GUI/HUDContainer/HealthBar
+@onready var health_text: Label = $GUI/HUDContainer/HealthBar/HealthText
+@onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
 
 var current_ammo: int = max_ammo
 var can_shoot: bool = true
@@ -60,10 +63,22 @@ func _ready() -> void:
 
 # Add this for debug visualization
 func _process(_delta: float) -> void:
+	# Update HUD elements
+	health_bar.value = (current_health / max_health) * 100
+	health_text.text = "%.0f/%.0f" % [current_health, max_health]
+	
+	if Input.is_action_just_pressed("debug_damage"):
+		take_damage(10)
+	
+	var ammo_text = "%d/%d" % [current_ammo, max_ammo]
+	if is_reloading:
+		ammo_text += " [R]"
+	ammo_counter.text = ammo_text
+
 	if health_regen > 0 and current_health < max_health:
 		heal(health_regen * _delta)
 
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and can_shoot and current_ammo > 0:
 		var debug_length = -shoot_range
 		var start = raycast.global_position
 		var end = start + raycast.global_transform.basis.z * debug_length
@@ -74,10 +89,10 @@ func _process(_delta: float) -> void:
 			var hit_point = raycast.get_collision_point()
 			DebugDraw3D.draw_sphere(hit_point, 0.1, Color.GREEN)
 
-		var ammo_text = "Ammo: %d/%d" % [current_ammo, max_ammo]
+		var ammo_text_debug = "Ammo: %d/%d" % [current_ammo, max_ammo]
 		if is_reloading:
-			ammo_text += " [RELOADING]"
-		print_debug(ammo_text)
+			ammo_text_debug += " [RELOADING]"
+		print_debug(ammo_text_debug)
 
 		print_debug("Health: %.1f/%.1f" % [current_health, max_health])
 
