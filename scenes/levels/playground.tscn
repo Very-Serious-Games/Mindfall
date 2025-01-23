@@ -20,72 +20,81 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="Playground" type="Node3D"]
 
-[node name="sample_scene" parent="." instance=ExtResource("1_d4uy2")]
-
-[node name="Plane" parent="sample_scene" index="0"]
-material_override = ExtResource("2_hf0te")
-
-[node name="Cube" parent="sample_scene" index="1"]
-material_override = ExtResource("3_gmk15")
-
-[node name="Cube_001" parent="sample_scene" index="2"]
-material_override = ExtResource("3_gmk15")
-
-[node name="Plane_001" parent="sample_scene" index="3"]
-material_override = ExtResource("3_gmk15")
-
-[node name="Plane_002" parent="sample_scene" index="4"]
-material_override = ExtResource("3_gmk15")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rsrlo")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.776354, -0.0646694, 0.62697, -0.630297, -0.0796552, 0.772257, 0, -0.994723, -0.102602, 0, 0, 0)
-shadow_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("4_1mbyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7905, 1.73339, -39.5286)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 0)
-material_override = SubResource("StandardMaterial3D_upnws")
-mesh = SubResource("BoxMesh_2iaxm")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-script = ExtResource("5_x2j4m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_3nsdg")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, -2.62925)
-material_override = SubResource("StandardMaterial3D_upnws")
-mesh = SubResource("BoxMesh_2iaxm")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
-script = ExtResource("5_x2j4m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_3nsdg")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 2.17099)
-material_override = SubResource("StandardMaterial3D_upnws")
-mesh = SubResource("BoxMesh_2iaxm")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
-script = ExtResource("5_x2j4m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
-shape = SubResource("BoxShape3D_3nsdg")
-
-[node name="room" parent="." instance=ExtResource("6_4l0mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5382, 1.73339, -39.3742)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.824212, 0.474431, -0.309177, -0.0369935, 0.4997, 0.865408, 0.565072, 0.724717, -0.394308, 17.8164, 3.51544, -42.9349)
 spot_range = 12.1215
 spot_angle = 75.6717
 
-[editable path="sample_scene"]
+[node name="Enviroments" type="Node3D" parent="."]
+
+[node name="sample_scene" parent="Enviroments" instance=ExtResource("1_d4uy2")]
+
+[node name="Plane" parent="Enviroments/sample_scene" index="0"]
+material_override = ExtResource("2_hf0te")
+
+[node name="Cube" parent="Enviroments/sample_scene" index="1"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Cube_001" parent="Enviroments/sample_scene" index="2"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Plane_001" parent="Enviroments/sample_scene" index="3"]
+material_override = ExtResource("3_gmk15")
+
+[node name="Plane_002" parent="Enviroments/sample_scene" index="4"]
+material_override = ExtResource("3_gmk15")
+
+[node name="room" parent="Enviroments" instance=ExtResource("6_4l0mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5382, 1.73339, -39.3742)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 0)
+material_override = SubResource("StandardMaterial3D_upnws")
+mesh = SubResource("BoxMesh_2iaxm")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Enemies/MeshInstance3D"]
+script = ExtResource("5_x2j4m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_3nsdg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, -2.62925)
+material_override = SubResource("StandardMaterial3D_upnws")
+mesh = SubResource("BoxMesh_2iaxm")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Enemies/MeshInstance3D2"]
+script = ExtResource("5_x2j4m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_3nsdg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 2.17099)
+material_override = SubResource("StandardMaterial3D_upnws")
+mesh = SubResource("BoxMesh_2iaxm")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Enemies/MeshInstance3D3"]
+script = ExtResource("5_x2j4m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_3nsdg")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.776354, -0.0646694, 0.626971, -0.630297, -0.0796551, 0.772257, 0, -0.994723, -0.102602, 0, 0, 0)
+shadow_enabled = true
+
+[editable path="Enviroments/sample_scene"]

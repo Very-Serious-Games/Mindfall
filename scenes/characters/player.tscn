@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bj20f8efqvq8x"]
+[gd_scene load_steps=11 format=3 uid="uid://bj20f8efqvq8x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2f8j2"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_gljcx"]
 [ext_resource type="Shader" path="res://assets/shaders/eyefish.gdshader" id="3_brtcp"]
+[ext_resource type="Shader" path="res://assets/shaders/grain.gdshader" id="4_dmsbu"]
 [ext_resource type="Script" path="res://scripts/reticle.gd" id="4_rvq42"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
@@ -20,6 +21,11 @@ shader_parameter/effect_amount = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
 shader = ExtResource("3_brtcp")
 shader_parameter/effect_amount = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
+shader = ExtResource("4_dmsbu")
+shader_parameter/grain_amount = 0.02
+shader_parameter/grain_size = 1.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2f8j2")
@@ -48,8 +54,7 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
 [node name="Viewport" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, -9.32232e-12, 0, 4.88853e-11, 1, 0, 0, 1.16415e-10, 1, 2.19416e-10, -1.19209e-07, -2.32831e-10)
-visible = false
+transform = Transform3D(1, -9.32232e-12, 0, 4.88853e-11, 1, 0, 0, 1.16415e-10, 1, 2.19416e-10, 1, -2.32831e-10)
 layers = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_rjwg0")
@@ -64,17 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Fisheye" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_cv6qa")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="GUI/Fisheye" node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
+[node name="CenterContainer" type="CenterContainer" parent="GUI" node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,21 +80,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_rvq42")
 RETICLE_LINES = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
-PLAYER_CONTROLLER = NodePath("../../..")
+PLAYER_CONTROLLER = NodePath("../..")
 RETICLE_DISTANCE = 1.0
 
-[node name="Top" type="Line2D" parent="GUI/Fisheye/CenterContainer"]
+[node name="Top" type="Line2D" parent="GUI/CenterContainer"]
 points = PackedVector2Array(0, -5, 0, -15)
 width = 2.0
 
-[node name="Right" type="Line2D" parent="GUI/Fisheye/CenterContainer"]
+[node name="Right" type="Line2D" parent="GUI/CenterContainer"]
 points = PackedVector2Array(5, 0, 15, 0)
 width = 2.0
 
-[node name="Bottom" type="Line2D" parent="GUI/Fisheye/CenterContainer"]
+[node name="Bottom" type="Line2D" parent="GUI/CenterContainer"]
 points = PackedVector2Array(0, 5, 0, 15)
 width = 2.0
 
-[node name="Left" type="Line2D" parent="GUI/Fisheye/CenterContainer"]
+[node name="Left" type="Line2D" parent="GUI/CenterContainer"]
 points = PackedVector2Array(-5, 0, -15, 0)
 width = 2.0
+
+[node name="Fisheye" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_cv6qa")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Grain" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_xkcin")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfeg2nn7tjxl8"]
+
+[ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/room.glb" id="1_sstib"]
+[ext_resource type="VoxelGIData" path="res://assets/lights/room.VoxelGI_data.res" id="2_lqmtx"]
+
+[node name="room" instance=ExtResource("1_sstib")]
+
+[node name="VoxelGI" type="VoxelGI" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01675, 3.02176, -0.0605469)
+size = Vector3(14.9116, 6.32587, 12.7168)
+data = ExtResource("2_lqmtx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6491, 1.76337, -3.52588)
+shadow_enabled = true
+distance_fade_begin = 0.0
+omni_range = 8.81449
