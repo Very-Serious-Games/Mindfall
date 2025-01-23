@@ -9,6 +9,13 @@ extends Control
 @onready var sensitivity_slider = $MarginContainer/TabContainer/Gameplay/VBoxContainer/MouseSensitivity/HSlider
 
 func _ready():
+	master_slider.min_value = 0.0
+	master_slider.max_value = 1.0
+	music_slider.min_value = 0.0
+	music_slider.max_value = 1.0
+	effects_slider.min_value = 0.0
+	effects_slider.max_value = 1.0
+	
 	load_current_settings()
 
 func load_current_settings():
@@ -23,16 +30,19 @@ func load_current_settings():
 
 func _on_master_volume_changed(value):
 	Settings.settings.audio.master = value
+	AudioManager.set_bus_volume("Master", value)
 	Settings.apply_settings()
 	Settings.save_settings()
 
 func _on_music_volume_changed(value):
 	Settings.settings.audio.music = value
+	AudioManager.set_bus_volume("Music", value)
 	Settings.apply_settings()
 	Settings.save_settings()
 
 func _on_effects_volume_changed(value):
 	Settings.settings.audio.effects = value
+	AudioManager.set_bus_volume("SFX", value)
 	Settings.apply_settings()
 	Settings.save_settings()
 

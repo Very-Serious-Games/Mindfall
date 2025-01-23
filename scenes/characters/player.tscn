@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bj20f8efqvq8x"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_2f8j2"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="2_gljcx"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f8j2"]
+[ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_gljcx"]
 [ext_resource type="Shader" path="res://assets/shaders/eyefish.gdshader" id="3_brtcp"]
 [ext_resource type="Shader" path="res://assets/shaders/grain.gdshader" id="4_dmsbu"]
-[ext_resource type="Script" path="res://scripts/reticle.gd" id="4_rvq42"]
+[ext_resource type="Script" path="res://scripts/player/reticle.gd" id="4_rvq42"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 radius = 0.3
