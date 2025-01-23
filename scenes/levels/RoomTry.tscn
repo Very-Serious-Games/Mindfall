@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1n43mlyjq5wj"]
+
+[ext_resource type="PackedScene" uid="uid://cs6c22nd3mghu" path="res://scenes/levels/Sala.fbx" id="1_xw2sx"]
+
+[node name="RoomTry" type="Node3D"]
+
+[node name="Sala" parent="." instance=ExtResource("1_xw2sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6656, 0, -0.409245)
