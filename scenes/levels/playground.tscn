@@ -26,11 +26,6 @@ environment = SubResource("Environment_rsrlo")
 [node name="Player" parent="." instance=ExtResource("4_1mbyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7905, 1.73339, -39.5286)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.824212, 0.474431, -0.309177, -0.0369935, 0.4997, 0.865408, 0.565072, 0.724717, -0.394308, 17.8164, 3.51544, -42.9349)
-spot_range = 12.1215
-spot_angle = 75.6717
-
 [node name="Enviroments" type="Node3D" parent="."]
 
 [node name="sample_scene" parent="Enviroments" instance=ExtResource("1_d4uy2")]
@@ -96,5 +91,10 @@ shape = SubResource("BoxShape3D_3nsdg")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(0.776354, -0.0646694, 0.626971, -0.630297, -0.0796551, 0.772257, 0, -0.994723, -0.102602, 0, 0, 0)
 shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.824212, 0.474431, -0.309176, -0.0369935, 0.4997, 0.865408, 0.565072, 0.724717, -0.394308, 17.8164, 3.51544, -42.9349)
+spot_range = 12.1215
+spot_angle = 75.6717
 
 [editable path="Enviroments/sample_scene"]
