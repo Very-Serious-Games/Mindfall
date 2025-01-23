@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://yvnpbpmhiuvy"
-path="res://.godot/imported/Reload.wav-7f96e680e08f14522e96f685afe61c52.sample"
+uid="uid://cahtf072c5e6"
+path="res://.godot/imported/vanish.wav-644ee31f6d3a0b7b6b3d96f2455b1b97.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/Reload.wav"
-dest_files=["res://.godot/imported/Reload.wav-7f96e680e08f14522e96f685afe61c52.sample"]
+source_file="res://assets/audio/sfx/vanish.wav"
+dest_files=["res://.godot/imported/vanish.wav-644ee31f6d3a0b7b6b3d96f2455b1b97.sample"]
 
 [params]
 
