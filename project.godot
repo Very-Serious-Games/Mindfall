@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Mindfall"
-run/main_scene="res://scenes/levels/playground.tscn"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.0392157, 0.0392157, 0.0392157, 1)
+boot_splash/image="res://assets/textures/logo.png"
 config/icon="res://icon.svg"
 
 [autoload]
