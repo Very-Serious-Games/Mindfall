@@ -30,14 +30,7 @@ shader_parameter/grain_size = 1.0
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2f8j2")
 speed = 15.0
-acceleration = null
 jump_height = 2.0
-camera_sens = null
-dash_speed = null
-dash_duration = null
-fire_rate = null
-damage = null
-shoot_range = null
 
 [node name="CShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

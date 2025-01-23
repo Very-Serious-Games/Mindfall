@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4fakllxprifu"]
+[gd_scene load_steps=12 format=3 uid="uid://b4fakllxprifu"]
 
 [ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="4_1mbyg"]
 [ext_resource type="Script" path="res://scripts/damageable_object.gd" id="5_x2j4m"]
 [ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/room.glb" id="6_4l0mc"]
+[ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]
 glow_enabled = true
@@ -25,6 +26,13 @@ environment = SubResource("Environment_rsrlo")
 
 [node name="Player" parent="." instance=ExtResource("4_1mbyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7905, 1.73339, -39.5286)
+acceleration = 100.0
+camera_sens = 1.0
+dash_speed = 25.0
+dash_duration = 0.2
+fire_rate = 20.0
+damage = 100.0
+shoot_range = 500.0
 
 [node name="Enviroments" type="Node3D" parent="."]
 
@@ -96,5 +104,7 @@ shadow_enabled = true
 transform = Transform3D(-0.824212, 0.474431, -0.309176, -0.0369935, 0.4997, 0.865408, 0.565072, 0.724717, -0.394308, 17.8164, 3.51544, -42.9349)
 spot_range = 12.1215
 spot_angle = 75.6717
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_tfajt")]
 
 [editable path="Enviroments/sample_scene"]
