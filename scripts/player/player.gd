@@ -83,7 +83,6 @@ func _process(_delta: float) -> void:
 		var start = raycast.global_position
 		var end = start + raycast.global_transform.basis.z * debug_length
 		DebugDraw3D.draw_line(start, end, Color.RED)
-		AudioManager.play_sound_3d("shoot", position)
 
 		if raycast.is_colliding():
 			var hit_point = raycast.get_collision_point()
@@ -132,6 +131,8 @@ func _shoot() -> void:
 	if raycast.is_colliding():
 		var hit_point = raycast.get_collision_point()
 		var hit_object = raycast.get_collider()
+
+		AudioManager.play_sound_3d("shoot", position)
 
 		# Debug visualization
 		print("Hit point: ", hit_point)
