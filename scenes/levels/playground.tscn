@@ -103,21 +103,17 @@ spot_angle = 75.6717
 
 [node name="PowerUpPickup" parent="." instance=ExtResource("8_aj23d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4827, 0.642475, 5.89574)
-collision_mask = 2
 
 [node name="PowerUpPickup2" parent="." instance=ExtResource("8_aj23d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3742, 0.642474, 8.20836)
-collision_mask = 2
 powerup_type = 1
 
 [node name="PowerUpPickup3" parent="." instance=ExtResource("8_aj23d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3736, 0.642474, 6.38811)
-collision_mask = 2
 powerup_type = 2
 
 [node name="PowerUpPickup4" parent="." instance=ExtResource("8_aj23d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7565, 0.642474, 4.28433)
-collision_mask = 2
 powerup_type = 3
 
 [editable path="Enviroments/sample_scene"]

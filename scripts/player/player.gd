@@ -29,6 +29,8 @@ class_name Player extends CharacterBody3D
 @onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
 @onready var powerup_manager: PowerUpManager = $PowerUpManager
 
+signal enemy_hit
+
 var remaining_jumps: int = 1
 var remaining_dashes: int = 1
 var dash_recharge_timer: float = 0.0
@@ -159,6 +161,7 @@ func _shoot() -> void:
 
 		if hit_object.has_method("take_damage"):
 			hit_object.take_damage(damage)
+			emit_signal("enemy_hit")  # Add this line
 			print("Damage dealt: ", damage)
 		else:
 			print("Object does not have take_damage method")
