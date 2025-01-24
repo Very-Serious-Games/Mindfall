@@ -189,8 +189,9 @@ func release_mouse() -> void:
 	mouse_captured = false
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
-	camera.rotation.y -= look_dir.x * camera_sens * sens_mod
-	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod, -1.5, 1.5)
+	var sensitivity = Settings.settings.gameplay.mouse_sensitivity
+	camera.rotation.y -= look_dir.x * camera_sens * sensitivity * sens_mod  
+	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sensitivity * sens_mod, -1.5, 1.5)
 
 func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void:
 	var joypad_dir: Vector2 = Input.get_vector("look_left","look_right","look_up","look_down")
