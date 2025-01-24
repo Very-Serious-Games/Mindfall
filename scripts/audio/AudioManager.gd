@@ -13,8 +13,31 @@ var active_sounds: Dictionary = {}
 
 # Preloaded sounds
 var sounds = {
+	# Combat sounds
+	"shoot": preload("res://assets/audio/sfx/shoot.wav"),
+	"gun_click": preload("res://assets/audio/sfx/gun_click.wav"),
+	"reload_gun": preload("res://assets/audio/sfx/reload_gun.wav"),
+
+	# Movement sounds
 	"footstep": preload("res://assets/audio/sfx/footstep.wav"),
-	"shoot": preload("res://assets/audio/sfx/shoot.wav")
+	"outdoor_footstep": preload("res://assets/audio/sfx/outdoor_footstep.wav"),
+	"dash": preload("res://assets/audio/sfx/dash.wav"),
+
+	# Menu sounds
+	"menu_select_1": preload("res://assets/audio/sfx/menu_select_1.wav"),
+	"menu_select_2": preload("res://assets/audio/sfx/menu_select_2.wav"),
+	"menu_select_3": preload("res://assets/audio/sfx/menu_select_3.wav"),
+	"menu_select_4": preload("res://assets/audio/sfx/menu_select_4.wav"),
+
+	# Combat impacts
+	"punch_1": preload("res://assets/audio/sfx/punch_1.wav"),
+	"punch_2": preload("res://assets/audio/sfx/punch_2.wav"),
+	"punch_3": preload("res://assets/audio/sfx/punch_3.wav"),
+	"punch_4": preload("res://assets/audio/sfx/punch_4.wav"),
+
+	# Misc
+	"pickup_item": preload("res://assets/audio/sfx/pickup_item.wav"),
+	"vanish": preload("res://assets/audio/sfx/vanish.wav")
 }
 
 func _ready():

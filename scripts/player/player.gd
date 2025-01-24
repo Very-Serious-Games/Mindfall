@@ -132,18 +132,22 @@ func _handle_shooting(delta: float) -> void:
 		_start_reload()
 		return
 
-	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
-		for i in powerup_manager.burst_shot_count:
-			_shoot()
-			await get_tree().create_timer(0.1).timeout
-		current_ammo -= 1
-		can_shoot = false
-		await get_tree().create_timer(1.0 / fire_rate).timeout
-		can_shoot = true
+	if Input.is_action_just_pressed("shoot"):
+		if current_ammo <= 0:
+			AudioManager.play_sound_3d("gun_click", position)
+			return
+		if can_shoot and not is_reloading:
+			for i in powerup_manager.burst_shot_count:
+				_shoot()
+				await get_tree().create_timer(0.1).timeout
+			current_ammo -= 1
+			can_shoot = false
+			await get_tree().create_timer(1.0 / fire_rate).timeout
+			can_shoot = true
 
 func _start_reload() -> void:
 	is_reloading = true
-	AudioManager.play_sound_3d("reload", position)
+	AudioManager.play_sound_3d("reload_gun", position)
 	await get_tree().create_timer(reload_time * powerup_manager.reload_speed_multiplier).timeout
 	current_ammo = max_ammo
 	is_reloading = false
@@ -224,6 +228,7 @@ func _jump(delta: float) -> Vector3:
 		if remaining_jumps > 0:
 			jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
 			remaining_jumps -= 1
+			AudioManager.play_sound_3d("jump", position)
 		jumping = false  # Clear the jump input immediately after processing
 	else:
 		# Apply gravity when not jumping
@@ -239,8 +244,8 @@ func _dash(delta: float) -> Vector3:
 		dash_vel = velocity.normalized() * dash_speed
 		if dash_vel == Vector3.ZERO:
 			dash_vel = camera.global_transform.basis.z * -1 * dash_speed
-	
-	
+		AudioManager.play_sound_3d("dash", position)
+
 	if is_dashing:
 		dash_timer -= delta
 		if dash_timer <= 0:
