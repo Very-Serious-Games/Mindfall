@@ -16,7 +16,7 @@ class_name Player extends CharacterBody3D
 @export var invulnerable: bool = false
 
 @export_category("Shooting")
-@export_range(10, 100, 1) var fire_rate: float = 20 # Shots per second
+@export_range(10, 100, 1) var fire_rate: float = 4 # Shots per second
 @export_range(50, 500, 10) var damage: float = 100 # Damage per shot
 @export_range(100, 1000, 50) var shoot_range: float = 500 # Max shooting distance
 @export_range(1, 100, 1) var max_ammo: int = 30
@@ -114,7 +114,7 @@ func _handle_shooting(delta: float) -> void:
 		_start_reload()
 		return
 		
-	if Input.is_action_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
+	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
 		_shoot()
 		current_ammo -= 1
 		can_shoot = false
