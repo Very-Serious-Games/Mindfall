@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://kef2iyusj4f"
-path="res://.godot/imported/Dash.wav-7cfa3993bc549273ba697e51d73fbfad.sample"
+uid="uid://b5mystgjreaqe"
+path="res://.godot/imported/GunClick.wav-7a10e907f056ef856e6f33ce4e826e4c.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/Dash.wav"
-dest_files=["res://.godot/imported/Dash.wav-7cfa3993bc549273ba697e51d73fbfad.sample"]
+source_file="res://assets/audio/sfx/GunClick.wav"
+dest_files=["res://.godot/imported/GunClick.wav-7a10e907f056ef856e6f33ce4e826e4c.sample"]
 
 [params]
 
