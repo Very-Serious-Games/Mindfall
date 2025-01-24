@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4fakllxprifu"]
+[gd_scene load_steps=13 format=3 uid="uid://b4fakllxprifu"]
 
 [ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/damageable_object.gd" id="5_x2j4m"]
 [ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/room.glb" id="6_4l0mc"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
-[ext_resource type="Shader" path="res://assets/shaders/highlight_item.gdshader" id="7_y3qgi"]
+[ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/power_up_pickup.tscn" id="8_aj23d"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]
 glow_enabled = true
@@ -19,14 +19,6 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_2iaxm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nsdg"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5cuc"]
-render_priority = 0
-shader = ExtResource("7_y3qgi")
-shader_parameter/shine_color = Color(1, 1, 1, 1)
-shader_parameter/cycle_interval = 1.0
-shader_parameter/shine_speed = 3.0
-shader_parameter/shine_width = 3.0
 
 [node name="Playground" type="Node3D"]
 
@@ -87,7 +79,6 @@ shape = SubResource("BoxShape3D_3nsdg")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 2.17099)
 material_override = SubResource("StandardMaterial3D_upnws")
-material_overlay = SubResource("ShaderMaterial_r5cuc")
 mesh = SubResource("BoxMesh_2iaxm")
 skeleton = NodePath("../..")
 
@@ -109,5 +100,24 @@ spot_range = 12.1215
 spot_angle = 75.6717
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_tfajt")]
+
+[node name="PowerUpPickup" parent="." instance=ExtResource("8_aj23d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4827, 0.642475, 5.89574)
+collision_mask = 2
+
+[node name="PowerUpPickup2" parent="." instance=ExtResource("8_aj23d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3742, 0.642474, 8.20836)
+collision_mask = 2
+powerup_type = 1
+
+[node name="PowerUpPickup3" parent="." instance=ExtResource("8_aj23d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3736, 0.642474, 6.38811)
+collision_mask = 2
+powerup_type = 2
+
+[node name="PowerUpPickup4" parent="." instance=ExtResource("8_aj23d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7565, 0.642474, 4.28433)
+collision_mask = 2
+powerup_type = 3
 
 [editable path="Enviroments/sample_scene"]

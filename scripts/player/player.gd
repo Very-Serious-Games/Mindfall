@@ -27,6 +27,12 @@ class_name Player extends CharacterBody3D
 @onready var health_bar: ProgressBar = $GUI/HUDContainer/HealthBar
 @onready var health_text: Label = $GUI/HUDContainer/HealthBar/HealthText
 @onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
+@onready var powerup_manager: PowerUpManager = $PowerUpManager
+
+var remaining_jumps: int = 1
+var remaining_dashes: int = 1
+var dash_recharge_timer: float = 0.0
+const DASH_RECHARGE_TIME: float = 1.5
 
 var current_ammo: int = max_ammo
 var can_shoot: bool = true
@@ -56,6 +62,9 @@ func _ready() -> void:
 	capture_mouse()
 	
 	current_health = max_health
+
+	remaining_jumps = powerup_manager.max_jumps
+	remaining_dashes = powerup_manager.dash_charges
 
 	raycast.enabled = true
 	raycast.target_position = Vector3(0, 0, -shoot_range)
@@ -107,14 +116,24 @@ func _physics_process(delta: float) -> void:
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _dash(delta)
 	move_and_slide()
 	_handle_shooting(delta)
+	_handle_dash_recharge(delta)
+
+func _handle_dash_recharge(delta: float) -> void:
+	if remaining_dashes < powerup_manager.dash_charges:
+		dash_recharge_timer += delta
+		if dash_recharge_timer >= DASH_RECHARGE_TIME:
+			remaining_dashes += 1
+			dash_recharge_timer = 0.0
 
 func _handle_shooting(delta: float) -> void:
 	if Input.is_action_just_pressed("reload") and not is_reloading and current_ammo < max_ammo:
 		_start_reload()
 		return
-		
+
 	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
-		_shoot()
+		for i in powerup_manager.burst_shot_count:
+			_shoot()
+			await get_tree().create_timer(0.1).timeout
 		current_ammo -= 1
 		can_shoot = false
 		await get_tree().create_timer(1.0 / fire_rate).timeout
@@ -123,7 +142,7 @@ func _handle_shooting(delta: float) -> void:
 func _start_reload() -> void:
 	is_reloading = true
 	AudioManager.play_sound_3d("reload", position)
-	await get_tree().create_timer(reload_time).timeout
+	await get_tree().create_timer(reload_time * powerup_manager.reload_speed_multiplier).timeout
 	current_ammo = max_ammo
 	is_reloading = false
 
@@ -189,20 +208,35 @@ func _gravity(delta: float) -> Vector3:
 	return grav_vel
 
 func _jump(delta: float) -> Vector3:
+	# Reset jumps when touching floor
+	if is_on_floor():
+		remaining_jumps = powerup_manager.max_jumps
+
+		# Only reset velocity when landing, not for new jumps
+		if not jumping:
+			jump_vel = Vector3.ZERO
+
+	# Process jump input
 	if jumping:
-		if is_on_floor(): jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
-		jumping = false
-		return jump_vel
-	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
+		if remaining_jumps > 0:
+			jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+			remaining_jumps -= 1
+		jumping = false  # Clear the jump input immediately after processing
+	else:
+		# Apply gravity when not jumping
+		jump_vel = jump_vel.move_toward(Vector3.ZERO, gravity * delta)
+
 	return jump_vel
 
 func _dash(delta: float) -> Vector3:
-	if Input.is_action_just_pressed("dash") and not is_dashing:
+	if Input.is_action_just_pressed("dash") and not is_dashing and remaining_dashes > 0:
 		is_dashing = true
+		remaining_dashes -= 1
 		dash_timer = dash_duration
-		dash_vel = velocity.normalized() * dash_speed  # Dash in the current velocity direction
-		if dash_vel == Vector3.ZERO:  # If not moving, dash forward relative to the camera
+		dash_vel = velocity.normalized() * dash_speed
+		if dash_vel == Vector3.ZERO:
 			dash_vel = camera.global_transform.basis.z * -1 * dash_speed
+	
 	
 	if is_dashing:
 		dash_timer -= delta
