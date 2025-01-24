@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5mystgjreaqe"
-path="res://.godot/imported/GunClick.wav-7a10e907f056ef856e6f33ce4e826e4c.sample"
+path="res://.godot/imported/gun_click.wav-39136f984b834c8235ce256015dbe030.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/GunClick.wav"
-dest_files=["res://.godot/imported/GunClick.wav-7a10e907f056ef856e6f33ce4e826e4c.sample"]
+source_file="res://assets/audio/sfx/gun_click.wav"
+dest_files=["res://.godot/imported/gun_click.wav-39136f984b834c8235ce256015dbe030.sample"]
 
 [params]
 
