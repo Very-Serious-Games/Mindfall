@@ -18,15 +18,15 @@ size = Vector2(2, 2)
 shader = ExtResource("3_brtcp")
 shader_parameter/effect_amount = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
-shader = ExtResource("3_brtcp")
-shader_parameter/effect_amount = 1.5
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
 shader = ExtResource("5_xh4br")
 shader_parameter/mask_softness = 1.4
 shader_parameter/mask_threshold = 0.6
 shader_parameter/sort = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
+shader = ExtResource("3_brtcp")
+shader_parameter/effect_amount = 1.5
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2f8j2")
@@ -63,6 +63,36 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Grain" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_xkcin")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_xkcin")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fisheye" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_cv6qa")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="CenterContainer" type="CenterContainer" parent="GUI" node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
 layout_mode = 1
 anchors_preset = 8
@@ -92,36 +122,6 @@ width = 2.0
 [node name="Left" type="Line2D" parent="GUI/CenterContainer"]
 points = PackedVector2Array(-5, 0, -15, 0)
 width = 2.0
-
-[node name="Fisheye" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_cv6qa")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Grain" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_xkcin")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_xkcin")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="HUDContainer" type="Control" parent="GUI"]
 layout_mode = 1
