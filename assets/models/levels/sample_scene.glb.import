@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://chu1hjjwkpe5k"
-path="res://.godot/imported/blockinglvl1.glb-6535df3e40d772e86dc62ea120e4f133.scn"
+uid="uid://q1lupoo2rcq5"
+path="res://.godot/imported/sample_scene.glb-163bbcef6113e9b69075ace821a37388.scn"
 
 [deps]
 
-source_file="res://assets/models/blockinglvl1.glb"
-dest_files=["res://.godot/imported/blockinglvl1.glb-6535df3e40d772e86dc62ea120e4f133.scn"]
+source_file="res://assets/models/levels/sample_scene.glb"
+dest_files=["res://.godot/imported/sample_scene.glb-163bbcef6113e9b69075ace821a37388.scn"]
 
 [params]
 

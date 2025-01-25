@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4fakllxprifu"]
 
-[ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/sample_scene.glb" id="1_d4uy2"]
+[ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/levels/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
 [ext_resource type="Material" uid="uid://dxpt3h0t7ug6" path="res://addons/kenney_prototype_tools/materials/light/material_11.tres" id="3_gmk15"]
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="4_1mbyg"]
 [ext_resource type="Script" path="res://scripts/enemies/damageable_object.gd" id="5_x2j4m"]
-[ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/room.glb" id="6_4l0mc"]
+[ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/levels/room.glb" id="6_4l0mc"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
 [ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/power_up_pickup.tscn" id="8_aj23d"]
 

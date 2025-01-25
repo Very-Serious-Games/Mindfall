@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfeg2nn7tjxl8"]
 
-[ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/room.glb" id="1_sstib"]
+[ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/levels/room.glb" id="1_sstib"]
 [ext_resource type="VoxelGIData" path="res://assets/lights/room.VoxelGI_data.res" id="2_lqmtx"]
 
 [node name="room" instance=ExtResource("1_sstib")]

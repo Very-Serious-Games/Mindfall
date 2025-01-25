@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://lb10dvm6poow"]
+[gd_scene load_steps=11 format=3 uid="uid://lb10dvm6poow"]
 
-[ext_resource type="PackedScene" uid="uid://chu1hjjwkpe5k" path="res://assets/models/blockinglvl1.glb" id="1_jpyg6"]
+[ext_resource type="PackedScene" uid="uid://chu1hjjwkpe5k" path="res://assets/models/levels/blockinglvl1.glb" id="1_jpyg6"]
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="2_inink"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="3_xmhe7"]
 [ext_resource type="VoxelGIData" uid="uid://dabf2nc3jfgak" path="res://assets/lights/level_1.VoxelGI_data.res" id="4_a45fl"]
 [ext_resource type="Script" path="res://scripts/enemies/damageable_object.gd" id="5_a74ri"]
+[ext_resource type="PackedScene" uid="uid://cokvvywkfuw3a" path="res://scenes/characters/enemy.tscn" id="6_hfp0q"]
 
 [sub_resource type="Environment" id="Environment_bopyl"]
 background_energy_multiplier = 0.0
@@ -143,3 +144,6 @@ script = ExtResource("5_a74ri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_7osiv")
+
+[node name="enemy" parent="." instance=ExtResource("6_hfp0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204176, -5.96046e-08, 0.442268)

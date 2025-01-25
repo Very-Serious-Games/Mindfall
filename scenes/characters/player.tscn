@@ -79,17 +79,17 @@ void fragment() {
 shader = SubResource("Shader_tcy1d")
 shader_parameter/effect_amount = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
-shader = ExtResource("5_xh4br")
-shader_parameter/mask_softness = 1.4
-shader_parameter/mask_threshold = 0.6
-shader_parameter/sort = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
 shader = ExtResource("6_ijvbn")
 shader_parameter/grain_amount = 0.05
 shader_parameter/grain_size = 0.5
 shader_parameter/effect_amount = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
+shader = ExtResource("5_xh4br")
+shader_parameter/mask_softness = 1.4
+shader_parameter/mask_threshold = 0.6
+shader_parameter/sort = 0.0
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -131,8 +131,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_xkcin")
+[node name="Postprocesing" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_cv6qa")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,8 +141,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Postprocesing" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_cv6qa")
+[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_xkcin")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

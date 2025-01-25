@@ -21,7 +21,7 @@ func take_damage(amount: float, source: Node = null) -> void:
 
 func die(source: Node = null) -> void:
 	emit_signal("died")
-	get_parent().queue_free()
+	get_parent().get_parent().get_parent().get_parent().queue_free()
 
 func heal(amount: float) -> void:
 	current_health = min(current_health + amount, max_health)

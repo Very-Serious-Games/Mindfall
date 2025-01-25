@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://q1lupoo2rcq5"
-path="res://.godot/imported/sample_scene.glb-fef72445164d4c3ccd9141c381214e43.scn"
+uid="uid://cubfmn5ncyxo4"
+path="res://.godot/imported/enemy.glb-29373ba707dc22db289d87cd3563167b.scn"
 
 [deps]
 
-source_file="res://assets/models/sample_scene.glb"
-dest_files=["res://.godot/imported/sample_scene.glb-fef72445164d4c3ccd9141c381214e43.scn"]
+source_file="res://assets/models/enemies/enemy.glb"
+dest_files=["res://.godot/imported/enemy.glb-29373ba707dc22db289d87cd3563167b.scn"]
 
 [params]
 
@@ -31,6 +31,12 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Armature/Skeleton3D/Alpha_Surface": {
+"physics/shape_type": 0
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
