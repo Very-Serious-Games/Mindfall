@@ -61,6 +61,8 @@ var jump_vel: Vector3 # Jumping velocity
 
 
 func _ready() -> void:
+	add_to_group("player")
+	
 	capture_mouse()
 	
 	current_health = max_health
@@ -98,13 +100,6 @@ func _process(_delta: float) -> void:
 		if raycast.is_colliding():
 			var hit_point = raycast.get_collision_point()
 			DebugDraw3D.draw_sphere(hit_point, 0.1, Color.GREEN)
-
-		var ammo_text_debug = "Ammo: %d/%d" % [current_ammo, max_ammo]
-		if is_reloading:
-			ammo_text_debug += " [RELOADING]"
-		print_debug(ammo_text_debug)
-
-		print_debug("Health: %.1f/%.1f" % [current_health, max_health])
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -159,22 +154,12 @@ func _shoot() -> void:
 
 		AudioManager.play_sound_3d("shoot", position)
 
-		# Debug visualization
-		print("Hit point: ", hit_point)
-		print("Hit object: ", hit_object)
-
 		if hit_object.has_method("take_damage"):
 			hit_object.take_damage(damage)
-			emit_signal("enemy_hit")  # Add this line
-			print("Damage dealt: ", damage)
-		else:
-			print("Object does not have take_damage method")
+			emit_signal("enemy_hit")
 		
 		# Optional: Visual/audio feedback
 		_spawn_hit_effect(raycast.get_collision_point())
-
-	else:
-		print("Raycast did not hit anything")
 		
 func _spawn_hit_effect(hit_point: Vector3) -> void:
 	# Placeholder for hit particle or decal
