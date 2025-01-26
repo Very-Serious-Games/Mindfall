@@ -8,7 +8,7 @@ extends CharacterBody3D
 
 # States
 var idle_state: IdleState
-var agonizing_state: AgonizingState  
+var agonizing_state: AgonizingState
 var running_state: RunningState
 var attack_state: AttackState
 var death_state: DeathState
@@ -22,14 +22,16 @@ func _ready() -> void:
 	running_state = RunningState.new(self, animation_tree)  
 	attack_state = AttackState.new(self, animation_tree)
 	death_state = DeathState.new(self, animation_tree)
-	
-	# Connect damageable died signal
+		
+	# Connect signals
 	damageable.died.connect(_on_died)
 	
-	state_machine.change_state(idle_state)
+	state_machine.change_state(running_state)
 
 func _physics_process(delta: float) -> void:
 	state_machine.update(delta)
+	
+
 
 func take_damage(amount: float) -> void:
 	damageable.take_damage(amount)

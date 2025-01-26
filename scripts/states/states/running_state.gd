@@ -1,14 +1,26 @@
 class_name RunningState
 extends State
 
-@onready var nav_agent: NavigationAgent3D = enemy.get_node("NavigationAgent3D")
-@onready var raycast: RayCast3D = enemy.get_node("RayCast3D")
+@export var speed: float = 2.0
+@export var acceleration: float = 10.0
+@export var chase_distance: float = 20.0
 
-var speed: float = 5.0
-var path_update_interval: float = 0.5
-var path_timer: float = 0.0
+var nav_agent: NavigationAgent3D
+var gravity: float = -9.8
+var vertical_velocity: float = 0.0
+
+func _ready():
+	set_physics_process(false)
+	await get_tree().physics_frame
+	set_physics_process(true)
 
 func enter() -> void:
+	nav_agent = enemy.get_node("NavigationAgent3D")
+	if !nav_agent:
+		push_error("NavigationAgent3D not found in enemy")
+		return
+		
+	# Set animation
 	if animation_tree:
 		animation_tree.set("parameters/running/blend_amount", 1.0)
 		animation_tree.set("parameters/idle/blend_amount", 0.0)
@@ -17,23 +29,37 @@ func enter() -> void:
 		animation_tree.set("parameters/death/blend_amount", 0.0)
 
 func update(delta: float) -> void:
-	var player = enemy.player
-	if !player:
+	if !nav_agent or !enemy.player:
+		return
+
+	# Check distance to player
+	var distance_to_player = enemy.global_position.distance_to(enemy.player.global_position)
+	if distance_to_player > chase_distance:
+		enemy.velocity = Vector3.ZERO
 		return
 		
-	path_timer += delta
-	if path_timer >= path_update_interval:
-		path_timer = 0.0
-		
-		# Check line of sight
-		raycast.look_at(player.global_position)
-		if !raycast.is_colliding() or raycast.get_collider() == player:
-			nav_agent.set_target_position(player.global_position)
-			
-	if nav_agent.is_navigation_finished():
-		return
-		
-	var next_pos = nav_agent.get_next_path_position()
-	var direction = (next_pos - enemy.global_position).normalized()
-	enemy.velocity = direction * speed
+	# Update navigation target
+	nav_agent.target_position = enemy.player.global_position
+	
+	# Calculate movement direction
+	var direction = nav_agent.get_next_path_position() - enemy.global_position
+	direction = direction.normalized()
+	
+	# Apply horizontal movement with smooth acceleration
+	var target_velocity = direction * speed
+	enemy.velocity = enemy.velocity.lerp(target_velocity, acceleration * delta)
+	
+	# Apply gravity
+	if !enemy.is_on_floor():
+		vertical_velocity += gravity * delta
+	else:
+		vertical_velocity = 0
+	enemy.velocity.y = vertical_velocity
+	
+	# Move enemy
 	enemy.move_and_slide()
+
+func exit() -> void:
+	enemy.velocity = Vector3.ZERO
+	if animation_tree:
+		animation_tree.set("parameters/running/blend_amount", 0.0)
