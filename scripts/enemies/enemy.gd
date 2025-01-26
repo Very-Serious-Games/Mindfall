@@ -1,51 +1,54 @@
-class_name Enemy
 extends CharacterBody3D
 
-@onready var player: Player = get_tree().get_first_node_in_group("player") # Fix group name case
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var state_machine: StateMachine = StateMachine.new()
-@onready var damageable: DamageableObject = $enemy/Armature/Skeleton3D/Alpha_Surface/StaticBody3D
 
-# States
-var idle_state: IdleState
-var agonizing_state: AgonizingState
-var running_state: RunningState
-var attack_state: AttackState
-var death_state: DeathState
+var player = null
+var state_machine
 
-func _ready() -> void:
-	add_child(state_machine)
+const SPEED = 4.0
+const ATTACK_RANGE = 2.0
+
+@export var player_path := "/root/Level1/NavigationRegion3D/Player"
+
+@onready var nav_agent = $NavigationAgent3D
+@onready var anim_tree = $AnimationTree
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	player = get_node(player_path)
+	state_machine = anim_tree.get("parameters/playback")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	velocity = Vector3.ZERO
 	
-	# Initialize states
-	idle_state = IdleState.new(self, animation_tree)
-	agonizing_state = AgonizingState.new(self, animation_tree)
-	running_state = RunningState.new(self, animation_tree)  
-	attack_state = AttackState.new(self, animation_tree)
-	death_state = DeathState.new(self, animation_tree)
-		
-	# Connect signals
-	damageable.died.connect(_on_died)
+	match state_machine.get_current_node():
+		"running":
+			# Navigation
+			nav_agent.set_target_position(player.global_transform.origin)
+			var next_nav_point = nav_agent.get_next_path_position()
+			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+			#rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
+			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z) + PI, delta * 10.0)
+		"attack":
+			#look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			rotation.y += PI
 	
-	state_machine.change_state(running_state)
-
-func _physics_process(delta: float) -> void:
-	state_machine.update(delta)
+	# Conditions
+	anim_tree.set("parameters/conditions/attack", _target_in_range())
+	anim_tree.set("parameters/conditions/run", !_target_in_range())
 	
+	
+	move_and_slide()
 
 
-func take_damage(amount: float) -> void:
-	damageable.take_damage(amount)
+func _target_in_range():
+	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 
-func _on_died() -> void:
-	state_machine.change_state(death_state)
 
-func is_player_in_frustum() -> bool:
-	var camera = get_viewport().get_camera_3d()
-	if !camera:
-		return false
-	return camera.is_position_in_frustum(global_position)
-
-func is_in_melee_range() -> bool:
-	if !player:
-		return false
-	return global_position.distance_to(player.global_position) < 2.0
+func _hit_finished():
+	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
+		var dir = global_position.direction_to(player.global_position)
+		player.hit(dir)
