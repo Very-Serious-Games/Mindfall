@@ -20,9 +20,10 @@ navigation_mesh = SubResource("NavigationMesh_x3fem")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 
 [node name="WorldEnviroment" parent="." instance=ExtResource("4_7ne30")]
-timeOfDay = 700.0
+timeOfDay = 1983.02
+rateOfTime = 0.05
 skyRotation = 1.5
-cloudCoverage = 0.537
+cloudCoverage = 0.6
 animateStaticClouds = false
 
 [editable path="blockinglvl2"]

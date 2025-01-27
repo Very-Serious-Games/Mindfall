@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://cemr2j6qn5wbr"]
 
 [ext_resource type="Shader" path="res://assets/shaders/GodotSky.gdshader" id="1_orm1l"]
-[ext_resource type="Texture2D" uid="uid://cnl852air6g7q" path="res://assets/textures/Sky/StaticCloudsAlpha.tga" id="2_rp5ib"]
-[ext_resource type="Texture2D" uid="uid://chk144tfviq2e" path="res://assets/textures/Sky/StaticCloudsXY.tga" id="3_ivmna"]
-[ext_resource type="Texture2D" uid="uid://dnj6ylyuxc6w3" path="res://assets/textures/Sky/scatteringLUT.HDR" id="4_kpa28"]
-[ext_resource type="Texture2D" uid="uid://bru7upxvlt3kp" path="res://assets/textures/Sky/Stars_Noise.TGA" id="5_i626b"]
-[ext_resource type="Texture2D" uid="uid://besoril5mkfd6" path="res://assets/textures/Sky/starmap_8k.jpg" id="6_d1mgp"]
+[ext_resource type="Texture2D" uid="uid://cnl852air6g7q" path="res://assets/textures/sky/StaticCloudsAlpha.tga" id="2_rp5ib"]
+[ext_resource type="Texture2D" uid="uid://chk144tfviq2e" path="res://assets/textures/sky/StaticCloudsXY.tga" id="3_ivmna"]
+[ext_resource type="Texture2D" uid="uid://dnj6ylyuxc6w3" path="res://assets/textures/sky/scatteringLUT.HDR" id="4_kpa28"]
+[ext_resource type="Texture2D" uid="uid://bru7upxvlt3kp" path="res://assets/textures/sky/Stars_Noise.TGA" id="5_i626b"]
+[ext_resource type="Texture2D" uid="uid://besoril5mkfd6" path="res://assets/textures/sky/starmap_8k.jpg" id="6_d1mgp"]
 
 [sub_resource type="Gradient" id="Gradient_d3k8l"]
 
