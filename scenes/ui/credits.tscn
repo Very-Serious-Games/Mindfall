@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://btjsijx82tl20"]
+
+[ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_iuq7n"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iuq7n")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]
+[color=#ffffff]
+
+[font_size=64][wave amp=50 freq=2]MINDFALL[/wave][/font_size]
+[font_size=32][wave amp=50 freq=2]The Last Threshold[/wave][/font_size]
+
+[font_size=42]A Game by[/font_size]
+[font_size=32][url=https://github.com/Very-Serious-Games]Very Serious Games[/url][/font_size]
+
+[font_size=42]Development Team[/font_size]
+[font_size=32]Lead Programming: Mario Dorado Martínez
+Game Design: Name Here
+Level Design: Name Here[/font_size]
+
+[font_size=42]Art & Visual Design[/font_size]
+[font_size=32]Character Art: Name Here
+Environment Art: Name Here
+UI Design: Name Here[/font_size]
+
+[font_size=42]Audio Design[/font_size]
+[font_size=32]Music Composition: Name Here
+Sound Effects: Name Here
+Voice Acting: Name Here[/font_size]
+
+[font_size=42]Additional Support[/font_size]
+[font_size=32]Quality Assurance: Name Here
+Beta Testing: Name Here
+Community Management: Name Here[/font_size]
+
+[font_size=42]Tools & Resources[/font_size]
+[font_size=32]Game Engine: Godot Engine
+Sound Libraries: FreeSounds.org
+Font Resources: Google Fonts[/font_size]
+
+[font_size=32]© 2025 Very Serious Games.
+All Rights Reserved[/font_size]
+
+
+[font_size=48][rainbow freq=0.2 sat=0.7 val=0.8]Thanks for playing![/rainbow][/font_size]
+
+
+[/color]
+[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="MainMenuButotn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 138.0
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "Main Menu [ESC]"
+
+[connection signal="pressed" from="MainMenuButotn" to="." method="_on_main_menu_butotn_pressed"]
