@@ -7,6 +7,8 @@ var health = 5
 
 const SPEED = 4.0
 const ATTACK_RANGE = 2.0
+const DETECT_RANGE = 50.0
+const AGONIZE_CHANGE = 0.05
 
 @export var player_path := "/root/Level1/NavigationRegion3D/Player"
 
@@ -38,11 +40,20 @@ func _process(delta):
 	# Conditions
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
 	anim_tree.set("parameters/conditions/run", !_target_in_range())
+	anim_tree.set("parameters/conditions/detect_player", _detect_player())
+	anim_tree.set("parameters/conditions/lost_player", !_detect_player())
+	# anim_tree.set("parameters/conditions/agonize", _start_agonizing())
 	
 	move_and_slide()
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	
+func _detect_player():
+	return global_position.distance_to(player.global_position) < DETECT_RANGE
+	
+func _start_agonizing():
+	return randf() < AGONIZE_CHANGE
 
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:

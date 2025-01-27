@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bnjhvhbe58db8"]
+[gd_scene load_steps=39 format=4 uid="uid://bnjhvhbe58db8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_h5e5n"]
 [ext_resource type="Script" path="res://scripts/enemies/body_part.gd" id="2_y5uiq"]
@@ -5597,9 +5597,6 @@ stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0noj3"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r2nln"]
 xfade_time = 0.2
 advance_mode = 2
@@ -5631,21 +5628,44 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"die"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5b7rm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kdvy8"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"detect_player"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dj3jb"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"lost_player"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wmhxb"]
+xfade_time = 2.0
+advance_mode = 2
+advance_condition = &"agonize"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pq5ib"]
+xfade_time = 2.0
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ymb36"]
-states/End/position = Vector2(840, 100)
-states/Start/position = Vector2(160, 100)
+states/End/position = Vector2(723, 100)
+states/Start/position = Vector2(145, 100)
 states/agonizing/node = SubResource("AnimationNodeAnimation_sb3ev")
-states/agonizing/position = Vector2(620, 100)
+states/agonizing/position = Vector2(271, 215)
 states/attack/node = SubResource("AnimationNodeAnimation_ud84k")
-states/attack/position = Vector2(507, 100)
+states/attack/position = Vector2(574, 100)
 states/death/node = SubResource("AnimationNodeAnimation_h5ji4")
-states/death/position = Vector2(507, 232)
+states/death/position = Vector2(497, 215)
 states/idle/node = SubResource("AnimationNodeAnimation_51ad5")
-states/idle/position = Vector2(740, 100)
+states/idle/position = Vector2(271, 100)
 states/running/node = SubResource("AnimationNodeAnimation_j15tr")
-states/running/position = Vector2(334, 100)
-transitions = ["Start", "running", SubResource("AnimationNodeStateMachineTransition_0noj3"), "running", "attack", SubResource("AnimationNodeStateMachineTransition_r2nln"), "attack", "running", SubResource("AnimationNodeStateMachineTransition_ty62y"), "running", "death", SubResource("AnimationNodeStateMachineTransition_nvlav"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_p4l6e"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3jiiu"), "agonizing", "death", SubResource("AnimationNodeStateMachineTransition_i40ef")]
-graph_offset = Vector2(61, 21)
+states/running/position = Vector2(401, 100)
+transitions = ["running", "attack", SubResource("AnimationNodeStateMachineTransition_r2nln"), "attack", "running", SubResource("AnimationNodeStateMachineTransition_ty62y"), "running", "death", SubResource("AnimationNodeStateMachineTransition_nvlav"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_p4l6e"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3jiiu"), "agonizing", "death", SubResource("AnimationNodeStateMachineTransition_i40ef"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_5b7rm"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_kdvy8"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_dj3jb"), "idle", "agonizing", SubResource("AnimationNodeStateMachineTransition_wmhxb"), "agonizing", "idle", SubResource("AnimationNodeStateMachineTransition_pq5ib")]
+graph_offset = Vector2(-121, 34)
 
 [node name="enemy" type="CharacterBody3D"]
 script = ExtResource("1_h5e5n")
@@ -6119,7 +6139,7 @@ mesh = SubResource("ArrayMesh_8autj")
 skin = SubResource("Skin_mfax5")
 
 [node name="Head" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.960726, -0.0199572, 0.276781, -0.277268, -0.0283438, 0.960374, -0.0113214, -0.999399, -0.0327642, 0.387023, 25.8454, -147.483)
+transform = Transform3D(0.997969, 0.00207468, -0.0636665, 0.059842, 0.312023, 0.948188, 0.0218326, -0.950072, 0.311265, -5.30186, 28.6906, -142.614)
 bone_name = "mixamorig_Head"
 bone_idx = 5
 
@@ -6134,7 +6154,7 @@ transform = Transform3D(1, 1.86265e-09, -1.49012e-08, 0, 1, 0, -1.11759e-08, -5.
 shape = SubResource("SphereShape3D_lfjhj")
 
 [node name="Torso" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.707364, -0.0697342, 0.703401, -0.653177, 0.31588, 0.688172, -0.270179, -0.946233, 0.177893, -3.10731, 8.09509, -113.392)
+transform = Transform3D(0.973218, -0.07455, -0.217461, 0.22811, 0.430492, 0.873294, 0.0285109, -0.899511, 0.435968, -0.709586, 3.55435, -114.031)
 bone_name = "mixamorig_Spine1"
 bone_idx = 2
 
@@ -6149,7 +6169,7 @@ transform = Transform3D(1, -1.49012e-08, -1.49012e-08, 0, 1, 2.98023e-08, -2.980
 shape = SubResource("CapsuleShape3D_dcc73")
 
 [node name="LeftArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.456833, 0.0255818, -0.889185, 0.173568, -0.977811, -0.117305, -0.872455, -0.207923, 0.442256, 6.63359, 2.00083, -139.799)
+transform = Transform3D(0.454215, 0.553321, -0.698229, -0.718437, -0.235958, -0.654349, -0.526818, 0.798849, 0.290351, 15.5369, 19.1531, -130.903)
 bone_name = "mixamorig_LeftArm"
 bone_idx = 8
 
@@ -6163,7 +6183,7 @@ transform = Transform3D(1, -1.49012e-08, -1.49012e-08, 0, 1, 2.98023e-08, -2.980
 shape = SubResource("CapsuleShape3D_dcc73")
 
 [node name="RightArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.649527, 0.152088, 0.744972, 0.0807921, 0.960438, -0.266518, -0.756034, 0.233298, 0.611543, -11.3135, 32.8614, -127.637)
+transform = Transform3D(0.478068, -0.537815, 0.694411, 0.669642, -0.288418, -0.684394, 0.568357, 0.792194, 0.22226, -20.4993, 8.34873, -133.011)
 bone_name = "mixamorig_RightArm"
 bone_idx = 32
 
@@ -6177,7 +6197,7 @@ transform = Transform3D(1, -1.49012e-08, -1.49012e-08, 0, 1, 2.98023e-08, -2.980
 shape = SubResource("CapsuleShape3D_dcc73")
 
 [node name="LeftForeArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.0236028, 0.153673, -0.98784, -0.985913, -0.160083, -0.04846, -0.165583, 0.975068, 0.14773, 7.33463, -24.7958, -145.497)
+transform = Transform3D(0.546931, -0.461889, -0.69823, -0.225916, 0.721658, -0.654348, 0.80612, 0.515625, 0.290349, 30.7005, 12.6867, -109.011)
 bone_name = "mixamorig_LeftForeArm"
 bone_idx = 9
 
@@ -6191,7 +6211,7 @@ transform = Transform3D(1, -1.49012e-08, -1.49012e-08, 0, 1, 2.98023e-08, -2.980
 shape = SubResource("CapsuleShape3D_dcc73")
 
 [node name="RightForeArm" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.633473, 0.399688, 0.662541, -0.171301, 0.907452, -0.383649, -0.754565, 0.129537, 0.643314, -7.14561, 59.1819, -121.243)
+transform = Transform3D(0.521825, 0.495472, 0.694411, 0.266272, 0.678753, -0.684393, -0.810431, 0.542035, 0.22226, -35.238, 0.444715, -111.302)
 bone_name = "mixamorig_RightForeArm"
 bone_idx = 33
 
@@ -6205,7 +6225,7 @@ transform = Transform3D(1, -1.49012e-08, -1.49012e-08, 0, 1, 2.98023e-08, -2.980
 shape = SubResource("CapsuleShape3D_dcc73")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.493705, 0.280811, -0.823044, -0.865029, 0.0613549, -0.497956, -0.0893336, 0.9578, 0.2732, 11.5782, -29.2164, -118.571)
+transform = Transform3D(0.897149, -0.369256, -0.242431, 0.217572, 0.847026, -0.484984, 0.384428, 0.382358, 0.840249, 17.9457, 32.6149, -94.7725)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 10
 
@@ -6219,7 +6239,7 @@ transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 1.49012e-08, -2.01166e-07, -1.1
 shape = SubResource("BoxShape3D_ujdk2")
 
 [node name="RightHand" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.480097, 0.144323, 0.865261, -0.363682, 0.930356, 0.0466113, -0.798274, -0.337058, 0.499149, 3.89158, 84.2407, -117.666)
+transform = Transform3D(0.669207, 0.504224, 0.545821, -0.0128937, 0.742311, -0.669931, -0.742965, 0.441285, 0.503261, -21.5557, 19.1881, -96.3336)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
@@ -6233,7 +6253,7 @@ transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 1.49012e-08, -2.01166e-07, -1.1
 shape = SubResource("BoxShape3D_ujdk2")
 
 [node name="LeftUpLeg" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.881196, 0.381804, 0.278783, 0.441752, 0.454982, 0.773206, 0.168372, 0.804498, -0.569591, 4.43164, -1.86596, -85.8997)
+transform = Transform3D(-0.988012, 0.148534, -0.04206, 0.0380028, 0.498091, 0.866292, 0.149624, 0.854308, -0.497764, 9.2184, -0.775531, -86.3676)
 bone_name = "mixamorig_LeftUpLeg"
 bone_idx = 55
 
@@ -6247,7 +6267,7 @@ transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 1.49012e-08, -2.01166e-07, -1.1
 shape = SubResource("CapsuleShape3D_kst7h")
 
 [node name="RightUpLeg" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.978171, -0.205606, 0.0301199, -0.0271783, 0.270286, 0.962397, -0.206015, 0.94057, -0.269974, -11.9691, 6.13159, -85.6192)
+transform = Transform3D(-0.834968, -0.401436, -0.376402, -0.469371, 0.162469, 0.867926, -0.287263, 0.901362, -0.324079, -8.79978, -3.6681, -86.389)
 bone_name = "mixamorig_RightUpLeg"
 bone_idx = 60
 
@@ -6261,7 +6281,7 @@ transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 1.49012e-08, -2.01166e-07, -1.1
 shape = SubResource("CapsuleShape3D_kst7h")
 
 [node name="LeftLeg" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.842528, 0.150086, 0.517322, 0.520571, -0.0198802, 0.853587, 0.138396, 0.988473, -0.0613807, 19.9327, 16.606, -53.2376)
+transform = Transform3D(-0.969853, 0.205111, 0.131587, 0.128964, -0.0261626, 0.991304, 0.20677, 0.978389, -0.00107813, 15.2488, 19.4467, -51.6832)
 bone_name = "mixamorig_LeftLeg"
 bone_idx = 56
 
@@ -6275,7 +6295,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.855, 0)
 shape = SubResource("CapsuleShape3D_jwlfm")
 
 [node name="RightLeg" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-0.840618, -0.138001, -0.523754, -0.367862, -0.564286, 0.739093, -0.397542, 0.813964, 0.423584, -20.3165, 17.105, -47.4326)
+transform = Transform3D(-0.78854, -0.173975, -0.589862, -0.523467, -0.313541, 0.792259, -0.322779, 0.933501, 0.15617, -25.0979, 2.92807, -49.7941)
 bone_name = "mixamorig_RightLeg"
 bone_idx = 61
 
@@ -6303,8 +6323,11 @@ debug_enabled = true
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ymb36")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/agonize = false
 parameters/conditions/attack = false
+parameters/conditions/detect_player = false
 parameters/conditions/die = false
+parameters/conditions/lost_player = false
 parameters/conditions/run = false
 
 [connection signal="body_part_hit" from="Armature/Skeleton3D/Head/Area3D" to="." method="_on_area_3d_body_part_hit"]

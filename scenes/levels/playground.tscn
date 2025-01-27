@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4fakllxprifu"]
+[gd_scene load_steps=10 format=3 uid="uid://b4fakllxprifu"]
 
 [ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/levels/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/levels/room.glb" id="6_4l0mc"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
 [ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/power_up_pickup.tscn" id="8_aj23d"]
+[ext_resource type="PackedScene" uid="uid://bnjhvhbe58db8" path="res://scenes/characters/enemy.tscn" id="8_fkqim"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]
 glow_enabled = true
@@ -70,5 +71,9 @@ powerup_type = 2
 [node name="PowerUpPickup4" parent="." instance=ExtResource("8_aj23d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7565, 0.642474, 4.28433)
 powerup_type = 3
+
+[node name="enemy" parent="." instance=ExtResource("8_fkqim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2283, -3.72529e-07, 35.8402)
+player_path = "//root/Playground/Player"
 
 [editable path="Enviroments/sample_scene"]
