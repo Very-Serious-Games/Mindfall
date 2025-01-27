@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bwbadrkipa6xb"
-path="res://.godot/imported/Tutorial.glb-21392eb34eadfdec45f95c64964b3b2d.scn"
+path="res://.godot/imported/tutorial.glb-43582ed1fba2ec237d4179010cd450a3.scn"
 
 [deps]
 
-source_file="res://scenes/levels/Tutorial.glb"
-dest_files=["res://.godot/imported/Tutorial.glb-21392eb34eadfdec45f95c64964b3b2d.scn"]
+source_file="res://scenes/levels/tutorial.glb"
+dest_files=["res://.godot/imported/tutorial.glb-43582ed1fba2ec237d4179010cd450a3.scn"]
 
 [params]
 
