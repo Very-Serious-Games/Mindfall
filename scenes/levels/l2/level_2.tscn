@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://7osbmhcqu6lo"]
+
+[ext_resource type="PackedScene" uid="uid://bui4naju1u752" path="res://assets/models/levels/blockinglvl2.glb" id="1_f6n81"]
+[ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_x66py"]
+[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="3_etylp"]
+
+[sub_resource type="Environment" id="Environment_vu2fb"]
+sdfgi_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_x3fem"]
+
+[node name="Level2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vu2fb")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_x66py")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_x3fem")
+
+[node name="blockinglvl2" parent="." instance=ExtResource("1_f6n81")]
+
+[node name="Player" parent="." instance=ExtResource("3_etylp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[editable path="blockinglvl2"]
