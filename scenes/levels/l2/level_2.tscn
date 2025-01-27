@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7osbmhcqu6lo"]
+[gd_scene load_steps=6 format=3 uid="uid://7osbmhcqu6lo"]
 
 [ext_resource type="PackedScene" uid="uid://bui4naju1u752" path="res://assets/models/levels/blockinglvl2.glb" id="1_f6n81"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_x66py"]
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="3_etylp"]
+[ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://scenes/enviroment/world_enviroment.tscn" id="4_7ne30"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_x3fem"]
 
@@ -17,5 +18,11 @@ navigation_mesh = SubResource("NavigationMesh_x3fem")
 
 [node name="Player" parent="." instance=ExtResource("3_etylp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="WorldEnviroment" parent="." instance=ExtResource("4_7ne30")]
+timeOfDay = 700.0
+skyRotation = 1.5
+cloudCoverage = 0.537
+animateStaticClouds = false
 
 [editable path="blockinglvl2"]
