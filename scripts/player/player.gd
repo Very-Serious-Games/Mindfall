@@ -206,6 +206,7 @@ func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void
 		_rotate_camera(sens_mod)
 		look_dir = Vector2.ZERO
 
-func hit(direction):
-	emit_signal("player_hit")
-	velocity = direction * HIT_STAGGER
+func hit(dir, damage: float = 1) -> void:
+	emit_signal("player_hit") # check if needed
+	velocity = dir * HIT_STAGGER
+	take_damage(damage)
