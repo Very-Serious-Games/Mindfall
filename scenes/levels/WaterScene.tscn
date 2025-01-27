@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2rbwwgoodh2w"]
+
+[ext_resource type="Shader" path="res://assets/shaders/ocean.gdshader" id="2_8mp7p"]
+[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="3_rwkme"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s477d"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_tjwej"]
+sky_material = SubResource("ProceduralSkyMaterial_s477d")
+
+[sub_resource type="Environment" id="Environment_25ph3"]
+background_mode = 2
+sky = SubResource("Sky_tjwej")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_3ghd8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6gigo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_38muj"]
+seamless = true
+seamless_blend_skirt = 0.436
+color_ramp = SubResource("Gradient_3ghd8")
+noise = SubResource("FastNoiseLite_6gigo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8631f"]
+render_priority = 0
+shader = ExtResource("2_8mp7p")
+shader_parameter/absorption_color = Color(1, 0.35, 0, 1)
+shader_parameter/fresnel_radius = 2.0
+shader_parameter/fresnel_color = Color(0, 0.57, 0.72, 1)
+shader_parameter/roughness = 0.15
+shader_parameter/specular = 0.25
+shader_parameter/depth_distance = 25.0
+shader_parameter/beers_law = 4.5
+shader_parameter/displacement_strength = 0.3
+shader_parameter/displacement_scroll_speed = 0.1
+shader_parameter/displacement_scroll_offset = Vector2(-0.2, 0.3)
+shader_parameter/displacement_scale_offset = 0.5
+shader_parameter/displacement_scale = Vector2(0.04, 0.04)
+shader_parameter/edge_thickness = 0.3
+shader_parameter/edge_speed = 0.35
+shader_parameter/edge_noise_scale = Vector2(0.4, 0.4)
+shader_parameter/influence_size = 1.0
+shader_parameter/player_wave_frequenzy = 10.0
+shader_parameter/player_wave_speed = 5.0
+shader_parameter/caustic_size = 2.0
+shader_parameter/caustic_range = 40.0
+shader_parameter/caustic_strength = 0.08
+shader_parameter/ssr_mix_strength = 0.65
+shader_parameter/ssr_travel = 100.0
+shader_parameter/ssr_resolution_near = 1.0
+shader_parameter/ssr_resolution_far = 5.0
+shader_parameter/ssr_tolerance = 1.0
+shader_parameter/refraction_strength = 1.25
+shader_parameter/normal_map_strength = 1.0
+shader_parameter/scroll_speed = 0.3
+shader_parameter/scroll_offset = Vector2(0.1, -0.3)
+shader_parameter/scale_offset = 0.5
+shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
+shader_parameter/normal_map = SubResource("NoiseTexture2D_38muj")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q5lqd"]
+
+[node name="RootNode" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_25ph3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.112989, -0.906447, 0.406924, 0.0234501, 0.407, 0.913127, -0.99332, 0.112716, -0.0247302, 0, 624.751, 0)
+shadow_enabled = true
+shadow_opacity = 0.5
+shadow_blur = 1.512
+
+[node name="Player" parent="." instance=ExtResource("3_rwkme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4196, 0, 0.884767)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.30969, 0, 0, 0, 1, 0, 0, 0, 7.30969, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_8631f")
+mesh = SubResource("PlaneMesh_q5lqd")
