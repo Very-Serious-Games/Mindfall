@@ -23,7 +23,7 @@ buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
 [autoload]
 
 Settings="*res://scripts/ui/settings.gd"
-AudioManager="*res://scripts/audio/AudioManager.gd"
+AudioManager="*res://scripts/audio/audio_manager.gd"
 
 [file_customization]
 
