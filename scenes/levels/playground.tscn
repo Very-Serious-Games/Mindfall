@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="4_1mbyg"]
 [ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/levels/room.glb" id="6_4l0mc"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
-[ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/power_up_pickup.tscn" id="8_aj23d"]
+[ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/powerups/power_up_pickup.tscn" id="8_aj23d"]
 [ext_resource type="PackedScene" uid="uid://bnjhvhbe58db8" path="res://scenes/characters/enemy.tscn" id="8_fkqim"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]

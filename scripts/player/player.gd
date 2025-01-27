@@ -28,6 +28,7 @@ const HIT_STAGGER = 8.0
 @onready var health_text: Label = $GUI/HUDContainer/HealthBar/HealthText
 @onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
 @onready var powerup_manager: PowerUpManager = $PowerUpManager
+@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
 signal body_part_hit
@@ -86,6 +87,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_handle_shooting(delta)
 	_handle_dash_recharge(delta)
+	push_grass()
 
 func _handle_dash_recharge(delta: float) -> void:
 	if remaining_dashes < powerup_manager.dash_charges:
@@ -211,3 +213,6 @@ func hit(dir, damage: float = 1) -> void:
 	emit_signal("player_hit") # check if needed
 	velocity = dir * HIT_STAGGER
 	take_damage(damage)
+	
+func push_grass():
+	grass_node.set_deferred("instance_shader_parameters/player_position", position + Vector3(0, -0.1, 0))

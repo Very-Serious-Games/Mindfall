@@ -18,6 +18,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 
 [node name="Sun" type="MeshInstance3D" parent="SunMoon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 transparency = 1.0
+cast_shadow = 0
 mesh = SubResource("SphereMesh_pkqrv")
 
 [node name="SunLight" type="DirectionalLight3D" parent="SunMoon/Sun"]
@@ -29,6 +30,7 @@ shadow_enabled = true
 [node name="Moon" type="MeshInstance3D" parent="SunMoon"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
 transparency = 1.0
+cast_shadow = 0
 mesh = SubResource("SphereMesh_ackkx")
 
 [node name="MoonLight" type="DirectionalLight3D" parent="SunMoon/Moon"]

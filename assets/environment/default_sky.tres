@@ -1,6 +1,6 @@
 [gd_resource type="Sky" load_steps=2 format=3 uid="uid://bq7217qbtqsdc"]
 
-[ext_resource type="Material" uid="uid://cemr2j6qn5wbr" path="res://assets/shaders/shader_material.tres" id="1_k43ei"]
+[ext_resource type="Material" uid="uid://cemr2j6qn5wbr" path="res://assets/resources/shader_material.tres" id="1_k43ei"]
 
 [resource]
 sky_material = ExtResource("1_k43ei")

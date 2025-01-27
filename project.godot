@@ -33,6 +33,9 @@ folder_colors={
 "res://assets/audio/": "teal",
 "res://assets/materials/": "pink",
 "res://assets/models/": "orange",
+"res://assets/presets/": "blue",
+"res://assets/resources/": "pink",
+"res://assets/shaders/": "orange",
 "res://assets/textures/": "red",
 "res://scenes/": "purple",
 "res://scripts/": "blue"
