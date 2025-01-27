@@ -104,6 +104,7 @@ func _handle_shooting(delta: float) -> void:
 			AudioManager.play_sound_3d("gun_click", position)
 			return
 		if can_shoot and not is_reloading:
+			AudioManager.play_sound_3d("shoot", position)
 			_shoot()
 			current_ammo -= 1
 			can_shoot = false
@@ -120,8 +121,8 @@ func _start_reload() -> void:
 func _shoot() -> void:
 	if raycast.is_colliding():
 		var hit_object = raycast.get_collider()
-		AudioManager.play_sound_3d("shoot", position)
 		if raycast.get_collider().is_in_group("enemy"):
+			#AudioManager.play_sound_3d("hit_enemy", position)
 			raycast.get_collider().hit()
 			emit_signal("body_part_hit")
 
