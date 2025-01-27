@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dacjcp3v352rt"]
+[gd_scene load_steps=28 format=3 uid="uid://lb10dvm6poow"]
 
 [ext_resource type="VoxelGIData" uid="uid://dabf2nc3jfgak" path="res://assets/lights/level_1.VoxelGI_data.res" id="1_c2b51"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="2_70xe2"]

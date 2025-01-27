@@ -66,7 +66,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
-	health_text.text = "%.0f/%.0f" % [current_health, max_health]
+	health_text.text = "%.0f" % [current_health]
 	ammo_counter.text = "%d/%d%s" % [current_ammo, max_ammo, " [R]" if is_reloading else ""]
 	
 	if health_regen > 0 and current_health < max_health:
