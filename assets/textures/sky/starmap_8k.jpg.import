@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnl852air6g7q"
-path.bptc="res://.godot/imported/StaticCloudsAlpha.tga-44d1b5de0ac363dde637e281057a0df8.bptc.ctex"
+uid="uid://besoril5mkfd6"
+path.bptc="res://.godot/imported/starmap_8k.jpg-b269f6f2e69bc748c74a3e1d9219f0b8.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Sky/StaticCloudsAlpha.tga"
-dest_files=["res://.godot/imported/StaticCloudsAlpha.tga-44d1b5de0ac363dde637e281057a0df8.bptc.ctex"]
+source_file="res://assets/textures/sky/starmap_8k.jpg"
+dest_files=["res://.godot/imported/starmap_8k.jpg-b269f6f2e69bc748c74a3e1d9219f0b8.bptc.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

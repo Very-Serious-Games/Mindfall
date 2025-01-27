@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnj6ylyuxc6w3"
-path.bptc="res://.godot/imported/scatteringLUT.HDR-7fabcc6ac3630c4658c80748f7beafd5.bptc.ctex"
+path.bptc="res://.godot/imported/scatteringLUT.HDR-f7fe8214ceb04f4d1f6c492d1fc3b3d5.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Sky/scatteringLUT.HDR"
-dest_files=["res://.godot/imported/scatteringLUT.HDR-7fabcc6ac3630c4658c80748f7beafd5.bptc.ctex"]
+source_file="res://assets/textures/sky/scatteringLUT.HDR"
+dest_files=["res://.godot/imported/scatteringLUT.HDR-f7fe8214ceb04f4d1f6c492d1fc3b3d5.bptc.ctex"]
 
 [params]
 

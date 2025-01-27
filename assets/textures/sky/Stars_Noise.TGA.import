@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://besoril5mkfd6"
-path.bptc="res://.godot/imported/starmap_8k.jpg-ad9ddda9160672b08c56ed3e2279d735.bptc.ctex"
+uid="uid://bru7upxvlt3kp"
+path.s3tc="res://.godot/imported/Stars_Noise.TGA-b89da5174138bf9c9657f91eb3312ad3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Sky/starmap_8k.jpg"
-dest_files=["res://.godot/imported/starmap_8k.jpg-ad9ddda9160672b08c56ed3e2279d735.bptc.ctex"]
+source_file="res://assets/textures/sky/Stars_Noise.TGA"
+dest_files=["res://.godot/imported/Stars_Noise.TGA-b89da5174138bf9c9657f91eb3312ad3.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

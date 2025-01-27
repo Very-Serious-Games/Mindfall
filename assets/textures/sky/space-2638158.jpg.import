@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bru7upxvlt3kp"
-path.s3tc="res://.godot/imported/Stars_Noise.TGA-84b1d8a584df82d4a960e586ea19da97.s3tc.ctex"
+uid="uid://j6nf0fy460hi"
+path.s3tc="res://.godot/imported/space-2638158.jpg-8bd1fc4058f231ec7f5e0ee594d9c823.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Sky/Stars_Noise.TGA"
-dest_files=["res://.godot/imported/Stars_Noise.TGA-84b1d8a584df82d4a960e586ea19da97.s3tc.ctex"]
+source_file="res://assets/textures/sky/space-2638158.jpg"
+dest_files=["res://.godot/imported/space-2638158.jpg-8bd1fc4058f231ec7f5e0ee594d9c823.s3tc.ctex"]
 
 [params]
 

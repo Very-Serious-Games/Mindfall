@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chk144tfviq2e"
-path.bptc="res://.godot/imported/StaticCloudsXY.tga-fa20ec8c96d498934e5a3ac89c373be8.bptc.ctex"
+uid="uid://bebgjqa85kmio"
+path.s3tc="res://.godot/imported/nebula1.jpg-dac77dd40c6557f1531cddae98fcb61d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Sky/StaticCloudsXY.tga"
-dest_files=["res://.godot/imported/StaticCloudsXY.tga-fa20ec8c96d498934e5a3ac89c373be8.bptc.ctex"]
+source_file="res://assets/textures/sky/nebula1.jpg"
+dest_files=["res://.godot/imported/nebula1.jpg-dac77dd40c6557f1531cddae98fcb61d.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
@@ -26,7 +26,7 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
