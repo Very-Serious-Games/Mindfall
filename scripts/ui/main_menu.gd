@@ -7,7 +7,7 @@ func play_button_sound() -> void:
 
 func _on_start_button_pressed() -> void:
 	play_button_sound()
-	get_tree().change_scene_to_file("res://scenes/levels/playground.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
 
 func _on_options_button_pressed() -> void:
 	play_button_sound()
