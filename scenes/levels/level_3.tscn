@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="2_n2tpm"]
 [ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://scenes/enviroment/world_enviroment.tscn" id="3_wsr51"]
 
-[node name="Level2" type="Node3D"]
+[node name="Level3" type="Node3D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3yqa5")]
 
