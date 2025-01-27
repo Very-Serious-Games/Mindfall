@@ -167,6 +167,7 @@ func _dash(delta: float) -> Vector3:
 		dash_vel = velocity.normalized() * dash_speed
 		if dash_vel == Vector3.ZERO:
 			dash_vel = camera.global_transform.basis.z * -1 * dash_speed
+		camera.start_dash_fov() # Add this line
 		AudioManager.play_sound_3d("dash", position)
 
 	if is_dashing:
@@ -174,6 +175,7 @@ func _dash(delta: float) -> Vector3:
 		if dash_timer <= 0:
 			is_dashing = false
 			dash_vel = Vector3.ZERO
+			camera.end_dash_fov() # Add this line
 	return dash_vel if is_dashing else Vector3.ZERO
 
 func take_damage(amount: float) -> void:
