@@ -1,26 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4fakllxprifu"]
+[gd_scene load_steps=9 format=3 uid="uid://b4fakllxprifu"]
 
 [ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/levels/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
 [ext_resource type="Material" uid="uid://dxpt3h0t7ug6" path="res://addons/kenney_prototype_tools/materials/light/material_11.tres" id="3_gmk15"]
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="4_1mbyg"]
-[ext_resource type="Script" path="res://scripts/enemies/damageable_object.gd" id="5_x2j4m"]
 [ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/levels/room.glb" id="6_4l0mc"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
 [ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/power_up_pickup.tscn" id="8_aj23d"]
-[ext_resource type="PackedScene" uid="uid://dyie0c4awd0wu" path="res://assets/models/levels/Salaprueba.glb" id="9_yn4uv"]
-[ext_resource type="Script" path="res://scripts/Dungeon.gd" id="10_2qjj6"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]
 glow_enabled = true
 glow_bloom = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upnws"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2iaxm"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3nsdg"]
 
 [node name="Playground" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7672, 0, 0)
@@ -53,44 +43,6 @@ material_override = ExtResource("3_gmk15")
 [node name="room" parent="Enviroments" instance=ExtResource("6_4l0mc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5382, 1.73339, -39.3742)
 
-[node name="Enemies" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 0)
-material_override = SubResource("StandardMaterial3D_upnws")
-mesh = SubResource("BoxMesh_2iaxm")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Enemies/MeshInstance3D"]
-script = ExtResource("5_x2j4m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_3nsdg")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, -2.62925)
-material_override = SubResource("StandardMaterial3D_upnws")
-mesh = SubResource("BoxMesh_2iaxm")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Enemies/MeshInstance3D2"]
-script = ExtResource("5_x2j4m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/MeshInstance3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_3nsdg")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15762, 2.17099)
-material_override = SubResource("StandardMaterial3D_upnws")
-mesh = SubResource("BoxMesh_2iaxm")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Enemies/MeshInstance3D3"]
-script = ExtResource("5_x2j4m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/MeshInstance3D3/StaticBody3D"]
-shape = SubResource("BoxShape3D_3nsdg")
-
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
@@ -118,9 +70,5 @@ powerup_type = 2
 [node name="PowerUpPickup4" parent="." instance=ExtResource("8_aj23d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7565, 0.642474, 4.28433)
 powerup_type = 3
-
-[node name="Salaprueba" parent="." instance=ExtResource("9_yn4uv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 387.669, 5.53038, 59.6836)
-script = ExtResource("10_2qjj6")
 
 [editable path="Enviroments/sample_scene"]

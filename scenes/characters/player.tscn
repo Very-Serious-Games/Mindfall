@@ -79,19 +79,19 @@ void fragment() {
 shader = SubResource("Shader_tcy1d")
 shader_parameter/effect_amount = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
-shader = ExtResource("6_ijvbn")
-shader_parameter/grain_amount = 0.05
-shader_parameter/grain_size = 0.5
-shader_parameter/effect_amount = 1.5
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
 shader = ExtResource("5_xh4br")
 shader_parameter/mask_softness = 1.4
 shader_parameter/mask_threshold = 0.6
 shader_parameter/sort = 0.0
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
+shader = ExtResource("6_ijvbn")
+shader_parameter/grain_amount = 0.05
+shader_parameter/grain_size = 0.5
+shader_parameter/effect_amount = 1.5
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_2f8j2")
@@ -113,12 +113,14 @@ script = ExtResource("2_gljcx")
 max_tilt_angle = 3.0
 
 [node name="ShootRayCast" type="RayCast3D" parent="Camera"]
-collision_mask = 5
+collision_mask = 2
+collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
 [node name="Viewport" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -9.32232e-12, 0, 4.88853e-11, 1, 0, 0, 1.16415e-10, 1, 2.19416e-10, 1, -2.32831e-10)
+visible = false
 layers = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_rjwg0")
@@ -133,8 +135,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Postprocesing" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_cv6qa")
+[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_xkcin")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,8 +145,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_xkcin")
+[node name="Postprocesing" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_cv6qa")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

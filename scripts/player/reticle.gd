@@ -20,7 +20,7 @@ func _ready():
 	queue_redraw()
 	
 	# Connect to player's hit signal
-	PLAYER_CONTROLLER.connect("enemy_hit", Callable(self, "show_hitmarker"))
+	PLAYER_CONTROLLER.connect("body_part_hit", Callable(self, "show_hitmarker"))
 	
 func _process(delta):
 	adjust_reticle_lines()
