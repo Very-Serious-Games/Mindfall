@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bui4naju1u752" path="res://assets/models/levels/blockinglvl2.glb" id="1_f6n81"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_x66py"]
-[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="3_etylp"]
+[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player2.tscn" id="3_etylp"]
 [ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://scenes/enviroment/world_enviroment.tscn" id="4_7ne30"]
 [ext_resource type="Script" path="res://scripts/level_transition.gd" id="5_56ef1"]
 [ext_resource type="Shader" path="res://assets/shaders/ocean.gdshader" id="5_ep4n7"]
