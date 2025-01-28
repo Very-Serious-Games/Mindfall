@@ -171,22 +171,22 @@ shadow_enabled = true
 omni_range = 22.0518
 
 [node name="RedLight6" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.385, 6.29942, -71.6139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.26304, 6.29942, -71.6139)
 light_color = Color(1, 0, 0, 1)
 light_energy = 5.0
 light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 24.0331
+omni_range = 31.8061
 
 [node name="RedLight7" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62321, 3.68675, -121.539)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62321, 6.19546, -121.539)
 light_color = Color(1, 0, 0, 1)
 light_energy = 5.0
 light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 12.3416
+omni_range = 26.0984
 
 [node name="RedLight8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3859, 6.51201, -35.1236)
@@ -197,13 +197,14 @@ light_bake_mode = 1
 shadow_enabled = true
 omni_range = 25.8204
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.15059, -12.0372)
-light_color = Color(4.86121e-06, 0.815696, 0.187817, 1)
-light_energy = 2.0
-light_specular = 0.0
+[node name="RedLight12" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7503, 5.19973, -25.6225)
+light_color = Color(1, 0, 0, 1)
+light_energy = 1.923
+light_indirect_energy = 0.0
 light_bake_mode = 1
 shadow_enabled = true
+omni_range = 17.7614
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_70xe2")]
 
