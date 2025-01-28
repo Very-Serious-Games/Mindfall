@@ -41,6 +41,7 @@ const FOOTSTEP_TIME = 0.1
 @onready var death_screen: Control = $GUI/DeathScreenContainer
 @onready var postprocessing: ColorRect = $GUI/Postprocesing
 @onready var floor_check: RayCast3D = $FloorCheck
+@onready var anim_tree = $MainCharacter/AnimationTree
 
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
@@ -93,6 +94,18 @@ func _process(_delta: float) -> void:
 		heal(health_regen * _delta)
 
 	_update_dash_bars()
+
+	# Update movement blend
+	var movement_value = velocity.length() / speed
+	anim_tree.set("parameters/Movement/blend_position", movement_value)
+	
+	# Update gun state based on actions
+	if is_reloading:
+		anim_tree.set("parameters/Gun/current_state", "Gun_Recharge")
+	elif Input.is_action_just_pressed("shoot") and can_shoot:
+		anim_tree.set("parameters/Gun/current_state", "Gun_Shot")
+	else:
+		anim_tree.set("parameters/Gun/current_state", "Gun_idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_dead and event.is_action_pressed("reload"):
