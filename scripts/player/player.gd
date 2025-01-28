@@ -24,14 +24,15 @@ const HIT_STAGGER = 8.0
 
 @onready var raycast: RayCast3D = $Camera/ShootRayCast
 @onready var camera: Camera3D = $Camera
-@onready var health_bar: ProgressBar = $GUI/HUDContainer/HealthBar
-@onready var health_text: Label = $GUI/HUDContainer/HealthBar/HealthText
-@onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
+@onready var health_bar: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar
+@onready var health_text: Label = $GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar/HealthText
+@onready var current_ammo_label: Label = $GUI/HUDContainer/BottomHUDContainer/RightElements/CurrentAmmo
+@onready var max_ammo_label: Label = $GUI/HUDContainer/BottomHUDContainer/RightElements/MaxAmmo
 @onready var powerup_manager: PowerUpManager = $PowerUpManager
-@onready var dash_bar: ProgressBar = $GUI/HUDContainer/DashBar
-@onready var dash_bar_double: HBoxContainer = $GUI/HUDContainer/DashBarDouble
-@onready var dash_bar1: ProgressBar = $GUI/HUDContainer/DashBarDouble/DashBar1
-@onready var dash_bar2: ProgressBar = $GUI/HUDContainer/DashBarDouble/DashBar2
+@onready var dash_bar: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBar
+@onready var dash_bar_double: HBoxContainer = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble
+@onready var dash_bar1: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar1
+@onready var dash_bar2: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar2
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
@@ -72,7 +73,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
 	health_text.text = "%.0f" % [current_health]
-	ammo_counter.text = "%d/%d%s" % [current_ammo, max_ammo, " [R]" if is_reloading else ""]
+	
+	current_ammo_label.text = str(current_ammo)
+	max_ammo_label.text = "/%d%s" % [max_ammo, " [R]" if is_reloading else ""]
 	
 	if health_regen > 0 and current_health < max_health:
 		heal(health_regen * _delta)
