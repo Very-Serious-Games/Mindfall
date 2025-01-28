@@ -90,6 +90,12 @@ navigation_mesh = SubResource("NavigationMesh_ih6fk")
 
 [node name="blockinglvl2" parent="NavigationRegion3D" instance=ExtResource("1_f6n81")]
 
+[node name="Suelo1" parent="NavigationRegion3D/blockinglvl2" index="1" groups=["dirt", "grass"]]
+
+[node name="StaticBody3D" parent="NavigationRegion3D/blockinglvl2/Suelo1" index="0" groups=["dirt", "grass"]]
+
+[node name="CollisionShape3D" parent="NavigationRegion3D/blockinglvl2/Suelo1/StaticBody3D" index="0" groups=["dirt", "grass"]]
+
 [node name="TransitionTrigger" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(4.31164, 0, 0, 0, 4.246, 0, 0, 0, 1, 68.1225, 2.121, -422.193)
 layers = 5
