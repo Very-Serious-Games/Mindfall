@@ -28,6 +28,10 @@ const HIT_STAGGER = 8.0
 @onready var health_text: Label = $GUI/HUDContainer/HealthBar/HealthText
 @onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
 @onready var powerup_manager: PowerUpManager = $PowerUpManager
+@onready var dash_bar: ProgressBar = $GUI/HUDContainer/DashBar
+@onready var dash_bar_double: HBoxContainer = $GUI/HUDContainer/DashBarDouble
+@onready var dash_bar1: ProgressBar = $GUI/HUDContainer/DashBarDouble/DashBar1
+@onready var dash_bar2: ProgressBar = $GUI/HUDContainer/DashBarDouble/DashBar2
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
@@ -63,6 +67,7 @@ func _ready() -> void:
 	remaining_jumps = powerup_manager.max_jumps
 	remaining_dashes = powerup_manager.dash_charges
 	raycast.target_position = Vector3(0, 0, -shoot_range)
+	_setup_dash_bars()
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
@@ -71,6 +76,8 @@ func _process(_delta: float) -> void:
 	
 	if health_regen > 0 and current_health < max_health:
 		heal(health_regen * _delta)
+
+	_update_dash_bars()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_captured:
@@ -215,6 +222,36 @@ func hit(dir, damage: float = 1) -> void:
 	emit_signal("player_hit") # check if needed
 	velocity = dir * HIT_STAGGER
 	take_damage(damage)
+
+func _setup_dash_bars() -> void:
+	# Set visibility based on double dash powerup
+	var has_double_dash = PowerUp.PowerUpType.DOUBLE_DASH in powerup_manager.active_powerups
+	dash_bar.visible = !has_double_dash
+	dash_bar_double.visible = has_double_dash
+
+func _update_dash_bars() -> void:
+	if PowerUp.PowerUpType.DOUBLE_DASH in powerup_manager.active_powerups:
+		dash_bar.visible = false
+		dash_bar_double.visible = true
+		
+		# First dash bar (left) - represents first dash
+		if remaining_dashes >= 1:
+			dash_bar1.value = 100.0
+		else:
+			dash_bar1.value = (dash_recharge_timer / DASH_RECHARGE_TIME) * 100
+		
+		# Second dash bar (right) - represents second dash
+		if remaining_dashes >= 2:
+			dash_bar2.value = 100.0
+		elif remaining_dashes == 1:
+			dash_bar2.value = (dash_recharge_timer / DASH_RECHARGE_TIME) * 100
+		else:
+			dash_bar2.value = 0.0
+	else:
+		dash_bar.visible = true
+		dash_bar_double.visible = false
+		var recharge_progress = (dash_recharge_timer / DASH_RECHARGE_TIME) * 100
+		dash_bar.value = 100.0 if remaining_dashes >= 1 else recharge_progress
 	
 #func push_grass():
 #	grass_node.set_deferred("instance_shader_parameters/player_position", position + Vector3(0, -0.1, 0))
