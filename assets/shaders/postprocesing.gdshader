@@ -25,13 +25,13 @@ void fragment() {
     float r = sqrt(dot(d, d));
     float power = effect_amount;
     float bind;
-    
-    if (power > 0.0) 
+
+    if (power > 0.0)
         bind = sqrt(dot(m, m));
     else {
-        if (prop < 1.0) 
-            bind = m.x; 
-        else 
+        if (prop < 1.0)
+            bind = m.x;
+        else
             bind = m.y;
     }
 
@@ -43,10 +43,10 @@ void fragment() {
     else
         uv = p;
     uv.y *= prop;
-    
+
     // Sample texture with fisheye distortion
     vec4 distorted_color = texture(SCREEN_TEXTURE, uv);
-    
+
     // Pixel sorting
     vec2 sort_uv = uv;
     float f = mask_softness / 2.0;
@@ -54,20 +54,20 @@ void fragment() {
     float b = mask_threshold + f;
     float average = (distorted_color.x + distorted_color.y + distorted_color.z) / 3.0;
     float mask = smoothstep(a, b, average);
-    
+
     float sort_threshold = 1.0 - clamp(sort / 2.6, 0.0, 1.0);
     vec2 transition_uv = sort_uv;
     float turbulance = fract(sin(dot(vec2(transition_uv.x), vec2(12.9, 78.2)))* 437.5);
     transition_uv.y += pow(sort, 2.0 + (sort * 2.0)) * mask * turbulance;
-    
+
     if(transition_uv.y > 1.){
         distorted_color = texture(SCREEN_TEXTURE, vec2(sort_uv.x, sort_threshold));
     }
-    
+
     // Apply grain effect
     float noise = (fract(sin(dot(UV, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 2.0;
     distorted_color.rgb += noise * grain_amount * grain_size;
-    
+
     // Output final color
     COLOR = clamp(distorted_color, 0.0, 1.0);
 }
