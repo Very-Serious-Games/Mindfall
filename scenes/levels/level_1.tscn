@@ -108,13 +108,31 @@ shadow_enabled = true
 omni_range = 19.0
 
 [node name="RedLight2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1006, 6.39662, -49.9985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.4043, 6.39662, -39.7854)
 light_color = Color(1, 0, 0, 1)
 light_energy = 5.0
 light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 19.0
+omni_range = 13.4406
+
+[node name="RedLight10" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1006, 6.39662, -56.0633)
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+light_indirect_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 20.3002
+
+[node name="RedLight11" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1629, 2.25408, -37.6563)
+light_color = Color(1, 0, 0, 1)
+light_energy = 1.431
+light_indirect_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 6.34123
 
 [node name="RedLight3" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.386, 6.39662, -66.1752)
@@ -135,31 +153,49 @@ shadow_enabled = true
 omni_range = 19.0
 
 [node name="RedLight5" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.0185, 6.06878, -92.3926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3315, 6.06878, -92.3926)
 light_color = Color(1, 0, 0, 1)
 light_energy = 5.0
 light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 56.6343
+omni_range = 20.8542
+
+[node name="RedLight12" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8141, 4.47754, -97.463)
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+light_indirect_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 8.54595
+
+[node name="RedLight9" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4641, 6.06878, -92.3926)
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+light_indirect_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 22.0518
 
 [node name="RedLight6" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.385, 6.66299, -71.6139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.385, 6.29942, -71.6139)
 light_color = Color(1, 0, 0, 1)
 light_energy = 5.0
 light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 19.0456
+omni_range = 24.0331
 
 [node name="RedLight7" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62321, 6.39662, -121.539)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62321, 3.68675, -121.539)
 light_color = Color(1, 0, 0, 1)
 light_energy = 5.0
 light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
-omni_range = 10.296
+omni_range = 12.3416
 
 [node name="RedLight8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3859, 6.51201, -35.1236)
@@ -169,6 +205,15 @@ light_indirect_energy = 16.0
 light_bake_mode = 1
 shadow_enabled = true
 omni_range = 25.8204
+
+[node name="RedLight13" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0179873, 3.26024, -25.5345)
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+light_indirect_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 4.66821
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.15059, -12.0372)
