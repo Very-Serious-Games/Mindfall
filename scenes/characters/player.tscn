@@ -294,3 +294,7 @@ theme_override_font_sizes/font_size = 76
 text = "Has muerto primo
 [R] para reiniciar"
 horizontal_alignment = 1
+
+[node name="FloorCheck" type="RayCast3D" parent="."]
+collision_mask = 7
+collide_with_areas = true

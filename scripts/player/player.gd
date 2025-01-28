@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
 const HIT_STAGGER = 8.0
+const FOOTSTEP_TIME = 0.1
 
 @export_category("Player")
 @export_range(1, 35, 1) var speed: float = 10
@@ -39,6 +40,7 @@ const HIT_STAGGER = 8.0
 @onready var dash_bar2: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar2
 @onready var death_screen: Control = $GUI/DeathScreenContainer
 @onready var postprocessing: ColorRect = $GUI/Postprocesing
+@onready var floor_check: RayCast3D = $FloorCheck
 
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
@@ -62,6 +64,7 @@ var dash_timer: float = 0.0
 var jumping: bool = false
 var jump_pressed: bool = false
 var mouse_captured: bool = false
+var footstep_timer = 0.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var move_dir: Vector2
@@ -183,7 +186,24 @@ func _walk(delta: float) -> Vector3:
 	var _forward = camera.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
 	var walk_dir = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
+	
+	if is_on_floor() and move_dir.length():
+		footstep_timer += delta
+		if footstep_timer >= FOOTSTEP_TIME:
+				footstep_timer = 0.0
+				_play_footstep()
+
 	return walk_vel
+	
+func _play_footstep() -> void:
+	if floor_check and floor_check.is_colliding():
+		var collider = floor_check.get_collider()
+		if collider.is_in_group("grass") or collider.is_in_group("dirt"):
+			AudioManager.play_sound_3d("outdoor_footstep", position)
+		else:
+			AudioManager.play_sound_3d("footstep", position)
+	else:
+		AudioManager.play_sound_3d("footstep", position)
 
 func _gravity(delta: float) -> Vector3:
 	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)
