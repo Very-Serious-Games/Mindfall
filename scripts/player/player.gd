@@ -33,6 +33,7 @@ const HIT_STAGGER = 8.0
 @onready var dash_bar_double: HBoxContainer = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble
 @onready var dash_bar1: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar1
 @onready var dash_bar2: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar2
+@onready var death_screen: Control = $GUI/DeathScreenContainer
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
@@ -69,6 +70,7 @@ func _ready() -> void:
 	remaining_dashes = powerup_manager.dash_charges
 	raycast.target_position = Vector3(0, 0, -shoot_range)
 	_setup_dash_bars()
+	death_screen.hide()
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
@@ -83,6 +85,9 @@ func _process(_delta: float) -> void:
 	_update_dash_bars()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_dead and event.is_action_pressed("reload"):
+		get_tree().reload_current_scene()
+		return
 	if event is InputEventMouseMotion and mouse_captured:
 		look_dir = event.relative * 0.001
 		_rotate_camera()
@@ -205,6 +210,13 @@ func die() -> void:
 	is_dead = true
 	AudioManager.play_sound_3d("death", position)
 	release_mouse()
+	death_screen.show()
+	set_player_controls_enabled(false)
+
+func set_player_controls_enabled(enabled: bool) -> void:
+	set_physics_process(enabled)
+	set_process_input(enabled)
+	camera.set_process(enabled)
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
