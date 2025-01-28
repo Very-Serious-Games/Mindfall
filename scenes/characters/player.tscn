@@ -102,13 +102,10 @@ fire_rate = 15.0
 [node name="PowerUpManager" type="Node3D" parent="."]
 script = ExtResource("6_r4lie")
 
-[node name="CShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_3rsb5")
-
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.999999, -0.000848105, -0.000936534, 0.000846708, 0.999999, -0.00149195, 0.000937798, 0.00149116, 0.999998, 0, 1.7, 0)
+transform = Transform3D(0.999986, -0.00523596, 0, 0.00523596, 0.999986, 0, 0, 0, 1, 0, 1.45912, 0)
 fov = 80.0
+near = 0.223
 script = ExtResource("2_gljcx")
 max_tilt_angle = 3.0
 
@@ -117,6 +114,10 @@ collision_mask = 2
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
+
+[node name="CShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_3rsb5")
 
 [node name="Viewport" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -9.32232e-12, 0, 4.88853e-11, 1, 0, 0, 1.16415e-10, 1, 2.19416e-10, 1, -2.32831e-10)
@@ -195,20 +196,31 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HealthBar" type="ProgressBar" parent="GUI/HUDContainer"]
+[node name="BottomHUDContainer" type="HBoxContainer" parent="GUI/HUDContainer"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -40.0
-offset_right = 220.0
+offset_top = -45.0
+offset_right = -20.0
 offset_bottom = -20.0
+grow_horizontal = 2
 grow_vertical = 0
+
+[node name="LeftElements" type="VBoxContainer" parent="GUI/HUDContainer/BottomHUDContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
 value = 100.0
 show_percentage = false
 
-[node name="HealthText" type="Label" parent="GUI/HUDContainer/HealthBar"]
+[node name="HealthText" type="Label" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -218,57 +230,81 @@ grow_vertical = 2
 text = "100"
 vertical_alignment = 1
 
-[node name="DashBar" type="ProgressBar" parent="GUI/HUDContainer"]
+[node name="DashBar" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements"]
 visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -15.0
-offset_right = 220.0
-offset_bottom = -5.0
-grow_vertical = 0
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
 value = 100.0
 show_percentage = false
 
-[node name="DashBarDouble" type="HBoxContainer" parent="GUI/HUDContainer"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -15.0
-offset_right = 220.0
-offset_bottom = -5.0
-grow_vertical = 0
+[node name="DashBarDouble" type="HBoxContainer" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements"]
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="DashBar1" type="ProgressBar" parent="GUI/HUDContainer/DashBarDouble"]
+[node name="DashBar1" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble"]
 custom_minimum_size = Vector2(99, 10)
 layout_mode = 2
 value = 100.0
 show_percentage = false
 
-[node name="DashBar2" type="ProgressBar" parent="GUI/HUDContainer/DashBarDouble"]
+[node name="DashBar2" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble"]
 custom_minimum_size = Vector2(99, 10)
 layout_mode = 2
 value = 100.0
 show_percentage = false
 
-[node name="AmmoCounter" type="Label" parent="GUI/HUDContainer"]
+[node name="RightElements" type="HBoxContainer" parent="GUI/HUDContainer/BottomHUDContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="CurrentAmmo" type="Label" parent="GUI/HUDContainer/BottomHUDContainer/RightElements"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 48
+text = "30"
+vertical_alignment = 1
+
+[node name="MaxAmmo" type="Label" parent="GUI/HUDContainer/BottomHUDContainer/RightElements"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "/30"
+vertical_alignment = 1
+
+[node name="DeathScreenContainer" type="Control" parent="GUI"]
+visible = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -40.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "30/30"
-horizontal_alignment = 2
-vertical_alignment = 1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreen" type="ColorRect" parent="GUI/DeathScreenContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Text" type="Label" parent="GUI/DeathScreenContainer/BlackScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 76
+text = "Has muerto primo
+[R] para reiniciar"
+horizontal_alignment = 1

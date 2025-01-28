@@ -24,14 +24,16 @@ const HIT_STAGGER = 8.0
 
 @onready var raycast: RayCast3D = $Camera/ShootRayCast
 @onready var camera: Camera3D = $Camera
-@onready var health_bar: ProgressBar = $GUI/HUDContainer/HealthBar
-@onready var health_text: Label = $GUI/HUDContainer/HealthBar/HealthText
-@onready var ammo_counter: Label = $GUI/HUDContainer/AmmoCounter
+@onready var health_bar: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar
+@onready var health_text: Label = $GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar/HealthText
+@onready var current_ammo_label: Label = $GUI/HUDContainer/BottomHUDContainer/RightElements/CurrentAmmo
+@onready var max_ammo_label: Label = $GUI/HUDContainer/BottomHUDContainer/RightElements/MaxAmmo
 @onready var powerup_manager: PowerUpManager = $PowerUpManager
-@onready var dash_bar: ProgressBar = $GUI/HUDContainer/DashBar
-@onready var dash_bar_double: HBoxContainer = $GUI/HUDContainer/DashBarDouble
-@onready var dash_bar1: ProgressBar = $GUI/HUDContainer/DashBarDouble/DashBar1
-@onready var dash_bar2: ProgressBar = $GUI/HUDContainer/DashBarDouble/DashBar2
+@onready var dash_bar: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBar
+@onready var dash_bar_double: HBoxContainer = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble
+@onready var dash_bar1: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar1
+@onready var dash_bar2: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar2
+@onready var death_screen: Control = $GUI/DeathScreenContainer
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
@@ -68,11 +70,14 @@ func _ready() -> void:
 	remaining_dashes = powerup_manager.dash_charges
 	raycast.target_position = Vector3(0, 0, -shoot_range)
 	_setup_dash_bars()
+	death_screen.hide()
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
 	health_text.text = "%.0f" % [current_health]
-	ammo_counter.text = "%d/%d%s" % [current_ammo, max_ammo, " [R]" if is_reloading else ""]
+	
+	current_ammo_label.text = str(current_ammo)
+	max_ammo_label.text = "/%d%s" % [max_ammo, " [R]" if is_reloading else ""]
 	
 	if health_regen > 0 and current_health < max_health:
 		heal(health_regen * _delta)
@@ -80,6 +85,9 @@ func _process(_delta: float) -> void:
 	_update_dash_bars()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_dead and event.is_action_pressed("reload"):
+		get_tree().reload_current_scene()
+		return
 	if event is InputEventMouseMotion and mouse_captured:
 		look_dir = event.relative * 0.001
 		_rotate_camera()
@@ -202,6 +210,13 @@ func die() -> void:
 	is_dead = true
 	AudioManager.play_sound_3d("death", position)
 	release_mouse()
+	death_screen.show()
+	set_player_controls_enabled(false)
+
+func set_player_controls_enabled(enabled: bool) -> void:
+	set_physics_process(enabled)
+	set_process_input(enabled)
+	camera.set_process(enabled)
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
