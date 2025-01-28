@@ -122,7 +122,7 @@ func _handle_transition_effect() -> void:
 		
 		if distance <= transition_range:
 			# Calculate sort value based on distance of the player clamped between 0 and 2
-			var sort_value = clamp(transition_range / distance, 0.0, 2.0)
+			var sort_value = clamp(transition_range / distance, 0.0, 5.0)
 			update_sort_effect(sort_value)
 		else:
 			update_sort_effect(0.0)
