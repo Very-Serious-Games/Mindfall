@@ -79,8 +79,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 transition_trigger = NodePath("../NavigationRegion3D/TransitionTrigger")
 
 [node name="WorldEnviroment" parent="." instance=ExtResource("4_7ne30")]
-timeOfDay = 696.62
-rateOfTime = 0.05
+timeOfDay = 1918.98
+rateOfTime = 4.82
 skyRotation = 1.5
 cloudCoverage = 0.6
 animateStaticClouds = false
