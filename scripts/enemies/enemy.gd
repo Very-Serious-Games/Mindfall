@@ -4,11 +4,13 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var health = 5
+var can_attack = true
 
 const SPEED = 4.0
 const ATTACK_RANGE = 2.0
 const DETECT_RANGE = 50.0
 const AGONIZE_CHANGE = 0.05
+const ATTACK_COOLDOWN = 1.0
 
 @export var player_path := "/root/Level1/NavigationRegion3D/Player"
 
@@ -36,6 +38,8 @@ func _process(delta):
 		"attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			rotation.y += PI
+			if can_attack and _target_in_range():
+				_perform_attack()
 	
 	# Conditions
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
@@ -45,6 +49,13 @@ func _process(delta):
 	# anim_tree.set("parameters/conditions/agonize", _start_agonizing())
 	
 	move_and_slide()
+
+func _perform_attack():
+	can_attack = false
+	anim_tree.set("parameters/conditions/attack", true)
+	var timer = get_tree().create_timer(ATTACK_COOLDOWN)
+	await timer.timeout
+	can_attack = true
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
