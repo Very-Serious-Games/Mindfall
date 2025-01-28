@@ -22,6 +22,10 @@ const HIT_STAGGER = 8.0
 @export_range(1, 100, 1) var max_ammo: int = 30
 @export_range(0.1, 5.0, 0.1) var reload_time: float = 1.5
 
+@export_category("Transition Effect")
+@export var transition_trigger: MeshInstance3D
+@export var transition_range: float = 16.0
+
 @onready var raycast: RayCast3D = $Camera/ShootRayCast
 @onready var camera: Camera3D = $Camera
 @onready var health_bar: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar
@@ -34,6 +38,8 @@ const HIT_STAGGER = 8.0
 @onready var dash_bar1: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar1
 @onready var dash_bar2: ProgressBar = $GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble/DashBar2
 @onready var death_screen: Control = $GUI/DeathScreenContainer
+@onready var postprocessing: ColorRect = $GUI/Postprocesing
+
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
@@ -102,7 +108,28 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_handle_shooting(delta)
 	_handle_dash_recharge(delta)
+	_handle_transition_effect()
 	#push_grass()
+
+func _handle_transition_effect() -> void:
+	if transition_trigger:
+		# Get player and trigger absolute positions
+		var player_pos = global_position
+		var trigger_pos = transition_trigger.global_position
+		
+		# Calculate distance on z-axis only (since it's a vertical trigger)
+		var distance = abs(player_pos.z - trigger_pos.z)
+		
+		if distance <= transition_range:
+			# Calculate sort value based on distance of the player clamped between 0 and 2
+			var sort_value = clamp(transition_range / distance, 0.0, 5.0)
+			update_sort_effect(sort_value)
+		else:
+			update_sort_effect(0.0)
+
+func update_sort_effect(value: float) -> void:
+	if postprocessing and postprocessing.material:
+		postprocessing.material.set_shader_parameter("sort", value)
 
 func _handle_dash_recharge(delta: float) -> void:
 	if remaining_dashes < powerup_manager.dash_charges:
@@ -267,6 +294,6 @@ func _update_dash_bars() -> void:
 		dash_bar_double.visible = false
 		var recharge_progress = (dash_recharge_timer / DASH_RECHARGE_TIME) * 100
 		dash_bar.value = 100.0 if remaining_dashes >= 1 else recharge_progress
-	
+
 #func push_grass():
 #	grass_node.set_deferred("instance_shader_parameters/player_position", position + Vector3(0, -0.1, 0))
