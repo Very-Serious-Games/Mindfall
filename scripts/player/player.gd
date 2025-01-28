@@ -60,6 +60,7 @@ var dash_vel: Vector3
 var is_dashing: bool = false
 var dash_timer: float = 0.0
 var jumping: bool = false
+var jump_pressed: bool = false
 var mouse_captured: bool = false
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -97,10 +98,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_captured:
 		look_dir = event.relative * 0.001
 		_rotate_camera()
-	if Input.is_action_just_pressed("jump"): 
-		jumping = true
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jump_pressed = true
+	if Input.is_action_just_released("jump"):
+		jump_pressed = false
 	if mouse_captured:
 		_handle_joypad_camera_rotation(delta)
 	camera.update_tilt(move_dir)
@@ -189,14 +192,14 @@ func _gravity(delta: float) -> Vector3:
 func _jump(delta: float) -> Vector3:
 	if is_on_floor():
 		remaining_jumps = powerup_manager.max_jumps
-		if not jumping:
+		if not jump_pressed:
 			jump_vel = Vector3.ZERO
 
-	if jumping and remaining_jumps > 0:
+	if jump_pressed and remaining_jumps > 0:
 		jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
 		remaining_jumps -= 1
 		AudioManager.play_sound_3d("jump", position)
-		jumping = false
+		jump_pressed = false
 	else:
 		jump_vel = jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
