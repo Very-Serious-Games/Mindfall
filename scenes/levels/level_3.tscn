@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkmn650yocaq3"]
+[gd_scene load_steps=6 format=3 uid="uid://dkmn650yocaq3"]
 
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_3yqa5"]
 [ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="2_n2tpm"]
 [ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://scenes/enviroment/world_enviroment.tscn" id="3_wsr51"]
+[ext_resource type="PackedScene" uid="uid://dgymytk6etem6" path="res://assets/models/levels/lvl3.glb" id="4_ijgqt"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_t1jwr"]
 
 [node name="Level3" type="Node3D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3yqa5")]
 
 [node name="Player" parent="." instance=ExtResource("2_n2tpm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8071, -126.733, -482.378)
 
 [node name="WorldEnviroment" parent="." instance=ExtResource("3_wsr51")]
 rateOfTime = 0.05
 skyRotation = 1.5
 cloudCoverage = 0.6
 animateStaticClouds = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_t1jwr")
+
+[node name="lvl3" parent="NavigationRegion3D" instance=ExtResource("4_ijgqt")]
+
+[editable path="NavigationRegion3D/lvl3"]
