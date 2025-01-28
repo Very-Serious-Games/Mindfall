@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bj20f8efqvq8x"]
+[gd_scene load_steps=11 format=3 uid="uid://bj20f8efqvq8x"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f8j2"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_gljcx"]
 [ext_resource type="Script" path="res://scripts/player/reticle.gd" id="4_rvq42"]
-[ext_resource type="Shader" path="res://assets/shaders/pixel_sorting.gdshader" id="5_xh4br"]
 [ext_resource type="Shader" path="res://assets/shaders/postprocesing.gdshader" id="6_ijvbn"]
 [ext_resource type="Script" path="res://scripts/player/power_up_manager.gd" id="6_r4lie"]
 
@@ -79,12 +78,6 @@ void fragment() {
 shader = SubResource("Shader_tcy1d")
 shader_parameter/effect_amount = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcin"]
-shader = ExtResource("5_xh4br")
-shader_parameter/mask_softness = 1.4
-shader_parameter/mask_threshold = 0.6
-shader_parameter/sort = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cv6qa"]
 shader = ExtResource("6_ijvbn")
 shader_parameter/grain_amount = 0.05
@@ -132,17 +125,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_kmbq3")
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Pixel Sorting" type="ColorRect" parent="GUI"]
-visible = false
-material = SubResource("ShaderMaterial_xkcin")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
