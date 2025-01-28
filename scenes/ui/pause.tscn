@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4vm0hkbau88p"]
+[gd_scene load_steps=3 format=3 uid="uid://c4vm0hkbau88p"]
 
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="1_nlrwn"]
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
 
 [node name="PauseMenu" type="Control"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nlrwn")
 script = ExtResource("1_pause")
 
 [node name="Background" type="ColorRect" parent="."]

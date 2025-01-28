@@ -66,7 +66,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
-	health_text.text = "%.0f/%.0f" % [current_health, max_health]
+	health_text.text = "%.0f" % [current_health]
 	ammo_counter.text = "%d/%d%s" % [current_ammo, max_ammo, " [R]" if is_reloading else ""]
 	
 	if health_regen > 0 and current_health < max_health:
@@ -167,6 +167,7 @@ func _dash(delta: float) -> Vector3:
 		dash_vel = velocity.normalized() * dash_speed
 		if dash_vel == Vector3.ZERO:
 			dash_vel = camera.global_transform.basis.z * -1 * dash_speed
+		camera.start_dash_fov() # Add this line
 		AudioManager.play_sound_3d("dash", position)
 
 	if is_dashing:
@@ -174,6 +175,7 @@ func _dash(delta: float) -> Vector3:
 		if dash_timer <= 0:
 			is_dashing = false
 			dash_vel = Vector3.ZERO
+			camera.end_dash_fov() # Add this line
 	return dash_vel if is_dashing else Vector3.ZERO
 
 func take_damage(amount: float) -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://btjsijx82tl20"]
+[gd_scene load_steps=3 format=3 uid="uid://btjsijx82tl20"]
 
 [ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_iuq7n"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="2_ar5k8"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -35,8 +36,8 @@ text = "[center]
 
 [font_size=42]Development Team[/font_size]
 [font_size=32]Lead Programming: Mario Dorado Martínez
-Game Design: Name Here
-Level Design: Name Here[/font_size]
+Game Design: Nicolás Sort Sauquillo & Hugo Castaño Cuéllar
+Level Design: Nicolás Sort Sauquillo & Hugo Castaño Cuéllar[/font_size]
 
 [font_size=42]Art & Visual Design[/font_size]
 [font_size=32]Character Art: Name Here
@@ -79,6 +80,7 @@ offset_top = -31.0
 offset_right = 138.0
 grow_vertical = 0
 size_flags_horizontal = 4
+theme = ExtResource("2_ar5k8")
 text = "Main Menu [ESC]"
 
 [connection signal="pressed" from="MainMenuButotn" to="." method="_on_main_menu_butotn_pressed"]
