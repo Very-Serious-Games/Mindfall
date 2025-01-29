@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/levels/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
 [ext_resource type="Material" uid="uid://dxpt3h0t7ug6" path="res://addons/kenney_prototype_tools/materials/light/material_11.tres" id="3_gmk15"]
-[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="4_1mbyg"]
 [ext_resource type="PackedScene" uid="uid://8im4sv3vwqxt" path="res://assets/models/levels/room.glb" id="6_4l0mc"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="7_tfajt"]
+[ext_resource type="PackedScene" uid="uid://ccvfvlphlk2c4" path="res://scenes/characters/player.tscn" id="8_7v3v8"]
 [ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/powerups/power_up_pickup.tscn" id="8_aj23d"]
 [ext_resource type="PackedScene" uid="uid://bnjhvhbe58db8" path="res://scenes/characters/enemy.tscn" id="8_fkqim"]
 
@@ -18,9 +18,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7672, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rsrlo")
-
-[node name="Player" parent="." instance=ExtResource("4_1mbyg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5017, 1.73339, -7.26501)
 
 [node name="Enviroments" type="Node3D" parent="."]
 
@@ -75,5 +72,8 @@ powerup_type = 3
 [node name="enemy" parent="." instance=ExtResource("8_fkqim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2283, -3.72529e-07, 35.8402)
 player_path = "//root/Playground/Player"
+
+[node name="Player" parent="." instance=ExtResource("8_7v3v8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1757, 0, 3.71445)
 
 [editable path="Enviroments/sample_scene"]

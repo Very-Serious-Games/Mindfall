@@ -59,7 +59,6 @@ const DASH_RECHARGE_TIME: float = 1.5
 var current_ammo: int = max_ammo
 var can_shoot: bool = true
 var is_reloading: bool = false
-var is_shooting: bool = false
 var current_health: float = max_health
 var is_dead: bool = false
 
@@ -103,20 +102,8 @@ func _process(_delta: float) -> void:
 	_update_animations()
 
 func _update_animations() -> void:
-	# Handle shooting animation with priority
-	if Input.is_action_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
-		is_shooting = true
-		anim_tree.set("parameters/conditions/shoot", true)
-		# Keep animation playing
-		state_machine.travel("Pistol_FIRE")
-	else:
-		is_shooting = false
-		anim_tree.set("parameters/conditions/shoot", false)
-		if not is_reloading:
-			state_machine.travel("Pistol_IDLE")
-	
 	# Handle reload animation only if not shooting
-	if is_reloading and not is_shooting:
+	if is_reloading:
 		anim_tree.set("parameters/conditions/reload", true)
 	else:
 		anim_tree.set("parameters/conditions/reload", false)
@@ -209,12 +196,11 @@ func _shoot() -> void:
 			raycast.get_collider().hit()
 			emit_signal("body_part_hit")
 	
+	anim_tree.set("parameters/conditions/shoot", true)
 	# Set animation speed based on fire rate
 	var anim_speed = fire_rate / 2.0
 	anim_tree.set("parameters/Pistol_FIRE/TimeScale", anim_speed)
 	anim_tree.advance(0.3) # Force animation to complete at 0.3s
-	
-	anim_tree.set("parameters/conditions/shoot", true)
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	var sensitivity = Settings.settings.gameplay.mouse_sensitivity
