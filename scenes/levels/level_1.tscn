@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://lb10dvm6poow"]
+[gd_scene load_steps=33 format=3 uid="uid://lb10dvm6poow"]
 
 [ext_resource type="VoxelGIData" uid="uid://dabf2nc3jfgak" path="res://assets/lights/level_1.VoxelGI_data.res" id="1_c2b51"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="2_70xe2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/level_transition.gd" id="4_2e0vf"]
 [ext_resource type="PackedScene" uid="uid://bnjhvhbe58db8" path="res://scenes/characters/enemy.tscn" id="4_sq77d"]
 [ext_resource type="PackedScene" uid="uid://ccvfvlphlk2c4" path="res://scenes/characters/player.tscn" id="5_m3dvb"]
+[ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/powerups/power_up_pickup.tscn" id="7_2pabt"]
 
 [sub_resource type="Environment" id="Environment_bopyl"]
 background_energy_multiplier = 0.0
@@ -883,14 +884,134 @@ next_scene = "res://scenes/levels/level_2.tscn"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TransitionTrigger/DetectionArea"]
 shape = SubResource("BoxShape3D_d7teg")
 
-[node name="enemy" parent="." instance=ExtResource("4_sq77d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16099, 0, -0.534619)
-player_path = "/root/Level1/Player"
-
 [node name="Player" parent="." node_paths=PackedStringArray("transition_trigger") instance=ExtResource("5_m3dvb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10961, 0, -87.1423)
+transform = Transform3D(-0.999999, 0, 0.00127414, 0, 1, 0, -0.00127414, 0, -0.999999, -0.699952, 0.0423622, 8.32227)
 fire_rate = 3.0
 shoot_range = 100.0
 transition_trigger = NodePath("../NavigationRegion3D/TransitionTrigger")
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="enemy" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.958248, 0, -0.285939, 0, 1, 0, 0.285939, 0, -0.958248, 17.205, 0.0628426, -33.6467)
+player_path = "/root/Level1/Player"
+
+[node name="enemy2" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.994445, 0, 0.105258, 0, 1, 0, -0.105258, 0, -0.994445, 26.9136, -0.0204937, -39.3038)
+player_path = "/root/Level1/Player"
+
+[node name="enemy3" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.995453, 0, 0.0952551, 0, 1, 0, -0.0952551, 0, -0.995453, 32.1085, -0.0204937, -33.4369)
+player_path = "/root/Level1/Player"
+
+[node name="enemy4" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.995985, 0, 0.0895202, 0, 1, 0, -0.0895202, 0, -0.995985, 37.0605, -0.0204937, -27.3995)
+player_path = "/root/Level1/Player"
+
+[node name="enemy5" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.999882, 0, -0.0153407, 0, 1, 0, 0.0153407, 0, -0.999882, 27.0988, -0.0204937, -21.4756)
+player_path = "/root/Level1/Player"
+
+[node name="enemy6" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.485741, 0, 0.874103, 0, 1, 0, -0.874103, 0, 0.485741, 74.4024, -0.0204937, -39.6687)
+player_path = "/root/Level1/Player"
+
+[node name="enemy7" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.999695, 0, -0.0246939, 0, 1, 0, 0.0246939, 0, -0.999695, 69.761, -0.0204937, -47.2462)
+player_path = "/root/Level1/Player"
+
+[node name="enemy8" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.5336, 0, 0.845737, 0, 1, 0, -0.845737, 0, -0.5336, 68.0947, -0.0204937, -66.5033)
+player_path = "/root/Level1/Player"
+
+[node name="enemy9" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.577644, 0, -0.816289, 0, 1, 0, 0.816289, 0, 0.577644, 70.141, -0.0204937, -67.5212)
+player_path = "/root/Level1/Player"
+
+[node name="enemy10" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.999979, 0, -0.00649267, 0, 1, 0, 0.00649267, 0, 0.999979, 78.8006, -0.0204937, -62.7505)
+player_path = "/root/Level1/Player"
+
+[node name="enemy11" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.572504, 0, -0.819902, 0, 1, 0, 0.819902, 0, 0.572504, 105.664, -0.0204937, -68.4764)
+player_path = "/root/Level1/Player"
+
+[node name="enemy12" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.34723, 0, -0.93778, 0, 1, 0, 0.93778, 0, -0.34723, 103.409, -0.0204937, -60.2998)
+player_path = "/root/Level1/Player"
+
+[node name="enemy13" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.767512, 0, -0.641034, 0, 1, 0, 0.641034, 0, 0.767512, 100.062, -0.0204937, -70.2717)
+player_path = "/root/Level1/Player"
+
+[node name="enemy14" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.654173, 0, 0.756344, 0, 1, 0, -0.756344, 0, -0.654173, 17.8668, -0.0204937, -83.7407)
+player_path = "/root/Level1/Player"
+
+[node name="enemy15" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.681692, 0, 0.731639, 0, 1, 0, -0.731639, 0, 0.681692, 26.6009, -0.0204937, -87.2225)
+player_path = "/root/Level1/Player"
+
+[node name="enemy16" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.906034, 0, 0.423203, 0, 1, 0, -0.423203, 0, -0.906034, 37.0583, -0.0204937, -85.432)
+player_path = "/root/Level1/Player"
+
+[node name="enemy17" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.644604, 0, -0.764516, 0, 1, 0, 0.764516, 0, -0.644604, 43.6905, -0.0204937, -89.4618)
+player_path = "/root/Level1/Player"
+
+[node name="enemy18" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.497095, 0, 0.867696, 0, 1, 0, -0.867696, 0, -0.497095, 25.1288, -0.0204937, -92.7423)
+player_path = "/root/Level1/Player"
+
+[node name="enemy19" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.624316, 0, 0.781172, 0, 1, 0, -0.781172, 0, -0.624316, 22.0691, -0.0204937, -98.7363)
+player_path = "/root/Level1/Player"
+
+[node name="enemy20" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.855825, 0, 0.517265, 0, 1, 0, -0.517265, 0, 0.855825, 35.2781, -0.0204937, -98.2643)
+player_path = "/root/Level1/Player"
+
+[node name="enemy21" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.38228, 0, 0.924046, 0, 1, 0, -0.924046, 0, -0.38228, 34.9585, -0.0204937, -92.1523)
+player_path = "/root/Level1/Player"
+
+[node name="enemy22" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.716277, 0, -0.697815, 0, 1, 0, 0.697815, 0, 0.716277, 43.4469, -0.0204933, -95.406)
+player_path = "/root/Level1/Player"
+
+[node name="enemy23" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(0.912449, 0, 0.40919, 0, 1, 0, -0.40919, 0, 0.912449, 46.8116, -0.0204933, -99.242)
+player_path = "/root/Level1/Player"
+
+[node name="enemy24" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.128103, 0, 0.99176, 0, 1, 0, -0.99176, 0, -0.128103, 46.8984, -0.0204933, -84.3979)
+player_path = "/root/Level1/Player"
+
+[node name="enemy25" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.128103, 0, 0.99176, 0, 1, 0, -0.99176, 0, -0.128103, -24.252, -0.0204933, -72.948)
+player_path = "/root/Level1/Player"
+
+[node name="enemy26" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.450488, 0, 0.892782, 0, 1, 0, -0.892782, 0, -0.450488, -22.8442, -0.0204933, -66.5881)
+player_path = "/root/Level1/Player"
+
+[node name="enemy27" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.0183249, 0, 0.999832, 0, 1, 0, -0.999832, 0, -0.0183249, -16.1281, -0.0204933, -74.8437)
+player_path = "/root/Level1/Player"
+
+[node name="enemy28" parent="Enemies" instance=ExtResource("4_sq77d")]
+transform = Transform3D(-0.590718, 0, 0.806878, 0, 1, 0, -0.806878, 0, -0.590718, -10.5757, -0.0204933, -69.3377)
+player_path = "/root/Level1/Player"
+
+[node name="PowerUps" type="Node3D" parent="."]
+
+[node name="PowerUpPickup" parent="PowerUps" instance=ExtResource("7_2pabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.015, 1.75616, -46.9734)
+powerup_type = 3
+
+[node name="PowerUpPickup2" parent="PowerUps" instance=ExtResource("7_2pabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.025, 1.75568, -47.0244)
+powerup_type = 1
 
 [editable path="NavigationRegion3D/lvl1"]
