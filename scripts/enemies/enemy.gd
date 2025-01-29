@@ -81,6 +81,7 @@ func _hit_finished():
 func _on_area_3d_body_part_hit(damage, is_headshot: bool = false):
 	health -= damage
 	if health <= 0:
+		AudioManager.play_sound_3d("enemy_death", position)
 		anim_tree.set("parameters/conditions/die", true)
 		await get_tree().create_timer(3.0).timeout
 		queue_free()
