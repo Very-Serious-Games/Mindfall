@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce67nfhbp63aj"]
+
+[ext_resource type="Script" path="res://scripts/ui/text_3.gd" id="1_re4eg"]
+[ext_resource type="Texture2D" uid="uid://cdplfbdxq0jhy" path="res://assets/textures/background.png" id="2_gqr3d"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="3_spc1l"]
+
+[node name="Text3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_re4eg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gqr3d")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Last night, I drank again.
+I had promised myself it would be the last time, but here I am, waking up with my head pounding and my stomach in knots, as if my body were trying to punish me for my weakness. I look at myself in the mirror and don’t recognize the person staring back at me. When did I become this?
+At first, drinking was easy. A couple of drinks to calm my nerves after a terrible day at work. Then, a few more to endure the nights at home, in this damn silence that always reminds me how empty everything feels. Now… I don’t even know why I drink. It’s like it happens automatically. Like every time my head starts filling with noise, my hand reaches for a bottle before I can stop myself.
+I know I’m destroying what little I have left. I lost my job because I couldn’t focus, because I was late, because I was hungover. I lost friends because they didn’t want to watch me sink any further. And honestly, I don’t blame them. I wouldn’t want to be around someone like me either.
+But what else can I do? Drinking is all I have left. It’s the only time when everything hurts just a little less. Even though I know it’s a lie, even though I know that, in the end, it only makes everything worse… at least it gives me a few hours of peace.
+I hate what I am. I hate what I’ve done with my life. And the worst part is, I don’t even know if I want to fix it. Maybe there’s nothing to fix. Maybe I’m just a lost cause who found shelter at the bottom of a bottle."
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_spc1l")
+theme_override_font_sizes/font_size = 16
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://btjsijx82tl20"]
+[gd_scene load_steps=5 format=3 uid="uid://btjsijx82tl20"]
 
 [ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_iuq7n"]
+[ext_resource type="Texture2D" uid="uid://cdplfbdxq0jhy" path="res://assets/textures/background.png" id="2_4mul3"]
 [ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="2_ar5k8"]
+[ext_resource type="Texture2D" uid="uid://crhnoivw70c0g" path="res://assets/textures/game_name.png" id="4_pxf07"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -12,24 +14,60 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iuq7n")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_4mul3")
+expand_mode = 2
+
+[node name="MainMenuButotn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 138.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = ExtResource("2_ar5k8")
+text = "Main Menu [ESC]"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -463.5
+offset_right = 463.5
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 16
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_pxf07")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 179.0
+offset_bottom = 469.0
+grow_horizontal = 2
+grow_vertical = 2
 vertical_scroll_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TextureRect2/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "[center]
 [color=#ffffff]
-
-[font_size=64][wave amp=50 freq=2]MINDFALL[/wave][/font_size]
-[font_size=32][wave amp=50 freq=2]The Last Threshold[/wave][/font_size]
 
 [font_size=42]A Game by[/font_size]
 [font_size=32][url=https://github.com/Very-Serious-Games]Very Serious Games[/url][/font_size]
@@ -70,17 +108,5 @@ All Rights Reserved[/font_size]
 [/center]"
 fit_content = true
 scroll_active = false
-
-[node name="MainMenuButotn" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -31.0
-offset_right = 138.0
-grow_vertical = 0
-size_flags_horizontal = 4
-theme = ExtResource("2_ar5k8")
-text = "Main Menu [ESC]"
 
 [connection signal="pressed" from="MainMenuButotn" to="." method="_on_main_menu_butotn_pressed"]
