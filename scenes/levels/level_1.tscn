@@ -889,5 +889,6 @@ player_path = "/root/Level1/Player"
 
 [node name="Player" parent="." instance=ExtResource("5_m3dvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10961, 0, -87.1423)
+shoot_range = 100.0
 
 [editable path="NavigationRegion3D/lvl1"]

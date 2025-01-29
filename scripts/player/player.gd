@@ -17,10 +17,10 @@ const FOOTSTEP_TIME = 0.1
 @export var invulnerable: bool = false
 
 @export_category("Shooting")
-@export_range(10, 100, 1) var fire_rate: float = 4
-@export_range(50, 500, 10) var damage: float = 100
-@export_range(100, 1000, 50) var shoot_range: float = 500
-@export_range(1, 100, 1) var max_ammo: int = 30
+@export_range(1, 100, 1) var fire_rate: float = 4
+@export_range(1, 500, 10) var damage: float = 100
+@export_range(1, 1000, 50) var shoot_range: float = 500
+@export_range(1, 100, 1) var max_ammo: int = 9
 @export_range(0.1, 5.0, 0.1) var reload_time: float = 1.5
 
 @export_category("Transition Effect")
@@ -41,13 +41,15 @@ const FOOTSTEP_TIME = 0.1
 @onready var death_screen: Control = $GUI/DeathScreenContainer
 @onready var postprocessing: ColorRect = $GUI/Postprocesing
 @onready var floor_check: RayCast3D = $FloorCheck
-@onready var anim_player: AnimationPlayer = $MainCharacter/AnimationPlayer
-@onready var anim_tree: AnimationTree = $MainCharacter/AnimationTree
+@onready var anim_player: AnimationPlayer = $Camera/Player/AnimationPlayer
+@onready var anim_tree: AnimationTree = $Camera/Player/AnimationTree
 
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
 signal player_hit
 signal body_part_hit
+
+var state_machine: AnimationNodeStateMachinePlayback
 
 var remaining_jumps: int = 1
 var remaining_dashes: int = 1
@@ -83,6 +85,8 @@ func _ready() -> void:
 	raycast.target_position = Vector3(0, 0, -shoot_range)
 	_setup_dash_bars()
 	death_screen.hide()
+	state_machine = anim_tree.get("parameters/playback")
+
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
@@ -95,10 +99,25 @@ func _process(_delta: float) -> void:
 		heal(health_regen * _delta)
 
 	_update_dash_bars()
+	_update_animations()
 
-	# Update movement blend
-	var movement_value = velocity.length() / speed
-	anim_tree.set("parameters/Movement/blend_position", movement_value)
+func _update_animations() -> void:
+	# Set conditions for animations
+	if is_reloading:
+		anim_tree.set("parameters/conditions/reload", true)
+	else:
+		anim_tree.set("parameters/conditions/reload", false)
+
+	# Handle shooting animation
+	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0:
+		anim_tree.set("parameters/conditions/shoot", true)
+	else:
+		anim_tree.set("parameters/conditions/shoot", false)
+
+	# The Run/Idle transition will happen automatically through the movement blend parameter
+	# which is already set in your existing code:
+	# var movement_value = velocity.length() / speed
+	# anim_tree.set("parameters/Movement/blend_position", movement_value)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_dead and event.is_action_pressed("reload"):
@@ -169,18 +188,24 @@ func _handle_shooting(delta: float) -> void:
 
 func _start_reload() -> void:
 	is_reloading = true
+	# Trigger reload animation
+	anim_tree.set("parameters/conditions/reload", true)
 	AudioManager.play_sound_3d("reload_gun", position)
 	await get_tree().create_timer(reload_time * powerup_manager.reload_speed_multiplier).timeout
 	current_ammo = max_ammo
 	is_reloading = false
-
+	# Reset reload condition
+	anim_tree.set("parameters/conditions/reload", false)
+	
 func _shoot() -> void:
 	if raycast.is_colliding():
 		var hit_object = raycast.get_collider()
 		if raycast.get_collider().is_in_group("enemy"):
-			#AudioManager.play_sound_3d("hit_enemy", position)
 			raycast.get_collider().hit()
 			emit_signal("body_part_hit")
+			
+	# Make sure animation plays
+	anim_tree.set("parameters/conditions/shoot", true)
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	var sensitivity = Settings.settings.gameplay.mouse_sensitivity
