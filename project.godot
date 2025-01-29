@@ -25,6 +25,7 @@ buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
 
 Settings="*res://scripts/ui/settings.gd"
 AudioManager="*res://scripts/audio/audio_manager.gd"
+PowerUpState="*res://scripts/player/power_up_state.gd"
 
 [file_customization]
 

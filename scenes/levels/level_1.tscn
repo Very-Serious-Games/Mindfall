@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://lb10dvm6poow"]
+[gd_scene load_steps=33 format=3 uid="uid://lb10dvm6poow"]
 
 [ext_resource type="VoxelGIData" uid="uid://dabf2nc3jfgak" path="res://assets/lights/level_1.VoxelGI_data.res" id="1_c2b51"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="2_70xe2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/level_transition.gd" id="4_2e0vf"]
 [ext_resource type="PackedScene" uid="uid://bnjhvhbe58db8" path="res://scenes/characters/enemy.tscn" id="4_sq77d"]
 [ext_resource type="PackedScene" uid="uid://ccvfvlphlk2c4" path="res://scenes/characters/player.tscn" id="5_m3dvb"]
+[ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/powerups/power_up_pickup.tscn" id="7_ymxwy"]
 
 [sub_resource type="Environment" id="Environment_bopyl"]
 background_energy_multiplier = 0.0
@@ -888,9 +889,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16099, 0, -0.534619)
 player_path = "/root/Level1/Player"
 
 [node name="Player" parent="." node_paths=PackedStringArray("transition_trigger") instance=ExtResource("5_m3dvb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10961, 0, -87.1423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72916, 0, -91.7078)
 fire_rate = 3.0
 shoot_range = 100.0
 transition_trigger = NodePath("../NavigationRegion3D/TransitionTrigger")
+
+[node name="PowerUpPickup" parent="." instance=ExtResource("7_ymxwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62897, 0.39608, -114.286)
+powerup_type = 3
 
 [editable path="NavigationRegion3D/lvl1"]
