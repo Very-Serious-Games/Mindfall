@@ -59,6 +59,7 @@ const DASH_RECHARGE_TIME: float = 1.5
 var current_ammo: int = max_ammo
 var can_shoot: bool = true
 var is_reloading: bool = false
+var is_shooting: bool = false
 var current_health: float = max_health
 var is_dead: bool = false
 
@@ -102,22 +103,19 @@ func _process(_delta: float) -> void:
 	_update_animations()
 
 func _update_animations() -> void:
-	# Set conditions for animations
-	if is_reloading:
+	# Handle shooting animation with priority
+	if Input.is_action_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
+		is_shooting = true
+		anim_tree.set("parameters/conditions/shoot", true)
+	else:
+		is_shooting = false
+		anim_tree.set("parameters/conditions/shoot", false)
+	
+	# Handle reload animation only if not shooting
+	if is_reloading and not is_shooting:
 		anim_tree.set("parameters/conditions/reload", true)
 	else:
 		anim_tree.set("parameters/conditions/reload", false)
-
-	# Handle shooting animation
-	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0:
-		anim_tree.set("parameters/conditions/shoot", true)
-	else:
-		anim_tree.set("parameters/conditions/shoot", false)
-
-	# The Run/Idle transition will happen automatically through the movement blend parameter
-	# which is already set in your existing code:
-	# var movement_value = velocity.length() / speed
-	# anim_tree.set("parameters/Movement/blend_position", movement_value)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_dead and event.is_action_pressed("reload"):
@@ -169,6 +167,7 @@ func _handle_dash_recharge(delta: float) -> void:
 			remaining_dashes += 1
 			dash_recharge_timer = 0.0
 
+# Modify _handle_shooting function:
 func _handle_shooting(delta: float) -> void:
 	if Input.is_action_just_pressed("reload") and not is_reloading and current_ammo < max_ammo:
 		_start_reload()
@@ -183,6 +182,8 @@ func _handle_shooting(delta: float) -> void:
 			_shoot()
 			current_ammo -= 1
 			can_shoot = false
+			# Reset shoot condition before the timeout
+			anim_tree.set("parameters/conditions/shoot", false)
 			await get_tree().create_timer(1.0 / fire_rate).timeout
 			can_shoot = true
 
@@ -197,14 +198,19 @@ func _start_reload() -> void:
 	# Reset reload condition
 	anim_tree.set("parameters/conditions/reload", false)
 	
+# Modify _shoot function:
 func _shoot() -> void:
 	if raycast.is_colliding():
 		var hit_object = raycast.get_collider()
 		if raycast.get_collider().is_in_group("enemy"):
 			raycast.get_collider().hit()
 			emit_signal("body_part_hit")
-			
-	# Make sure animation plays
+	
+	# Set animation speed based on fire rate
+	var anim_speed = fire_rate / 2.0
+	anim_tree.set("parameters/Pistol_FIRE/TimeScale", anim_speed)
+	anim_tree.advance(0.3) # Force animation to complete at 0.3s
+	# Force shooting animation to play
 	anim_tree.set("parameters/conditions/shoot", true)
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
