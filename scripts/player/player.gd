@@ -184,20 +184,34 @@ func _shoot() -> void:
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	var sensitivity = Settings.settings.gameplay.mouse_sensitivity
-	camera.rotation.y -= look_dir.x * camera_sens * sensitivity * sens_mod
+	# Fix: Use look_dir.x for horizontal rotation (player)
+	rotate_y(-look_dir.x * camera_sens * sensitivity * sens_mod)
+	# Keep look_dir.y for vertical rotation (camera only)
 	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sensitivity * sens_mod, -1.5, 1.5)
 
 func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-	var _forward = camera.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
-	var walk_dir = Vector3(_forward.x, 0, _forward.z).normalized()
+	
+	# Get camera's forward direction (excluding vertical component)
+	var cam_basis = camera.global_transform.basis
+	var forward = cam_basis.z  # Removed negative sign here
+	forward.y = 0
+	forward = forward.normalized()
+	
+	# Get camera's right direction
+	var right = cam_basis.x
+	right.y = 0
+	right = right.normalized()
+	
+	# Calculate movement direction relative to camera
+	var walk_dir = (forward * move_dir.y + right * move_dir.x).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	
 	if is_on_floor() and move_dir.length():
 		footstep_timer += delta
 		if footstep_timer >= FOOTSTEP_TIME:
-				footstep_timer = 0.0
-				_play_footstep()
+			footstep_timer = 0.0
+			_play_footstep()
 
 	return walk_vel
 	
@@ -237,8 +251,8 @@ func _dash(delta: float) -> Vector3:
 		dash_timer = dash_duration
 		dash_vel = velocity.normalized() * dash_speed
 		if dash_vel == Vector3.ZERO:
-			dash_vel = camera.global_transform.basis.z * -1 * dash_speed
-		camera.start_dash_fov() # Add this line
+			dash_vel = -global_transform.basis.z * dash_speed
+		camera.start_dash_fov()
 		AudioManager.play_sound_3d("dash", position)
 
 	if is_dashing:
@@ -285,9 +299,8 @@ func release_mouse() -> void:
 func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void:
 	var joypad_dir = Input.get_vector("look_left","look_right","look_up","look_down")
 	if joypad_dir.length() > 0:
-		look_dir += joypad_dir * delta
+		look_dir = joypad_dir * delta
 		_rotate_camera(sens_mod)
-		look_dir = Vector2.ZERO
 
 func hit(dir, damage: float = 1) -> void:
 	emit_signal("player_hit") # check if needed

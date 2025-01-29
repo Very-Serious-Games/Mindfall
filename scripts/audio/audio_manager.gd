@@ -20,7 +20,7 @@ var sounds = {
 
 	# Movement sounds
 	"footstep": preload("res://assets/audio/sfx/footstep.wav"),
-	"outdoor_footstep": preload("res://assets/audio/sfx/outdoor_footstep.wav"),
+	"outdoor_footstep": preload("res://assets/audio/sfx/FootstepsGrass.wav"),
 	"dash": preload("res://assets/audio/sfx/dash.wav"),
 
 	# Menu sounds
