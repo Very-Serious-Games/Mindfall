@@ -13,7 +13,9 @@ func _ready() -> void:
 	scroll.get_v_scroll_bar().modulate.a = 0  # Hide scrollbar
 
 func return_to_menu() -> void:
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
 
 func _on_main_menu_butotn_pressed() -> void:
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
