@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://r6c0rrxay0ss"]
+
+[ext_resource type="Script" path="res://scripts/ui/text_2.gd" id="1_7sqcd"]
+[ext_resource type="Texture2D" uid="uid://cdplfbdxq0jhy" path="res://assets/textures/background.png" id="2_rtp3w"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="3_m2s2k"]
+
+[node name="Text2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7sqcd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rtp3w")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Asunto: Notificación de Término de Contrato  Por la presente, lamentamos informarle que su contrato laboral será finalizado . 
+Esta decisión ha sido tomada después de una revisión exhaustiva de su desempeño y en función de las necesidades actuales de la empresa.
+
+Aunque valoramos sus esfuerzos durante su tiempo con nosotros, consideramos que no ha cumplido con las expectativas establecidas para su rol, particularmente en los proyectos recientes, donde se identificaron varias áreas de mejora que no fueron abordadas satisfactoriamente.
+
+Entendemos que esta noticia puede ser difícil de procesar, pero esperamos que encuentre esta decisión como una oportunidad para redirigir su carrera profesional hacia un entorno que se alinee mejor con sus habilidades y objetivos.
+
+El equipo de Recursos Humanos está a su disposición para discutir cualquier pregunta sobre este proceso y para asistirle con los trámites necesarios. Por favor, contacte con nosotros si necesita soporte adicional.
+
+Le deseamos éxito en sus futuros proyectos."
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_m2s2k")
+theme_override_font_sizes/font_size = 16
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
