@@ -16,14 +16,17 @@ func _unhandled_input(event):
 		is_paused = !is_paused
 
 func _on_resume_button_pressed():
+	AudioManager.play_ui_sound("menu_select")
 	is_paused = false
 
 func _on_options_button_pressed():
+	AudioManager.play_ui_sound("menu_select")
 	is_paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file("res://scenes/ui/options.tscn")
 
 func _on_quit_button_pressed():
+	AudioManager.play_ui_sound("menu_select")
 	is_paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

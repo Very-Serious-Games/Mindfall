@@ -8,6 +8,7 @@ var sfx_bus: int
 # Audio players
 var music_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer3D] = []
+var ui_players: Array[AudioStreamPlayer] = []
 
 var active_sounds: Dictionary = {}
 
@@ -55,6 +56,24 @@ func _ready():
 		player.bus = "SFX"
 		add_child(player)
 		sfx_players.append(player)
+
+	# Initialize UI player pool
+	for i in range(3):
+		var player = AudioStreamPlayer.new()
+		player.bus = "SFX"
+		add_child(player)
+		ui_players.append(player)
+
+func play_ui_sound(sound_name: String):
+	if not sounds.has(sound_name):
+		return
+
+	# Find free player and play sound
+	for player in ui_players:
+		if not player.playing:
+			player.stream = sounds[sound_name]
+			player.play()
+			return
 
 func create_bus_if_missing(bus_name: String) -> void:
 	if AudioServer.get_bus_index(bus_name) == -1:

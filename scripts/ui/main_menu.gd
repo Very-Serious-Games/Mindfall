@@ -1,22 +1,17 @@
 extends Control
 
-func play_button_sound() -> void:
-	var sounds = ["button_click_1", "button_click_2", "button_click_3", "button_click_4"]
-	var random_sound = sounds[randi() % sounds.size()]
-	AudioManager.play_sound_3d(random_sound, Vector3.ZERO)
-
 func _on_start_button_pressed() -> void:
-	play_button_sound()
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file("res://scenes/levels/level_1.tscn")
 
 func _on_options_button_pressed() -> void:
-	play_button_sound()
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file("res://scenes/ui/options.tscn")
 	
 func _on_credits_button_pressed() -> void:
-	play_button_sound()
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file("res://scenes/ui/credits.tscn")
 
 func _on_quit_button_pressed() -> void:
-	play_button_sound()
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().quit()

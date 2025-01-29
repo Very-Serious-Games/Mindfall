@@ -66,4 +66,5 @@ func _on_mouse_sensitivity_changed(value):
 	Settings.save_settings()
 
 func _on_back_button_pressed():
+	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
