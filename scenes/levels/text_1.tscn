@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4mxejcdaki33"]
+
+[ext_resource type="Script" path="res://scripts/ui/text_1.gd" id="1_eyftb"]
+[ext_resource type="Texture2D" uid="uid://cdplfbdxq0jhy" path="res://assets/textures/background.png" id="1_n8uya"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="2_t84f0"]
+
+[node name="Text1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eyftb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n8uya")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No sé por dónde empezar porque siento que las palabras no pueden explicar lo que llevo dentro. Pero, si estás leyendo esto, es porque ya no estoy aquí. Y no quiero que te culpes por lo que voy a hacer. Por favor, no lo hagas.
+
+He intentado. De verdad que lo intenté. Me levanté cada día esperando que algo cambiara, que esa oscuridad que me envuelve desde hace tanto tiempo se disipara. Pero parece que cuanto más lucho, más me hundo, como si estuviera atrapada en un pantano del que no hay salida.
+
+No es tu culpa. Nada de esto lo es. Si hay algo que me hacía quedarme un día más, era verte a ti, esa sonrisa tuya que, por un instante, me hacía olvidar el peso que llevo. Pero ya no puedo. Estoy tan cansada, tan agotada de pelear con algo que ni siquiera entiendo.
+
+No quiero que te quedes con el dolor de mi ausencia, aunque sé que eso es inevitable. Solo quiero que recuerdes que me diste momentos de luz, momentos en los que me sentí viva, aunque yo misma no supiera cómo aferrarme a esa vida.
+
+Te amo más de lo que nunca pude demostrarte. Pero ahora, por fin, el ruido en mi cabeza va a detenerse. Lo siento. Lo siento tanto.
+
+Siempre tuya, Laura."
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_t84f0")
+theme_override_font_sizes/font_size = 16
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
