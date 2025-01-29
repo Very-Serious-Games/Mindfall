@@ -727,79 +727,76 @@ gi_lightmap_scale = 3
 [node name="ColumnaItem1" parent="NavigationRegion3D/lvl1" index="97"]
 gi_lightmap_scale = 3
 
-[node name="ColumnaItem2" parent="NavigationRegion3D/lvl1" index="98"]
+[node name="Suelo13" parent="NavigationRegion3D/lvl1" index="98"]
 gi_lightmap_scale = 3
 
-[node name="Suelo13" parent="NavigationRegion3D/lvl1" index="99"]
+[node name="Pared35" parent="NavigationRegion3D/lvl1" index="99"]
 gi_lightmap_scale = 3
 
-[node name="Pared35" parent="NavigationRegion3D/lvl1" index="100"]
+[node name="Pared36" parent="NavigationRegion3D/lvl1" index="100"]
 gi_lightmap_scale = 3
 
-[node name="Pared36" parent="NavigationRegion3D/lvl1" index="101"]
+[node name="Techo13" parent="NavigationRegion3D/lvl1" index="101"]
 gi_lightmap_scale = 3
 
-[node name="Techo13" parent="NavigationRegion3D/lvl1" index="102"]
+[node name="Pared37" parent="NavigationRegion3D/lvl1" index="102"]
 gi_lightmap_scale = 3
 
-[node name="Pared37" parent="NavigationRegion3D/lvl1" index="103"]
+[node name="Pared40" parent="NavigationRegion3D/lvl1" index="103"]
 gi_lightmap_scale = 3
 
-[node name="Pared40" parent="NavigationRegion3D/lvl1" index="104"]
+[node name="Pared39" parent="NavigationRegion3D/lvl1" index="104"]
 gi_lightmap_scale = 3
 
-[node name="Pared39" parent="NavigationRegion3D/lvl1" index="105"]
+[node name="Suelo14" parent="NavigationRegion3D/lvl1" index="105"]
 gi_lightmap_scale = 3
 
-[node name="Suelo14" parent="NavigationRegion3D/lvl1" index="106"]
+[node name="Techo14" parent="NavigationRegion3D/lvl1" index="106"]
 gi_lightmap_scale = 3
 
-[node name="Techo14" parent="NavigationRegion3D/lvl1" index="107"]
+[node name="Suelo15" parent="NavigationRegion3D/lvl1" index="108"]
 gi_lightmap_scale = 3
 
-[node name="Suelo15" parent="NavigationRegion3D/lvl1" index="109"]
+[node name="Suelo16" parent="NavigationRegion3D/lvl1" index="109"]
 gi_lightmap_scale = 3
 
-[node name="Suelo16" parent="NavigationRegion3D/lvl1" index="110"]
+[node name="Pared45" parent="NavigationRegion3D/lvl1" index="110"]
 gi_lightmap_scale = 3
 
-[node name="Pared45" parent="NavigationRegion3D/lvl1" index="111"]
+[node name="Pared43" parent="NavigationRegion3D/lvl1" index="111"]
 gi_lightmap_scale = 3
 
-[node name="Pared43" parent="NavigationRegion3D/lvl1" index="112"]
+[node name="Pared44" parent="NavigationRegion3D/lvl1" index="112"]
 gi_lightmap_scale = 3
 
-[node name="Pared44" parent="NavigationRegion3D/lvl1" index="113"]
+[node name="Pared41" parent="NavigationRegion3D/lvl1" index="113"]
 gi_lightmap_scale = 3
 
-[node name="Pared41" parent="NavigationRegion3D/lvl1" index="114"]
+[node name="Pared42" parent="NavigationRegion3D/lvl1" index="114"]
 gi_lightmap_scale = 3
 
-[node name="Pared42" parent="NavigationRegion3D/lvl1" index="115"]
+[node name="Techo15" parent="NavigationRegion3D/lvl1" index="115"]
 gi_lightmap_scale = 3
 
-[node name="Techo15" parent="NavigationRegion3D/lvl1" index="116"]
+[node name="Techo16" parent="NavigationRegion3D/lvl1" index="116"]
 gi_lightmap_scale = 3
 
-[node name="Techo16" parent="NavigationRegion3D/lvl1" index="117"]
+[node name="Suelo17" parent="NavigationRegion3D/lvl1" index="117"]
 gi_lightmap_scale = 3
 
-[node name="Suelo17" parent="NavigationRegion3D/lvl1" index="118"]
+[node name="Pared46" parent="NavigationRegion3D/lvl1" index="118"]
 gi_lightmap_scale = 3
 
-[node name="Pared46" parent="NavigationRegion3D/lvl1" index="119"]
+[node name="Pared47" parent="NavigationRegion3D/lvl1" index="119"]
 gi_lightmap_scale = 3
 
-[node name="Pared47" parent="NavigationRegion3D/lvl1" index="120"]
+[node name="Pared48" parent="NavigationRegion3D/lvl1" index="120"]
 gi_lightmap_scale = 3
 
-[node name="Pared48" parent="NavigationRegion3D/lvl1" index="121"]
+[node name="Pared49" parent="NavigationRegion3D/lvl1" index="121"]
 gi_lightmap_scale = 3
 
-[node name="Pared49" parent="NavigationRegion3D/lvl1" index="122"]
-gi_lightmap_scale = 3
-
-[node name="Techo17" parent="NavigationRegion3D/lvl1" index="123"]
+[node name="Techo17" parent="NavigationRegion3D/lvl1" index="122"]
 gi_lightmap_scale = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lvl1/Cama" index="0"]
@@ -829,7 +826,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0312767, -0.24852, 0.24209
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -3.7738, -12.7409, 17.4991)
 shape = SubResource("BoxShape3D_jtpm2")
 
-[node name="PerifericosHabitacion" parent="NavigationRegion3D/lvl1" index="129"]
+[node name="PerifericosHabitacion" parent="NavigationRegion3D/lvl1" index="128"]
 gi_lightmap_scale = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lvl1/SillaHabitacion" index="0"]
@@ -851,22 +848,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0312767, -0.24852, 0.24209
 transform = Transform3D(1, 0, 3.30402e-12, 0, 1, 0, -3.30402e-12, 0, 1, -1.24106, 0.598975, -0.30703)
 shape = SubResource("BoxShape3D_lj5oh")
 
-[node name="Suelo18" parent="NavigationRegion3D/lvl1" index="136"]
+[node name="Suelo18" parent="NavigationRegion3D/lvl1" index="135"]
 gi_lightmap_scale = 3
 
-[node name="Pared50" parent="NavigationRegion3D/lvl1" index="137"]
+[node name="Pared50" parent="NavigationRegion3D/lvl1" index="136"]
 gi_lightmap_scale = 3
 
-[node name="Pared51" parent="NavigationRegion3D/lvl1" index="138"]
+[node name="Pared51" parent="NavigationRegion3D/lvl1" index="137"]
 gi_lightmap_scale = 3
 
-[node name="Pared52" parent="NavigationRegion3D/lvl1" index="139"]
+[node name="Pared52" parent="NavigationRegion3D/lvl1" index="138"]
 gi_lightmap_scale = 3
 
-[node name="Pared53" parent="NavigationRegion3D/lvl1" index="140"]
+[node name="Pared53" parent="NavigationRegion3D/lvl1" index="139"]
 gi_lightmap_scale = 3
 
-[node name="Techo18" parent="NavigationRegion3D/lvl1" index="141"]
+[node name="Techo18" parent="NavigationRegion3D/lvl1" index="140"]
 gi_lightmap_scale = 3
 
 [node name="TransitionTrigger" type="MeshInstance3D" parent="NavigationRegion3D"]
