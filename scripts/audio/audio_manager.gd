@@ -27,16 +27,7 @@ var sounds = {
 	"dash": preload("res://assets/audio/sfx/dash.wav"),
 
 	# Menu sounds
-	"menu_select_1": preload("res://assets/audio/sfx/menu_select_1.wav"),
-	"menu_select_2": preload("res://assets/audio/sfx/menu_select_2.wav"),
-	"menu_select_3": preload("res://assets/audio/sfx/menu_select_3.wav"),
-	"menu_select_4": preload("res://assets/audio/sfx/menu_select_4.wav"),
-
-	# Combat impacts
-	"punch_1": preload("res://assets/audio/sfx/punch_1.wav"),
-	"punch_2": preload("res://assets/audio/sfx/punch_2.wav"),
-	"punch_3": preload("res://assets/audio/sfx/punch_3.wav"),
-	"punch_4": preload("res://assets/audio/sfx/punch_4.wav"),
+	"menu_select": preload("res://assets/audio/sfx/menu_select.wav"),
 
 	# Misc
 	"pickup_item": preload("res://assets/audio/sfx/pickup_item.wav"),
