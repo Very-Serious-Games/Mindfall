@@ -33,111 +33,111 @@ navigation_mesh = SubResource("NavigationMesh_t1jwr")
 
 [node name="enemy" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.149397, 0, -0.988777, 0, 1, 0, 0.988777, 0, 0.149397, 37.2186, 15.6258, 531.262)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy2" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.240601, 0, -0.970624, 0, 1, 0, 0.970624, 0, -0.240601, 39.0017, 15.6258, 536.833)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy3" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.810655, 0, -0.585524, 0, 1, 0, 0.585524, 0, 0.810655, 72.5005, 23.9174, 535.46)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy4" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.495368, 0, -0.868683, 0, 1, 0, 0.868683, 0, 0.495368, 74.2836, 23.9174, 543.774)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy5" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.337177, 0, -0.941441, 0, 1, 0, 0.941441, 0, 0.337177, 66.9325, 23.9174, 544.505)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy6" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.813456, 0, -0.581626, 0, 1, 0, 0.581626, 0, 0.813456, 64.7604, 23.9174, 536.508)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy7" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.0453457, 0, -0.998971, 0, 1, 0, 0.998971, 0, -0.0453457, 108.831, 26.4237, 562.513)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy8" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.300606, 0, -0.953748, 0, 1, 0, 0.953748, 0, -0.300606, 108.176, 26.4237, 570.866)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy9" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.480193, 0, -0.877163, 0, 1, 0, 0.877163, 0, -0.480193, 102.283, 26.4237, 570.913)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy10" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.507719, 0, -0.861523, 0, 1, 0, 0.861523, 0, 0.507719, 171.325, 8.79609, 531.446)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy11" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.300606, 0, -0.953748, 0, 1, 0, 0.953748, 0, -0.300606, 172.618, 8.79609, 544.4)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy12" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.410878, 0, -0.91169, 0, 1, 0, 0.91169, 0, -0.410878, 164.289, 8.79609, 546.262)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy13" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.00938982, 0, -0.999956, 0, 1, 0, 0.999956, 0, -0.00938982, 167.287, 8.79609, 539.059)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy14" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.438716, 0, -0.898626, 0, 1, 0, 0.898626, 0, 0.438716, 512.667, 5.70522, 538.624)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy15" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.0637835, 0, -0.997964, 0, 1, 0, 0.997964, 0, -0.0637835, 504.131, 5.70522, 557.491)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy16" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.0287766, 0, -0.999586, 0, 1, 0, 0.999586, 0, -0.0287766, 480.924, 5.70522, 544.156)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy17" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.123307, 0, -0.992369, 0, 1, 0, 0.992369, 0, -0.123307, 477.154, 5.70522, 549.417)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy18" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.626427, 0, -0.77948, 0, 1, 0, 0.77948, 0, 0.626427, 605.763, 6.46858, 532.833)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy19" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.626427, 0, -0.77948, 0, 1, 0, 0.77948, 0, 0.626427, 593.582, 6.46858, 533.345)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy20" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.74437, 0, -0.667768, 0, 1, 0, 0.667768, 0, 0.74437, 599.387, 6.46858, 527.205)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy21" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(-0.095203, 0, -0.995458, 0, 1, 0, 0.995458, 0, -0.095203, 496.077, 5.70522, 547.86)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy22" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.217002, 0, -0.976171, 0, 1, 0, 0.976171, 0, 0.217002, 637.33, 6.37078, 526.139)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy23" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.74437, 0, -0.667768, 0, 1, 0, 0.667768, 0, 0.74437, 646.364, 6.37078, 530.476)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy24" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.282392, 0, -0.959299, 0, 1, 0, 0.959299, 0, 0.282392, 646.27, 6.37078, 517.771)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy25" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.74437, 0, -0.667768, 0, 1, 0, 0.667768, 0, 0.74437, 638.921, 6.37078, 509.626)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy26" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.00949427, 0, -0.999955, 0, 1, 0, 0.999955, 0, 0.00949427, 630.093, 6.37078, 534.588)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="enemy27" parent="Enemies" instance=ExtResource("5_pdyqw")]
 transform = Transform3D(0.74437, 0, -0.667768, 0, 1, 0, 0.667768, 0, 0.74437, 628.438, 6.37078, 513.53)
-player_path = "/root/Level3/NavigationRegion3D/Player"
+player_path = "/root/Level3/Player"
 
 [node name="PowerUps" type="Node3D" parent="."]
 
