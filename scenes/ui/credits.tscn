@@ -74,8 +74,8 @@ text = "[center]
 
 [font_size=42]Development Team[/font_size]
 [font_size=32]Lead Programming: Mario Dorado Martínez
-Game Design: Nicolás Sort Sauquillo & Hugo Castaño Cuéllar
-Level Design: Nicolás Sort Sauquillo & Hugo Castaño Cuéllar[/font_size]
+Game Design: Nicolás Sort Sauquillo & [rainbow freq=0.2 sat=0.7 val=0.8]Hugo Castaño Cuéllar[/rainbow]
+Level Design: Nicolás Sort Sauquillo & [rainbow freq=0.2 sat=0.7 val=0.8]Hugo Castaño Cuéllar[/rainbow][/font_size]
 
 [font_size=42]Art & Visual Design[/font_size]
 [font_size=32]Character Art: Name Here
@@ -101,7 +101,7 @@ Font Resources: Google Fonts[/font_size]
 All Rights Reserved[/font_size]
 
 
-[font_size=48][rainbow freq=0.2 sat=0.7 val=0.8]Thanks for playing![/rainbow][/font_size]
+[color=#ff0000][font_size=48]Thanks for playing![/font_size][/color]
 
 
 [/color]
