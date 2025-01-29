@@ -196,6 +196,10 @@ func _shoot() -> void:
 		var hit_object = raycast.get_collider()
 		if raycast.get_collider().is_in_group("enemy"):
 			raycast.get_collider().hit()
+			if hit_object.is_headshot:
+				AudioManager.play_sound_3d("headshot", position)
+			else:
+				AudioManager.play_sound_3d("hit", position)
 			emit_signal("body_part_hit")
 	
 	anim_tree.set("parameters/conditions/shoot", true)

@@ -17,6 +17,8 @@ var sounds = {
 	"shoot": preload("res://assets/audio/sfx/shoot.wav"),
 	"gun_click": preload("res://assets/audio/sfx/gun_click.wav"),
 	"reload_gun": preload("res://assets/audio/sfx/reload_gun.wav"),
+	"headshot": preload("res://assets/audio/sfx/Headshot.wav"),
+	"hit": preload("res://assets/audio/sfx/Hit.wav"),
 
 	# Movement sounds
 	"footstep": preload("res://assets/audio/sfx/footstep.wav"),

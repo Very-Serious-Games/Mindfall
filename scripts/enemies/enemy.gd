@@ -78,7 +78,7 @@ func _hit_finished():
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir)
 
-func _on_area_3d_body_part_hit(damage):
+func _on_area_3d_body_part_hit(damage, is_headshot: bool = false):
 	health -= damage
 	if health <= 0:
 		anim_tree.set("parameters/conditions/die", true)
