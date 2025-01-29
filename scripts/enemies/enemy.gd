@@ -36,14 +36,19 @@ func _process(delta):
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z) + PI, delta * 10.0)
 		"attack":
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-			rotation.y += PI
-			if can_attack and _target_in_range():
-				_perform_attack()
+			if _target_in_range():
+				look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+				rotation.y += PI
+				if can_attack:
+					_perform_attack()
+			else:
+				# Exit attack state if player moves away
+				anim_tree.set("parameters/conditions/attack", false)
+				anim_tree.set("parameters/conditions/run", true)
 	
 	# Conditions
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
-	anim_tree.set("parameters/conditions/run", !_target_in_range())
+	#anim_tree.set("parameters/conditions/run", !_target_in_range())
 	anim_tree.set("parameters/conditions/detect_player", _detect_player())
 	anim_tree.set("parameters/conditions/lost_player", !_detect_player())
 	# anim_tree.set("parameters/conditions/agonize", _start_agonizing())
@@ -55,6 +60,8 @@ func _perform_attack():
 	anim_tree.set("parameters/conditions/attack", true)
 	var timer = get_tree().create_timer(ATTACK_COOLDOWN)
 	await timer.timeout
+	anim_tree.set("parameters/conditions/attack", false)
+	anim_tree.set("parameters/conditions/run", true)
 	can_attack = true
 
 func _target_in_range():
