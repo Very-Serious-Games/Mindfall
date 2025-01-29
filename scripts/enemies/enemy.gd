@@ -8,7 +8,7 @@ var can_attack = true
 
 const SPEED = 4.0
 const ATTACK_RANGE = 2.0
-const DETECT_RANGE = 10.0
+const DETECT_RANGE = 50.0
 const AGONIZE_CHANGE = 0.05
 const ATTACK_COOLDOWN = 1.0
 
