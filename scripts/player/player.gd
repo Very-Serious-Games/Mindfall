@@ -107,9 +107,13 @@ func _update_animations() -> void:
 	if Input.is_action_pressed("shoot") and can_shoot and current_ammo > 0 and not is_reloading:
 		is_shooting = true
 		anim_tree.set("parameters/conditions/shoot", true)
+		# Keep animation playing
+		state_machine.travel("Pistol_FIRE")
 	else:
 		is_shooting = false
 		anim_tree.set("parameters/conditions/shoot", false)
+		if not is_reloading:
+			state_machine.travel("Pistol_IDLE")
 	
 	# Handle reload animation only if not shooting
 	if is_reloading and not is_shooting:
@@ -198,7 +202,6 @@ func _start_reload() -> void:
 	# Reset reload condition
 	anim_tree.set("parameters/conditions/reload", false)
 	
-# Modify _shoot function:
 func _shoot() -> void:
 	if raycast.is_colliding():
 		var hit_object = raycast.get_collider()
@@ -210,7 +213,7 @@ func _shoot() -> void:
 	var anim_speed = fire_rate / 2.0
 	anim_tree.set("parameters/Pistol_FIRE/TimeScale", anim_speed)
 	anim_tree.advance(0.3) # Force animation to complete at 0.3s
-	# Force shooting animation to play
+	
 	anim_tree.set("parameters/conditions/shoot", true)
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
