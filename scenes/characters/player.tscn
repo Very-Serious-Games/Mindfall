@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccvfvlphlk2c4"]
+[gd_scene load_steps=14 format=3 uid="uid://ccvfvlphlk2c4"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f8j2"]
 [ext_resource type="PackedScene" uid="uid://bni4hm5jvmfi6" path="res://assets/models/character/player/MainCharacter.glb" id="1_gyh0h"]
@@ -20,43 +20,6 @@ shader_parameter/mask_softness = 1.4
 shader_parameter/mask_threshold = 0.6
 shader_parameter/sort = 0.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fguhp"]
-animation = &"Gun_Recharge"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kjekd"]
-animation = &"Gun_Shot"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lrtgv"]
-animation = &"Gun_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_86t4t"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a2wec"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pqfiq"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rcs2j"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_onav4"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hfloj"]
-states/End/position = Vector2(835, 113)
-states/Gun_Recharge/node = SubResource("AnimationNodeAnimation_fguhp")
-states/Gun_Recharge/position = Vector2(508, 41)
-states/Gun_Shot/node = SubResource("AnimationNodeAnimation_kjekd")
-states/Gun_Shot/position = Vector2(508, 186)
-states/Gun_idle/node = SubResource("AnimationNodeAnimation_lrtgv")
-states/Gun_idle/position = Vector2(508, 113)
-states/Start/position = Vector2(200, 113)
-transitions = ["Gun_idle", "Gun_Shot", SubResource("AnimationNodeStateMachineTransition_86t4t"), "Gun_Shot", "Gun_idle", SubResource("AnimationNodeStateMachineTransition_a2wec"), "Gun_idle", "Gun_Recharge", SubResource("AnimationNodeStateMachineTransition_pqfiq"), "Gun_Recharge", "Gun_idle", SubResource("AnimationNodeStateMachineTransition_rcs2j"), "Start", "Gun_idle", SubResource("AnimationNodeStateMachineTransition_onav4")]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jxlqh"]
 animation = &"Player_Idle"
 
@@ -70,16 +33,16 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_0xpox")
 blend_point_1/pos = 1.0
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_80ac7"]
-xfade_time = 0.5
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yhjw2"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xo37g"]
-states/Gun/node = SubResource("AnimationNodeStateMachine_hfloj")
-states/Gun/position = Vector2(561, 139)
+states/End/position = Vector2(736, 137)
 states/Movement/node = SubResource("AnimationNodeBlendSpace1D_trcce")
-states/Movement/position = Vector2(561, 34)
-transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_80ac7")]
+states/Movement/position = Vector2(468, 137)
+states/Start/position = Vector2(209, 137)
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_yhjw2")]
+graph_offset = Vector2(-95, -22)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -296,11 +259,11 @@ bones/1/rotation = Quaternion(-0.0360711, 0.014748, 0.0217122, 0.999004)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(2.08616e-07, 11.4201, 1.62423e-05)
 bones/2/rotation = Quaternion(0.0234999, -0.038874, 0.000608044, 0.998968)
-bones/3/rotation = Quaternion(0.0255548, -0.0818533, 0.0287447, 0.995902)
+bones/3/rotation = Quaternion(0.0231347, -0.0816424, 0.0301776, 0.995936)
 bones/4/position = Vector3(1.19209e-07, 14.6831, -7.1007e-05)
 bones/4/rotation = Quaternion(0.16273, 0.0650892, -0.0282318, 0.984117)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(-0.0960088, 0.174964, -0.00858461, 0.979845)
+bones/5/rotation = Quaternion(-0.0944348, 0.174629, -0.00872121, 0.980057)
 bones/7/position = Vector3(6.14011, 13.0009, -0.233707)
 bones/7/rotation = Quaternion(-0.559379, -0.427855, 0.627335, -0.332395)
 bones/7/scale = Vector3(1, 1, 1)
@@ -309,8 +272,8 @@ bones/8/rotation = Quaternion(0.197285, -0.158753, 0.623789, 0.739435)
 bones/9/position = Vector3(4.22004e-05, 25.5608, 5.8324e-05)
 bones/9/rotation = Quaternion(-0.0722884, 0.038283, 0.528172, 0.845188)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(0.00455954, 23.3541, 0.0536683)
-bones/10/rotation = Quaternion(-0.143526, -0.53989, -0.0978513, 0.823616)
+bones/10/position = Vector3(0.00651791, 23.3326, 0.0767266)
+bones/10/rotation = Quaternion(-0.144706, -0.542651, -0.101976, 0.821092)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-2.86769, 3.93581, 1.18836)
 bones/11/rotation = Quaternion(0.0136086, -0.100765, 0.184027, 0.977648)
@@ -358,8 +321,8 @@ bones/32/rotation = Quaternion(0.398828, 0.085416, -0.721867, 0.55906)
 bones/32/scale = Vector3(1, 1, 1)
 bones/33/position = Vector3(-1.96908e-05, 25.5711, 0.000103317)
 bones/33/rotation = Quaternion(-0.0189189, -0.0111933, -0.304975, 0.952107)
-bones/34/position = Vector3(0.0328793, 23.4576, -0.0346236)
-bones/34/rotation = Quaternion(-0.144723, 0.303524, 0.146862, 0.930247)
+bones/34/position = Vector3(0.0469836, 23.4816, -0.0494981)
+bones/34/rotation = Quaternion(-0.142956, 0.303234, 0.152178, 0.929761)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/position = Vector3(2.88502, 4.05431, 1.21196)
 bones/35/rotation = Quaternion(0.221286, -0.0659439, -0.192743, 0.953695)
@@ -439,22 +402,22 @@ bones/80/rotation = Quaternion(0.28853, 0.0573652, -0.0173197, 0.955594)
 bones/80/scale = Vector3(1, 1, 1)
 
 [node name="TriggerSafe_001" parent="MainCharacter/Armature/Skeleton3D" index="0"]
-transform = Transform3D(98.2211, -0.00785685, 6.76384, -6.76383, -0.113127, 98.221, -1.97887e-05, -98.4537, -0.113401, -13.5985, 58.9056, -151.836)
+transform = Transform3D(98.221, 0.0301819, 6.7637, -6.76371, 0.438744, 98.2199, -3.76701e-05, -98.4525, 0.439814, -13.6004, 58.8782, -152)
 
 [node name="Trigger_001" parent="MainCharacter/Armature/Skeleton3D" index="1"]
-transform = Transform3D(98.2211, 0.170958, 6.76157, -6.76372, 2.48301, 98.1896, 1.90735e-05, -98.4221, 2.48889, -13.5941, 58.9709, -152.769)
+transform = Transform3D(98.221, 0.208971, 6.76051, -6.76368, 3.03472, 98.174, 1.90735e-06, -98.4066, 3.04194, -13.5955, 58.9487, -152.933)
 
 [node name="Slide_001" parent="MainCharacter/Armature/Skeleton3D" index="2"]
-transform = Transform3D(98.2212, 0.170975, 6.76163, -6.76378, 2.48306, 98.1897, 2.00272e-05, -98.4223, 2.48894, -13.5195, 60.0536, -149.852)
+transform = Transform3D(98.221, 0.208962, 6.76051, -6.76368, 3.03473, 98.1742, 2.90871e-05, -98.4066, 3.04193, -13.5221, 60.0151, -150.01)
 
 [node name="InnerPart_001" parent="MainCharacter/Armature/Skeleton3D" index="3"]
-transform = Transform3D(98.2211, 0.170984, 6.76164, -6.76378, 2.48307, 98.1897, 2.21729e-05, -98.4222, 2.48895, -13.5212, 60.029, -149.853)
+transform = Transform3D(98.221, 0.208954, 6.76052, -6.76369, 3.03474, 98.1741, 9.29832e-06, -98.4066, 3.04194, -13.5238, 59.9905, -150.01)
 
 [node name="Magazine_001" parent="MainCharacter/Armature/Skeleton3D" index="4"]
-transform = Transform3D(98.2211, 0.171005, 6.76171, -6.76386, 2.483, 98.1897, 5.72205e-05, -98.4223, 2.48887, -13.5212, 60.029, -149.853)
+transform = Transform3D(98.221, 0.208942, 6.76052, -6.7637, 3.03469, 98.1741, 3.8147e-06, -98.4066, 3.04188, -13.5238, 59.9904, -150.01)
 
 [node name="Handle_001" parent="MainCharacter/Armature/Skeleton3D" index="5"]
-transform = Transform3D(98.2212, 0.170944, 6.76164, -6.76378, 2.48298, 98.1897, 3.8147e-06, -98.4223, 2.48886, -13.5212, 60.029, -149.853)
+transform = Transform3D(98.221, 0.208939, 6.76052, -6.76369, 3.03466, 98.1741, 0, -98.4066, 3.04187, -13.5238, 59.9904, -150.01)
 
 [node name="AnimationTree" type="AnimationTree" parent="MainCharacter"]
 tree_root = SubResource("AnimationNodeStateMachine_xo37g")
