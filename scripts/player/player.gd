@@ -2,6 +2,7 @@ class_name Player extends CharacterBody3D
 
 const HIT_STAGGER = 8.0
 const FOOTSTEP_TIME = 0.1
+const MUZZLE_FLASH_DURATION = 0.05
 
 @export_category("Player")
 @export_range(1, 35, 1) var speed: float = 10
@@ -43,6 +44,7 @@ const FOOTSTEP_TIME = 0.1
 @onready var floor_check: RayCast3D = $FloorCheck
 @onready var anim_player: AnimationPlayer = $Camera/Player/AnimationPlayer
 @onready var anim_tree: AnimationTree = $Camera/Player/AnimationTree
+@onready var muzzle_flash: OmniLight3D = $Camera/MuzzleFlash
 
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
@@ -201,6 +203,11 @@ func _shoot() -> void:
 	var anim_speed = fire_rate / 2.0
 	anim_tree.set("parameters/Pistol_FIRE/TimeScale", anim_speed)
 	anim_tree.advance(0.3) # Force animation to complete at 0.3s
+
+	# Trigger muzzle flash
+	muzzle_flash.visible = true
+	await get_tree().create_timer(MUZZLE_FLASH_DURATION).timeout
+	muzzle_flash.visible = false
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	var sensitivity = Settings.settings.gameplay.mouse_sensitivity
