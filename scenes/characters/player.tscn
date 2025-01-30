@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccvfvlphlk2c4"]
+[gd_scene load_steps=23 format=3 uid="uid://ccvfvlphlk2c4"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f8j2"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_gljcx"]
@@ -7,9 +7,6 @@
 [ext_resource type="Shader" path="res://assets/shaders/postprocesing.gdshader" id="6_ijvbn"]
 [ext_resource type="Script" path="res://scripts/player/power_up_manager.gd" id="6_r4lie"]
 [ext_resource type="FontFile" uid="uid://bmpa5w3r74smi" path="res://assets/fonts/whizbang/whizbang-roman.ttf" id="7_f6hgc"]
-[ext_resource type="Texture2D" uid="uid://7oivi2rnrlr4" path="res://assets/textures/UI/ReloadIcon.png" id="8_x3gmq"]
-[ext_resource type="Texture2D" uid="uid://c7epxvch3ogv6" path="res://assets/textures/UI/DoubleDashIcon.png" id="9_4b32d"]
-[ext_resource type="Texture2D" uid="uid://bi6mvrsd5b8lp" path="res://assets/textures/UI/DoubleJumpIcon.png" id="10_yuywb"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_22rvi"]
 animation = &"Pistol_FIRE"
@@ -132,8 +129,8 @@ debug_shape_thickness = 1
 transform = Transform3D(-0.499993, 0.00261798, -4.37108e-08, 0.00261798, 0.499993, 2.28871e-10, 4.37114e-08, -8.32667e-17, -0.5, -0.00487994, -0.931987, -0.225)
 
 [node name="Skeleton3D" parent="Camera/Player/Sketchfab_model/e430f8f941c64cbea96a18e2036f08b4_fbx/Object_2/RootNode/Object_4" index="0"]
-bones/2/position = Vector3(0, 42.5286, 0)
-bones/2/rotation = Quaternion(0.000759018, 0, 0, 1)
+bones/2/position = Vector3(0, 42.38, 0)
+bones/2/rotation = Quaternion(-0.00181408, 0, 0, 0.999998)
 bones/3/position = Vector3(-5.38376, 10.5343, -23.1776)
 bones/4/position = Vector3(-1.16792, -4.6649, 9.04451)
 bones/4/rotation = Quaternion(0.494505, -0.362447, 0.0156009, 0.789845)
@@ -142,7 +139,7 @@ bones/5/rotation = Quaternion(0.594711, -0.0176284, -0.0253702, 0.803346)
 bones/6/position = Vector3(0.591736, -0.229696, 12.1049)
 bones/6/rotation = Quaternion(-8.63972e-08, -1.06524e-07, 0.316477, 0.9486)
 bones/7/position = Vector3(1.05599, -0.409914, 21.6019)
-bones/7/rotation = Quaternion(-0.276146, 0.274621, 0.220608, 0.894237)
+bones/7/rotation = Quaternion(-0.276881, 0.274438, 0.220823, 0.894012)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-3.54798, -2.87844, 4.1853)
 bones/8/rotation = Quaternion(-0.404073, 0.0585492, 0.832242, -0.375059)
@@ -191,11 +188,11 @@ bones/27/position = Vector3(3.55271e-15, -1.95838, -5.78759)
 bones/27/rotation = Quaternion(-0.368125, -7.87324e-08, -4.71362e-08, 0.929776)
 bones/28/position = Vector3(11.8042, -2.40156, -3.50822)
 bones/29/position = Vector3(1.16787, -4.66491, 9.04447)
-bones/29/rotation = Quaternion(0.45486, 0.83949, 0.0940061, 0.281996)
+bones/29/rotation = Quaternion(0.454789, 0.839439, 0.0941862, 0.282203)
 bones/30/position = Vector3(0.0967197, -0.206524, 19.4601)
-bones/30/rotation = Quaternion(0.312591, 0.217112, 0.222049, 0.897688)
+bones/30/rotation = Quaternion(0.312806, 0.217278, 0.222034, 0.897576)
 bones/31/position = Vector3(-1.05586, -0.409821, 21.6019)
-bones/31/rotation = Quaternion(-0.0354512, -0.19561, -0.51518, 0.833708)
+bones/31/rotation = Quaternion(-0.0358472, -0.196641, -0.516245, 0.832789)
 bones/32/position = Vector3(2.87481, -2.17789, 4.46067)
 bones/32/rotation = Quaternion(0.403649, 0.122101, 0.793849, 0.438136)
 bones/32/scale = Vector3(0.99999, 0.99999, 1)
@@ -427,21 +424,6 @@ theme_override_fonts/font = ExtResource("7_f6hgc")
 theme_override_font_sizes/font_size = 22
 text = "/30"
 vertical_alignment = 1
-
-[node name="ReloadIcon" type="Sprite2D" parent="GUI"]
-position = Vector2(1079.4, 505.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("8_x3gmq")
-
-[node name="DoubleDashIcon" type="Sprite2D" parent="GUI"]
-position = Vector2(1079.4, 430.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("9_4b32d")
-
-[node name="DoubleJumpIcon" type="Sprite2D" parent="GUI"]
-position = Vector2(1079.4, 355.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_yuywb")
 
 [node name="DeathScreenContainer" type="Control" parent="GUI"]
 visible = false
