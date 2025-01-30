@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt1bfsdmsndmw"]
+
+[ext_resource type="Script" path="res://scripts/text_bad_ending.gd" id="1_gpte4"]
+[ext_resource type="Texture2D" uid="uid://cdplfbdxq0jhy" path="res://assets/textures/background.png" id="2_cnvy5"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="3_v8wu7"]
+
+[node name="Text3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gpte4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cnvy5")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I’ve been writing this letter in my head for a long time, though I never thought I’d actually finish it. But here I am, alone, as always. No one will find this until it’s too late, and I think that says it all.
+
+I’m tired. Tired of fighting, of pretending I’m okay, of acting like I can handle everything. I lost my job, but more than that, I feel like I’ve lost respect for myself. Years of working, giving my best, only to be discarded as if I never mattered. They told me it was “an opportunity to redirect my life,” but how am I supposed to do that when I don’t even know who I am anymore?
+
+Alcohol has been my only companion through all of this. I know it’s destroying me, but at least it silences the voices for a while. For a while, the world stops hurting. For a while, I can forget how everything I touch falls apart.
+
+I can’t keep living like this. Every day, I feel more insignificant, more invisible. No one calls. No one looks for me. I could disappear tomorrow, and the world would keep spinning as if I had never been here.
+
+To the few who come across this letter: don’t look for someone to blame. There’s no one to point fingers at but myself. Maybe if I had been stronger, more capable, more… something, things would be different. But I’m not.
+
+I just want the noise to stop. I want to rest. I’m sorry."
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_v8wu7")
+theme_override_font_sizes/font_size = 16
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

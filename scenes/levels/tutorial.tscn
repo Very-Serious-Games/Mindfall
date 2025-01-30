@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cf2jqa602com1"]
 
-[ext_resource type="VoxelGIData" path="res://assets/lights/tutorial.VoxelGI_data.res" id="1_i7uig"]
+[ext_resource type="VoxelGIData" uid="uid://cu1wsqiwmqll6" path="res://assets/lights/tutorial.VoxelGI_data.res" id="1_i7uig"]
 [ext_resource type="PackedScene" uid="uid://csjsfxvnrnsj" path="res://assets/models/levels/Tutorial.glb" id="1_mp1f5"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_w6e5d"]
 [ext_resource type="PackedScene" uid="uid://ccvfvlphlk2c4" path="res://scenes/characters/player.tscn" id="2_qtu77"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://pgwdcikkvcfh"]
+
+[ext_resource type="Script" path="res://scripts/text_good_ending.gd" id="1_yhhpn"]
+[ext_resource type="Texture2D" uid="uid://cdplfbdxq0jhy" path="res://assets/textures/background.png" id="2_r8usj"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://assets/resources/ui_theme/MinimalUI.tres" id="3_an18v"]
+
+[node name="Text3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yhhpn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r8usj")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Today is different. I can feel it. It’s as if, after so much time trapped in darkness, a ray of light has finally found its way to me. I can’t say everything is perfect, but… you know what? That’s okay. I’ve learned that I don’t need to be perfect to move forward.
+
+I stopped drinking. It wasn’t easy. There were days when the temptation was unbearable, days when the bottle seemed like the only solution. But here I am, counting every sober day as a victory. And now, those days of clarity outnumber the dark ones. I’m still fighting, but now I know I can win.
+
+I got a new job. It’s not my dream position, but every time I get up to go, I feel something I haven’t felt in years: pride. It’s small, but it’s growing. And the best part? Every time I look ahead, I no longer see a wall. I see paths. I see possibilities.
+
+I’ve started reconnecting with people. Not everyone came back, and some never will, but I’ve met new people—people who don’t see me as a failure, but as someone with potential. I’m learning to forgive myself and to give myself the same support I always wished to receive from others.
+
+I don’t know what tomorrow holds. But for the first time in a long while, I don’t mind. I’m alive. I’m here. And I want to keep seeing what life has in store for me.
+
+If I ever fall again, I promise myself I will reread this. I will remember this moment, because it is proof that I can climb out of the pit. I always can.
+
+Today, I chose to live. And tomorrow, I will choose it again."
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_an18v")
+theme_override_font_sizes/font_size = 16
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

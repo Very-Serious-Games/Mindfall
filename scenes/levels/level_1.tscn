@@ -875,7 +875,7 @@ mesh = SubResource("BoxMesh_6navk")
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_2e0vf")
-next_scene = "res://scenes/levels/level_2.tscn"
+next_scene = "res://scenes/levels/text_2.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TransitionTrigger/DetectionArea"]
 shape = SubResource("BoxShape3D_d7teg")
