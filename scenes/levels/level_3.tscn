@@ -35,6 +35,21 @@ albedo_color = Color(0, 0.529412, 1, 1)
 height = 0.229003
 radius = 0.325838
 
+[sub_resource type="Animation" id="Animation_2fsaw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.04735, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ba7my"]
 resource_name = "pressdown"
 length = 0.2
@@ -49,21 +64,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 2.04735, 0), Vector3(0, 1.93957, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2fsaw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Button:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 2.04735, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0ocxi"]
@@ -94,7 +94,7 @@ _data = {
 [node name="PauseMenu" parent="." instance=ExtResource("1_3yqa5")]
 
 [node name="Player" parent="." instance=ExtResource("2_n2tpm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419907, 31.3319, 129.52)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 772.695, -56.6689, 520.934)
 
 [node name="WorldEnviroment" parent="." instance=ExtResource("3_wsr51")]
 rateOfTime = 0.05
@@ -241,41 +241,46 @@ powerup_type = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31226, 31.0672, 124.612)
 powerup_type = 3
 
-[node name="Button" parent="." instance=ExtResource("7_up1w8")]
-transform = Transform3D(1, 0, 0, 0, 0.427179, 0, 0, 0, 1, 783.907, -57.2165, 518.434)
+[node name="BadEndingButtom" parent="." instance=ExtResource("7_up1w8")]
+transform = Transform3D(1, 0, 0, 0, 0.427179, 0, 0, 0, 1, 783.907, -57.1746, 518.434)
+good_ending = false
+good_ending_scene = "res://scenes/levels/good_engind.tscn"
+bad_ending_scene = "res://scenes/levels/bad_engind.tscn"
 
-[node name="Button2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.427179, 0, 0, 0, 1, 783.915, -57.2165, 524.437)
+[node name="GoodEngindButton" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.427179, 0, 0, 0, 1, 783.915, -57.1746, 524.437)
 script = ExtResource("8_nma4o")
+good_ending_scene = "res://scenes/levels/good_engind.tscn"
+bad_ending_scene = "res://scenes/levels/bad_engind.tscn"
 
-[node name="Base" type="MeshInstance3D" parent="Button2"]
+[node name="Base" type="MeshInstance3D" parent="GoodEngindButton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_7hutn")
 
-[node name="Button" type="MeshInstance3D" parent="Button2"]
+[node name="Button" type="MeshInstance3D" parent="GoodEngindButton"]
 transform = Transform3D(0.682871, 0, 0, 0, 0.34912, 0, 0, 0, 0.682871, 0, 2.04735, 0)
 material_override = SubResource("StandardMaterial3D_c0t3u")
 mesh = SubResource("CylinderMesh_nxor4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Button2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoodEngindButton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_hk08g")
 
-[node name="Area3D" type="Area3D" parent="Button2"]
+[node name="Area3D" type="Area3D" parent="GoodEngindButton"]
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Button2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoodEngindButton/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04535, 0)
 shape = SubResource("CylinderShape3D_q844p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Button2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GoodEngindButton"]
 libraries = {
 "": SubResource("AnimationLibrary_s0ja4")
 }
 
-[connection signal="body_entered" from="Button2/Area3D" to="Button2" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Button2/Area3D" to="Button2" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="GoodEngindButton/Area3D" to="GoodEngindButton" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="GoodEngindButton/Area3D" to="GoodEngindButton" method="_on_area_3d_body_exited"]
 
 [editable path="NavigationRegion3D/lvl3"]
-[editable path="Button"]
+[editable path="BadEndingButtom"]
