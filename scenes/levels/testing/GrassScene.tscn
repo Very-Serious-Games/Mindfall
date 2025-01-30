@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/grass_shader.gdshader" id="1_26730"]
 [ext_resource type="ArrayMesh" uid="uid://er8nljgvawhk" path="res://assets/resources/GrassMesh.res" id="2_dn8ah"]
-[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player.tscn" id="3_xo3c6"]
+[ext_resource type="PackedScene" uid="uid://bj20f8efqvq8x" path="res://scenes/characters/player2.tscn" id="3_xo3c6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s477d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,19 +17,19 @@ sky = SubResource("Sky_tjwej")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_faato"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36nme"]
 diffuse_mode = 3
 albedo_color = Color(0.415686, 0.615686, 0.223529, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hfsug"]
-material = SubResource("StandardMaterial3D_faato")
+material = SubResource("StandardMaterial3D_36nme")
 size = Vector2(10, 10)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4o0t6"]
 frequency = 0.0043
 fractal_octaves = 2
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dbtqj"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vwonu"]
 width = 1024
 height = 1024
 seamless = true
@@ -48,7 +48,7 @@ shader_parameter/wind_direction = Vector3(1, -0.7, -0.5)
 shader_parameter/wind_strength = 0.23
 shader_parameter/wind_noise_size = 0.03
 shader_parameter/wind_noise_speed = 0.13
-shader_parameter/wind_noise = SubResource("NoiseTexture2D_dbtqj")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_vwonu")
 
 [sub_resource type="MultiMesh" id="MultiMesh_hybvu"]
 transform_format = 1
