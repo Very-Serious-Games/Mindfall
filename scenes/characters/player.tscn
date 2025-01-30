@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccvfvlphlk2c4"]
+[gd_scene load_steps=23 format=3 uid="uid://ccvfvlphlk2c4"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f8j2"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="2_gljcx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtf5btrv5n6hk" path="res://assets/models/player/scene.gltf" id="6_abw4n"]
 [ext_resource type="Shader" path="res://assets/shaders/postprocesing.gdshader" id="6_ijvbn"]
 [ext_resource type="Script" path="res://scripts/player/power_up_manager.gd" id="6_r4lie"]
+[ext_resource type="FontFile" uid="uid://bmpa5w3r74smi" path="res://assets/fonts/whizbang/whizbang-roman.ttf" id="7_f6hgc"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_22rvi"]
 animation = &"Pistol_FIRE"
@@ -71,6 +72,34 @@ shader_parameter/mask_softness = 1.4
 shader_parameter/mask_threshold = 0.6
 shader_parameter/sort = 0.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8os1"]
+bg_color = Color(0.647058, 0.205785, 0.282399, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rpr"]
+bg_color = Color(0.72854, 0.571785, 0.310985, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7rst"]
+bg_color = Color(0.729412, 0.572549, 0.309804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujkgh"]
+bg_color = Color(0.729412, 0.572549, 0.309804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
@@ -100,10 +129,8 @@ debug_shape_thickness = 1
 transform = Transform3D(-0.499993, 0.00261798, -4.37108e-08, 0.00261798, 0.499993, 2.28871e-10, 4.37114e-08, -8.32667e-17, -0.5, -0.00487994, -0.931987, -0.225)
 
 [node name="Skeleton3D" parent="Camera/Player/Sketchfab_model/e430f8f941c64cbea96a18e2036f08b4_fbx/Object_2/RootNode/Object_4" index="0"]
-bones/2/position = Vector3(0, 42.3041, 0)
-bones/2/rotation = Quaternion(-0.00265236, 0, 0, 0.999997)
-bones/2/position = Vector3(0, 42.5292, 0)
-bones/2/rotation = Quaternion(0.000742975, 0, 0, 1)
+bones/2/position = Vector3(0, 42.0526, 0)
+bones/2/rotation = Quaternion(-0.00287655, 0, 0, 0.999996)
 bones/3/position = Vector3(-5.38376, 10.5343, -23.1776)
 bones/4/position = Vector3(-1.16792, -4.6649, 9.04451)
 bones/4/rotation = Quaternion(0.494505, -0.362447, 0.0156009, 0.789845)
@@ -112,7 +139,7 @@ bones/5/rotation = Quaternion(0.594711, -0.0176284, -0.0253702, 0.803346)
 bones/6/position = Vector3(0.591736, -0.229696, 12.1049)
 bones/6/rotation = Quaternion(-8.63972e-08, -1.06524e-07, 0.316477, 0.9486)
 bones/7/position = Vector3(1.05599, -0.409914, 21.6019)
-bones/7/rotation = Quaternion(-0.276154, 0.274619, 0.22061, 0.894234)
+bones/7/rotation = Quaternion(-0.277436, 0.2743, 0.220984, 0.893843)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-3.54798, -2.87844, 4.1853)
 bones/8/rotation = Quaternion(-0.404073, 0.0585492, 0.832242, -0.375059)
@@ -161,11 +188,11 @@ bones/27/position = Vector3(3.55271e-15, -1.95838, -5.78759)
 bones/27/rotation = Quaternion(-0.368125, -7.87324e-08, -4.71362e-08, 0.929776)
 bones/28/position = Vector3(11.8042, -2.40156, -3.50822)
 bones/29/position = Vector3(1.16787, -4.66491, 9.04447)
-bones/29/rotation = Quaternion(0.454858, 0.839489, 0.0940105, 0.282001)
+bones/29/rotation = Quaternion(0.454818, 0.839469, 0.0941068, 0.282093)
 bones/30/position = Vector3(0.0967197, -0.206524, 19.4601)
-bones/30/rotation = Quaternion(0.312596, 0.217116, 0.222048, 0.897685)
+bones/30/rotation = Quaternion(0.312738, 0.217224, 0.222038, 0.897612)
 bones/31/position = Vector3(-1.05586, -0.409821, 21.6019)
-bones/31/rotation = Quaternion(-0.0354513, -0.195618, -0.515191, 0.8337)
+bones/31/rotation = Quaternion(-0.0363105, -0.197378, -0.516777, 0.832265)
 bones/32/position = Vector3(2.87481, -2.17789, 4.46067)
 bones/32/rotation = Quaternion(0.403649, 0.122101, 0.793849, 0.438136)
 bones/32/scale = Vector3(0.99999, 0.99999, 1)
@@ -334,16 +361,19 @@ alignment = 1
 [node name="HealthBar" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_k8os1")
 value = 100.0
 show_percentage = false
 
 [node name="HealthText" type="Label" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements/HealthBar"]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 10.0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_f6hgc")
 text = "100"
 vertical_alignment = 1
 
@@ -351,6 +381,7 @@ vertical_alignment = 1
 visible = false
 custom_minimum_size = Vector2(200, 10)
 layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_q3rpr")
 value = 100.0
 show_percentage = false
 
@@ -361,12 +392,14 @@ theme_override_constants/separation = 2
 [node name="DashBar1" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble"]
 custom_minimum_size = Vector2(99, 10)
 layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_d7rst")
 value = 100.0
 show_percentage = false
 
 [node name="DashBar2" type="ProgressBar" parent="GUI/HUDContainer/BottomHUDContainer/LeftElements/DashBarDouble"]
 custom_minimum_size = Vector2(99, 10)
 layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_ujkgh")
 value = 100.0
 show_percentage = false
 
@@ -379,6 +412,7 @@ theme_override_constants/separation = 0
 [node name="CurrentAmmo" type="Label" parent="GUI/HUDContainer/BottomHUDContainer/RightElements"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_f6hgc")
 theme_override_font_sizes/font_size = 48
 text = "30"
 vertical_alignment = 1
@@ -386,6 +420,7 @@ vertical_alignment = 1
 [node name="MaxAmmo" type="Label" parent="GUI/HUDContainer/BottomHUDContainer/RightElements"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_f6hgc")
 theme_override_font_sizes/font_size = 22
 text = "/30"
 vertical_alignment = 1
