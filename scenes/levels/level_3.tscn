@@ -234,12 +234,8 @@ player_path = "/root/Level3/Player"
 [node name="PowerUps" type="Node3D" parent="."]
 
 [node name="PowerUpPickup" parent="PowerUps" instance=ExtResource("5_gwj1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32929, 31.0672, 126.97)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188684, 143.916, 289.309)
 powerup_type = 2
-
-[node name="PowerUpPickup2" parent="PowerUps" instance=ExtResource("5_gwj1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31226, 31.0672, 124.612)
-powerup_type = 3
 
 [node name="BadEndingButtom" parent="." instance=ExtResource("7_up1w8")]
 transform = Transform3D(1, 0, 0, 0, 0.427179, 0, 0, 0, 1, 783.907, -57.1746, 518.434)
