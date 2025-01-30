@@ -376,3 +376,8 @@ func _update_dash_bars() -> void:
 
 #func push_grass():
 #	grass_node.set_deferred("instance_shader_parameters/player_position", position + Vector3(0, -0.1, 0))
+
+
+func _on_death_area_body_entered(body: Node3D) -> void:
+	if body == self:
+		die()

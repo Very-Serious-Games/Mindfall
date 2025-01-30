@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dkmn650yocaq3"]
+[gd_scene load_steps=28 format=3 uid="uid://dkmn650yocaq3"]
 
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_3yqa5"]
 [ext_resource type="Script" path="res://scenes/levels/level_3.gd" id="1_k4r17"]
@@ -100,6 +100,9 @@ _data = {
 "pressdown": SubResource("Animation_ba7my"),
 "pressup": SubResource("Animation_0ocxi")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm2f0"]
+size = Vector3(1136.59, 94.1971, 902.316)
 
 [node name="Level3" type="Node3D"]
 script = ExtResource("1_k4r17")
@@ -304,8 +307,19 @@ libraries = {
 "": SubResource("AnimationLibrary_s0ja4")
 }
 
+[node name="DeathArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5166, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.257, -131.142, 335.192)
+shape = SubResource("BoxShape3D_gm2f0")
+
 [connection signal="body_entered" from="GoodEngindButton/Area3D" to="GoodEngindButton" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="GoodEngindButton/Area3D" to="GoodEngindButton" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]
+[connection signal="body_entered" from="DeathArea" to="DeathArea" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/lvl3"]
 [editable path="BadEndingButtom"]
