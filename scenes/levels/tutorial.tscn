@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf2jqa602com1"]
+[gd_scene load_steps=13 format=3 uid="uid://cf2jqa602com1"]
 
 [ext_resource type="VoxelGIData" uid="uid://dx10sclhgqmt5" path="res://assets/lights/tutorial.VoxelGI_data.res" id="1_i7uig"]
 [ext_resource type="PackedScene" uid="uid://csjsfxvnrnsj" path="res://assets/models/levels/Tutorial.glb" id="1_mp1f5"]
@@ -21,6 +21,9 @@ emission_energy_multiplier = 16.0
 [sub_resource type="BoxMesh" id="BoxMesh_tkto3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnbeq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sj67o"]
+size = Vector3(19.9349, 2.77521, 7.23004)
 
 [node name="Tutorial" type="Node3D"]
 
@@ -133,3 +136,12 @@ player_path = "/root/Tutorial/Player"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.790469, 0.612245, 0.350485)
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_w6e5d")]
+
+[node name="KillerCollider" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.0537)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="KillerCollider"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillerCollider/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5607, -2.09433, -0.10025)
+shape = SubResource("BoxShape3D_sj67o")
