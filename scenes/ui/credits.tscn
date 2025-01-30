@@ -72,25 +72,23 @@ text = "[center]
 [font_size=42]A Game by[/font_size]
 [font_size=32][url=https://github.com/Very-Serious-Games]Very Serious Games[/url][/font_size]
 
-[font_size=42]Development Team[/font_size]
-[font_size=32]Lead Programming: Mario Dorado Martínez
-Game Design: Nicolás Sort Sauquillo & [rainbow freq=0.2 sat=0.7 val=0.8]Hugo Castaño Cuéllar[/rainbow]
-Level Design: Nicolás Sort Sauquillo & [rainbow freq=0.2 sat=0.7 val=0.8]Hugo Castaño Cuéllar[/rainbow][/font_size]
+[font_size=32]Programming
+[font_size=32]Mario Dorado Martínez[/font_size]
 
-[font_size=42]Art & Visual Design[/font_size]
-[font_size=32]Character Art: Name Here
-Environment Art: Name Here
-UI Design: Name Here[/font_size]
+[font_size=32]Design[/font_size]
+[font_size=32]Hugo Castaño Cuéllar, Nicolás Sort Sauquillo & Mario Dorado Martínez[/font_size]
 
-[font_size=42]Audio Design[/font_size]
-[font_size=32]Music Composition: Name Here
-Sound Effects: Name Here
-Voice Acting: Name Here[/font_size]
+[font_size=32]Level Design[/font_size]
+[font_size=32]Nicolás Sort Sauquillo & Hugo Castaño Cuéllar[/font_size]
 
-[font_size=42]Additional Support[/font_size]
-[font_size=32]Quality Assurance: Name Here
-Beta Testing: Name Here
-Community Management: Name Here[/font_size]
+[font_size=32]Environment Art[/font_size]
+[font_size=32]Marta Jover Valero[/font_size]
+
+[font_size=32]Narrative[/font_size]
+[font_size=32]Hugo Castaño Cuéllar[/font_size]
+
+[font_size=32]Tools & Resources[/font_size]
+
 
 [font_size=42]Tools & Resources[/font_size]
 [font_size=32]Game Engine: Godot Engine
@@ -101,11 +99,7 @@ Font Resources: Google Fonts[/font_size]
 All Rights Reserved[/font_size]
 
 
-[color=#ff0000][font_size=48]Thanks for playing![/font_size][/color]
-
-
-[/color]
-[/center]"
+[color=#ff0000][font_size=48]Thanks for playing![/font_size][/color]"
 fit_content = true
 scroll_active = false
 
