@@ -132,7 +132,6 @@ transform = Transform3D(-0.499993, 0.00261798, -4.37108e-08, 0.00261798, 0.49999
 bones/2/position = Vector3(0, 42.38, 0)
 bones/2/rotation = Quaternion(-0.00181408, 0, 0, 0.999998)
 bones/3/position = Vector3(-5.38376, 10.5343, -23.1776)
-bones/4/position = Vector3(-1.16792, -4.6649, 9.04451)
 bones/4/rotation = Quaternion(0.494505, -0.362447, 0.0156009, 0.789845)
 bones/5/position = Vector3(-0.0967064, -0.206413, 19.46)
 bones/5/rotation = Quaternion(0.594711, -0.0176284, -0.0253702, 0.803346)
