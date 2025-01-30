@@ -125,6 +125,9 @@ navigation_mesh = SubResource("NavigationMesh_t1jwr")
 
 [node name="lvl3" parent="NavigationRegion3D" instance=ExtResource("4_ijgqt")]
 
+[node name="Pilar5" parent="NavigationRegion3D/lvl3" index="2"]
+transform = Transform3D(13.7882, 0, 0, 0, 2.07872, 0, 0, 0, 13.7882, 2.59475, 165.912, 415.131)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lvl3/eSCALERAoOoO" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lvl3/eSCALERAoOoO/StaticBody3D"]
@@ -138,6 +141,15 @@ shape = SubResource("BoxShape3D_411wd")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/lvl3/eSCALERAoOoO/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36956, 1.52811, 0.863787)
 shape = SubResource("BoxShape3D_r4fjl")
+
+[node name="Pilar4" parent="NavigationRegion3D/lvl3" index="9"]
+transform = Transform3D(5.67001, 0, 0, 0, 2.07872, 0, 0, 0, 5.67001, -3.12979, 158.777, 378.407)
+
+[node name="Pilar3" parent="NavigationRegion3D/lvl3" index="10"]
+transform = Transform3D(5.67001, 0, 0, 0, 2.07872, 0, 0, 0, 5.67001, 13.511, 151.121, 351.166)
+
+[node name="Pilar2" parent="NavigationRegion3D/lvl3" index="11"]
+transform = Transform3D(5.67001, 0, 0, 0, 2.07872, 0, 0, 0, 5.67001, -3.36998, 147.829, 327.722)
 
 [node name="TransitionTrigger" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(3.40553, 0, 0, 0, 5.33703, 0, 0, 0, 1, 0.135586, 15.3965, -1433.37)
