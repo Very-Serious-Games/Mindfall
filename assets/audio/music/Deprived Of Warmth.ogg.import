@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkepi18j7eyjr"
+path="res://.godot/imported/Deprived Of Warmth.ogg-dcc0cf87e33a63f870483b34cf20b42b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Deprived Of Warmth.ogg"
+dest_files=["res://.godot/imported/Deprived Of Warmth.ogg-dcc0cf87e33a63f870483b34cf20b42b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
