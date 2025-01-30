@@ -66,6 +66,10 @@ emission_energy_multiplier = 16.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4uuw"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h30q5"]
+height = 4.16961
+radius = 1.02909
+
 [sub_resource type="Gradient" id="Gradient_dri2r"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e3mld"]
@@ -116,6 +120,8 @@ shader_parameter/normal_map = SubResource("NoiseTexture2D_a3aab")
 [sub_resource type="PlaneMesh" id="PlaneMesh_fbksy"]
 
 [node name="Level2" type="Node3D"]
+
+[node name="NavigationRegion3D_blockinglvl2_Circle_002#StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_x66py")]
 
