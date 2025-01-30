@@ -3,6 +3,7 @@ class_name Player extends CharacterBody3D
 const HIT_STAGGER = 8.0
 const FOOTSTEP_TIME = 0.1
 const MUZZLE_FLASH_DURATION = 0.05
+const AIR_JUMP_MULTIPLIER = 1.2
 
 @export_category("Player")
 @export_range(1, 35, 1) var speed: float = 10
@@ -265,14 +266,19 @@ func _jump(delta: float) -> Vector3:
 		remaining_jumps = powerup_manager.max_jumps
 		if not jump_pressed:
 			jump_vel = Vector3.ZERO
+	elif Input.is_action_just_pressed("jump") and remaining_jumps > 0:
+		jump_pressed = true
 
 	if jump_pressed and remaining_jumps > 0:
-		jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+		# Apply multiplier if not on floor (air jump)
+		var height_multiplier = 1.0 if is_on_floor() else AIR_JUMP_MULTIPLIER
+		jump_vel = Vector3(0, sqrt(4 * jump_height * gravity) * height_multiplier, 0)
 		remaining_jumps -= 1
 		AudioManager.play_sound_3d("jump", position)
 		jump_pressed = false
 	else:
 		jump_vel = jump_vel.move_toward(Vector3.ZERO, gravity * delta)
+	
 	return jump_vel
 
 func _dash(delta: float) -> Vector3:
