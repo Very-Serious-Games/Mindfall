@@ -12,6 +12,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	scroll.get_v_scroll_bar().modulate.a = 0  # Hide scrollbar
 
+	# Release the mouse cursor
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func return_to_menu() -> void:
 	AudioManager.play_ui_sound("menu_select")
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
