@@ -38,10 +38,6 @@ size = Vector3(4.73187, 1.56274, 1.71881)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4vina"]
 size = Vector3(3.02869, 5.14648, 3.16089)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_h30q5"]
-height = 4.16961
-radius = 1.02909
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_188g0"]
 height = 2.0103
 radius = 1.02341
@@ -71,6 +67,10 @@ emission_energy_multiplier = 16.0
 [sub_resource type="BoxMesh" id="BoxMesh_nx4c2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4uuw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h30q5"]
+height = 4.16961
+radius = 1.02909
 
 [sub_resource type="Gradient" id="Gradient_dri2r"]
 
@@ -123,6 +123,8 @@ shader_parameter/normal_map = SubResource("NoiseTexture2D_a3aab")
 
 [node name="Level2" type="Node3D"]
 
+[node name="NavigationRegion3D_blockinglvl2_Circle_002#StaticBody3D" type="StaticBody3D" parent="."]
+
 [node name="PauseMenu" parent="." instance=ExtResource("1_x66py")]
 
 [node name="WorldEnviroment" parent="." instance=ExtResource("4_7ne30")]
@@ -136,9 +138,6 @@ animateStaticClouds = false
 navigation_mesh = SubResource("NavigationMesh_ih6fk")
 
 [node name="blockinglvl2" parent="NavigationRegion3D" instance=ExtResource("1_f6n81")]
-
-[node name="Mesh Cesped" parent="NavigationRegion3D/blockinglvl2" index="0"]
-transform = Transform3D(408.18, 0, 0, 0, 408.18, 0, 0, 0, 527.923, 92.5197, -0.510479, -158.545)
 
 [node name="Suelo1" parent="NavigationRegion3D/blockinglvl2" index="1" groups=["dirt", "grass"]]
 
@@ -300,11 +299,6 @@ shape = SubResource("BoxShape3D_lt7lh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118317, -0.557983, 0.0743103)
 shape = SubResource("BoxShape3D_lt7lh")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/blockinglvl2/Circle_002" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/blockinglvl2/Circle_002/StaticBody3D"]
-shape = SubResource("CylinderShape3D_h30q5")
-
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/blockinglvl2/Cylinder" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/blockinglvl2/Cylinder/StaticBody3D"]
@@ -324,9 +318,9 @@ shape = SubResource("CylinderShape3D_fh5bh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/blockinglvl2/Cylinder_003" index="0"]
 shape = SubResource("CylinderShape3D_188g0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/blockinglvl2/Fuente" index="0"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/blockinglvl2/Fuente" index="0"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/blockinglvl2/Fuente/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/blockinglvl2/Fuente/StaticBody3D" index="1"]
 shape = SubResource("SphereShape3D_kh5y4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/blockinglvl2/swing_D" index="0"]
@@ -568,6 +562,9 @@ next_scene = "res://scenes/levels/level_3.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TransitionTrigger/DetectionArea"]
 shape = SubResource("BoxShape3D_l4uuw")
+
+[node name="NavigationRegion3D_blockinglvl2_Circle_002_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_h30q5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(38.237, 0, 0, 0, 1, 0, 0, 0, 19.7584, 15.3404, 0, -128.914)
