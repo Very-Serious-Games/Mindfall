@@ -724,9 +724,6 @@ gi_lightmap_scale = 3
 [node name="Techo12" parent="NavigationRegion3D/lvl1" index="96"]
 gi_lightmap_scale = 3
 
-[node name="ColumnaItem1" parent="NavigationRegion3D/lvl1" index="97"]
-gi_lightmap_scale = 3
-
 [node name="Suelo13" parent="NavigationRegion3D/lvl1" index="98"]
 gi_lightmap_scale = 3
 
@@ -889,7 +886,7 @@ shoot_range = 100.0
 transition_trigger = NodePath("../NavigationRegion3D/TransitionTrigger")
 
 [node name="PowerUpPickup" parent="." instance=ExtResource("7_ymxwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 1.798, -47.0027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 1.61099, -47.0027)
 powerup_type = 1
 
 [node name="Enemies" type="Node3D" parent="."]
