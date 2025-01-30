@@ -6,9 +6,9 @@ var state_machine
 var health = 5
 var can_attack = true
 
-const SPEED = 4.0
+@export var SPEED = 4.0
 const ATTACK_RANGE = 2.0
-const DETECT_RANGE = 50.0
+@export var DETECT_RANGE = 50.0
 const AGONIZE_CHANGE = 0.05
 const ATTACK_COOLDOWN = 1.0
 

@@ -333,7 +333,7 @@ func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void
 		look_dir = joypad_dir * delta
 		_rotate_camera(sens_mod)
 
-func hit(dir, damage: float = 1) -> void:
+func hit(dir, damage: float = 20) -> void:
 	emit_signal("player_hit") # check if needed
 	velocity = dir * HIT_STAGGER
 	take_damage(damage)
