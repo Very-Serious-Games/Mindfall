@@ -62,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3742, 0.642474, 8.20836)
 powerup_type = 1
 
 [node name="PowerUpPickup3" parent="." instance=ExtResource("8_aj23d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3736, 0.642474, 6.38811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4083, 0.642474, 6.38811)
 powerup_type = 2
 
 [node name="PowerUpPickup4" parent="." instance=ExtResource("8_aj23d")]
@@ -75,5 +75,16 @@ player_path = "//root/Playground/Player"
 
 [node name="Player" parent="." instance=ExtResource("8_7v3v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1757, 0, 3.71445)
+acceleration = 100.0
+camera_sens = 1.0
+dash_speed = 25.0
+dash_duration = 0.2
+max_health = 100.0
+health_regen = 0.0
+invulnerable = false
+fire_rate = 4.0
+max_ammo = 9
+reload_time = 1.5
+transition_range = 16.0
 
 [editable path="Enviroments/sample_scene"]
