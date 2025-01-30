@@ -46,6 +46,9 @@ const AIR_JUMP_MULTIPLIER = 1.2
 @onready var anim_player: AnimationPlayer = $Camera/Player/AnimationPlayer
 @onready var anim_tree: AnimationTree = $Camera/Player/AnimationTree
 @onready var muzzle_flash: OmniLight3D = $Camera/MuzzleFlash
+@onready var reload_icon: TextureRect = $GUI/MarginContainer/PowerUpsContainer/FastReloadIcon
+@onready var double_jump_icon: TextureRect = $GUI/MarginContainer/PowerUpsContainer/DoubleJumpIcon
+@onready var double_dash_icon: TextureRect = $GUI/MarginContainer/PowerUpsContainer/DoubleDashIcon
 
 #@onready var grass_node: MultiMeshInstance3D = $"../GrassInstance3D"
 
@@ -89,7 +92,13 @@ func _ready() -> void:
 	_setup_dash_bars()
 	death_screen.hide()
 	state_machine = anim_tree.get("parameters/playback")
+	_update_powerup_icons()
+	powerup_manager.powerup_changed.connect(_update_powerup_icons)
 
+func _update_powerup_icons() -> void:
+	reload_icon.visible = PowerUp.PowerUpType.FAST_RELOAD in powerup_manager.active_powerups
+	double_jump_icon.visible = PowerUp.PowerUpType.DOUBLE_JUMP in powerup_manager.active_powerups
+	double_dash_icon.visible = PowerUp.PowerUpType.DOUBLE_DASH in powerup_manager.active_powerups
 
 func _process(_delta: float) -> void:
 	health_bar.value = (current_health / max_health) * 100
@@ -376,7 +385,6 @@ func _update_dash_bars() -> void:
 
 #func push_grass():
 #	grass_node.set_deferred("instance_shader_parameters/player_position", position + Vector3(0, -0.1, 0))
-
 
 func _on_death_area_body_entered(body: Node3D) -> void:
 	if body == self:

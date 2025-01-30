@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf2jqa602com1"]
+[gd_scene load_steps=15 format=3 uid="uid://cf2jqa602com1"]
 
-[ext_resource type="VoxelGIData" uid="uid://dx10sclhgqmt5" path="res://assets/lights/tutorial.VoxelGI_data.res" id="1_i7uig"]
+[ext_resource type="VoxelGIData" path="res://assets/lights/tutorial.VoxelGI_data.res" id="1_i7uig"]
 [ext_resource type="PackedScene" uid="uid://csjsfxvnrnsj" path="res://assets/models/levels/Tutorial.glb" id="1_mp1f5"]
 [ext_resource type="PackedScene" uid="uid://c4vm0hkbau88p" path="res://scenes/ui/pause.tscn" id="1_w6e5d"]
 [ext_resource type="PackedScene" uid="uid://ccvfvlphlk2c4" path="res://scenes/characters/player.tscn" id="2_qtu77"]
@@ -22,8 +22,15 @@ emission_energy_multiplier = 16.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnbeq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sj67o"]
-size = Vector3(19.9349, 2.77521, 7.23004)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uynp2"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1npvr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxp5k"]
 
 [node name="Tutorial" type="Node3D"]
 
@@ -89,19 +96,20 @@ navigation_mesh = SubResource("NavigationMesh_f4d7e")
 [node name="Tutorial" parent="NavigationRegion3D" instance=ExtResource("1_mp1f5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8092, 0, -23.5646)
 
-[node name="TransitionTrigger" type="MeshInstance3D" parent="NavigationRegion3D/Tutorial"]
-transform = Transform3D(4.31164, 0, 0, 0, 5.27337, 0, 0, 0, 1, -64.6711, 2.49954, -75.5036)
+[node name="TransitionTrigger" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(4.31164, 0, 0, 0, 5.27337, 0, 0, 0, 1, -34.8619, 2.49954, -99.0682)
 layers = 5
 material_override = SubResource("StandardMaterial3D_1gt8e")
 mesh = SubResource("BoxMesh_tkto3")
+skeleton = NodePath("../Tutorial")
 
-[node name="DetectionArea" type="Area3D" parent="NavigationRegion3D/Tutorial/TransitionTrigger"]
+[node name="DetectionArea" type="Area3D" parent="NavigationRegion3D/TransitionTrigger"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_e3152")
 next_scene = "res://scenes/ui/main_menu.tscn"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Tutorial/TransitionTrigger/DetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TransitionTrigger/DetectionArea"]
 shape = SubResource("BoxShape3D_jnbeq")
 
 [node name="PowerUps" type="Node3D" parent="."]
@@ -132,16 +140,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6728, 0, -74.788)
 DETECT_RANGE = 12.0
 player_path = "/root/Tutorial/Player"
 
-[node name="Player" parent="." instance=ExtResource("2_qtu77")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.790469, 0.612245, 0.350485)
+[node name="Player" parent="." node_paths=PackedStringArray("transition_trigger") instance=ExtResource("2_qtu77")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.383332, 0.612245, 1.97609)
+transition_trigger = NodePath("../NavigationRegion3D/TransitionTrigger")
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_w6e5d")]
 
-[node name="KillerCollider" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.0537)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(15.9433, 0, 0, 0, 1, 0, 0, 0, 5.1663, 0.795809, -0.402412, -32.0149)
+material_override = SubResource("StandardMaterial3D_uynp2")
+mesh = SubResource("BoxMesh_1npvr")
+skeleton = NodePath("DeathArea")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="KillerCollider"]
+[node name="DeathArea" type="Area3D" parent="MeshInstance3D"]
+collision_layer = 7
+collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KillerCollider/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5607, -2.09433, -0.10025)
-shape = SubResource("BoxShape3D_sj67o")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/DeathArea"]
+shape = SubResource("BoxShape3D_wxp5k")
+
+[connection signal="body_entered" from="MeshInstance3D/DeathArea" to="Player" method="_on_death_area_body_entered"]
+[connection signal="body_entered" from="MeshInstance3D/DeathArea" to="MeshInstance3D/DeathArea" method="_on_body_entered"]

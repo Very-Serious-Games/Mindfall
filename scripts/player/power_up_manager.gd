@@ -1,5 +1,7 @@
 class_name PowerUpManager extends Node
 
+signal powerup_changed
+
 var active_powerups: Dictionary = {}
 var dash_charges: int = 1
 var max_jumps: int = 1
@@ -40,4 +42,5 @@ func activate_powerup(type: PowerUp.PowerUpType) -> void:
 			dash_charges = 2
 	
 	# Store powerups when they change
+	emit_signal("powerup_changed")
 	PowerUpState.store_powerups(active_powerups)

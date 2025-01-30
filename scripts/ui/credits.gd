@@ -3,8 +3,8 @@ extends Control
 const SPEED_MULTIPLIER: float = 2.0
 const MAIN_MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
 
-@onready var scroll: ScrollContainer = $MarginContainer/TextureRect2/ScrollContainer
-@onready var rich_text: RichTextLabel = $MarginContainer/TextureRect2/ScrollContainer/RichTextLabel
+@onready var scroll: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
+@onready var rich_text: RichTextLabel = $MarginContainer/VBoxContainer/ScrollContainer/RichTextLabel
 
 func _ready() -> void:
 	# More initial spacing for smooth start
