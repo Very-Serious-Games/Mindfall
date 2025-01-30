@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4fakllxprifu"]
+[gd_scene load_steps=11 format=3 uid="uid://b4fakllxprifu"]
 
 [ext_resource type="PackedScene" uid="uid://q1lupoo2rcq5" path="res://assets/models/levels/sample_scene.glb" id="1_d4uy2"]
 [ext_resource type="Material" uid="uid://cg0b401okvr4w" path="res://addons/kenney_prototype_tools/materials/light/material_08.tres" id="2_hf0te"]
@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://ccvfvlphlk2c4" path="res://scenes/characters/player.tscn" id="8_7v3v8"]
 [ext_resource type="PackedScene" uid="uid://cy2qxu1w43b16" path="res://scenes/powerups/power_up_pickup.tscn" id="8_aj23d"]
 [ext_resource type="PackedScene" uid="uid://bnjhvhbe58db8" path="res://scenes/characters/enemy.tscn" id="8_fkqim"]
+[ext_resource type="PackedScene" uid="uid://f65krx6fkt36" path="res://scenes/button.tscn" id="9_5mnmk"]
 
 [sub_resource type="Environment" id="Environment_rsrlo"]
 glow_enabled = true
 glow_bloom = 1.0
 
 [node name="Playground" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7672, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rsrlo")
@@ -75,16 +75,8 @@ player_path = "//root/Playground/Player"
 
 [node name="Player" parent="." instance=ExtResource("8_7v3v8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1757, 0, 3.71445)
-acceleration = 100.0
-camera_sens = 1.0
-dash_speed = 25.0
-dash_duration = 0.2
-max_health = 100.0
-health_regen = 0.0
-invulnerable = false
-fire_rate = 4.0
-max_ammo = 9
-reload_time = 1.5
-transition_range = 16.0
+
+[node name="Button" parent="." instance=ExtResource("9_5mnmk")]
+transform = Transform3D(1, 0, 0, 0, 0.427179, 0, 0, 0, 1, 21.6855, -1.86265e-07, 5.09418)
 
 [editable path="Enviroments/sample_scene"]
